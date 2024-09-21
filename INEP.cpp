@@ -17,14 +17,73 @@ void procesarRegistreUsuari() {
     std::cin >> entrada2;
     std::cout << "Has escollit el nombre " + entrada2 + "\n";
 
-    if ( )
+    if (entrada2 == "1") {
+
+    }
+    else if (entrada2 == "2") {
+
+    }
+    else if (entrada2 == "3") {
+
+    }
+    else if (entrada2 == "4") {
+
+    }
+    else {
+
+        //ha de tornar, com??? ns 
+    }
 }
 
 void procesarGestioContinguts() {
 
+    std::cout << "1. Gestio pelicules \n";
+    std::cout << "2. Gestio series \n";
+    std::cout << "3. Tornar \n";
+
+    std::string entrada2;
+
+    std::cout << "Escriu un nombre:";
+    std::cin >> entrada2;
+    std::cout << "Has escollit el nombre " + entrada2 + "\n";
+
+    if (entrada2 == "1") {
+
+    }
+    else if (entrada2 == "2") {
+
+    }
+    else {
+
+    }
+
 }
+
 void procesarConsultes() {
 
+    std::cout << "1. Consulta per qualificació d’edat \n";
+    std::cout << "2. Últimes novetats \n";
+    std::cout << "3. Pròximes estrenes \n";
+    std::cout << "4. Tornar \n";
+
+    std::string entrada2;
+
+    std::cout << "Escriu un nombre:";
+    std::cin >> entrada2;
+    std::cout << "Has escollit el nombre " + entrada2 + "\n";
+
+    if (entrada2 == "1") {
+
+    }
+    else if (entrada2 == "2") {
+
+    }
+    else if (entrada2 == "3") {
+
+    }
+    else {
+
+    }
 }
 
 int main()
@@ -59,8 +118,6 @@ int main()
 
         std::cout << "Has escollit l'opcio Sortir \n";
     }
-    //int select_num;
-    //std::cin >> entrada;
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
