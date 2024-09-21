@@ -8,7 +8,7 @@ void procesarRegistreUsuari() {
     std::cout << "1. Registre usuari \n";
     std::cout << "2. Gestio continguts \n";
     std::cout << "3. Modifica usuari \n";
-    std::cout << "4. Esborra usuari \n";
+    std::cout << "4. Esborra usuari \n"; 
     std::cout << "5. Tornar \n";
 
     std::string entrada2;
