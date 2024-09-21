@@ -3,10 +3,64 @@
 
 #include <iostream>
 
+void procesarRegistreUsuari() {
+
+    std::cout << "1. Registre usuari \n";
+    std::cout << "2. Gestio continguts \n";
+    std::cout << "3. Modifica usuari \n";
+    std::cout << "4. Esborra usuari \n";
+    std::cout << "5. Tornar \n";
+
+    std::string entrada2;
+
+    std::cout << "Escriu un nombre:";
+    std::cin >> entrada2;
+    std::cout << "Has escollit el nombre " + entrada2 + "\n";
+
+    if ( )
+}
+
+void procesarGestioContinguts() {
+
+}
+void procesarConsultes() {
+
+}
+
 int main()
 {
-    std::cout << "Hello World! hola\n";
-    //escrit pel pau :-)
+    std::cout << "1. Gestio usuaris \n";
+    std::cout << "2. Gestio continguts \n";
+    std::cout << "3. Consultes \n";
+    std::cout << "4. Sortir \n";
+
+    std::string entrada;
+
+    std::cout << "Escriu un nombre:";
+    std::cin >> entrada;
+    std::cout << "Has escollit el nombre " + entrada + "\n";
+
+    if (entrada == "1") {
+
+        std::cout << "Has escollit l'opcio Gestio usuaris \n";
+        procesarRegistreUsuari();
+    }
+    else if (entrada == "2") {
+
+        std::cout << "Has escollit l'opcio Gestio continguts \n";
+        procesarGestioContinguts();
+    }
+    else if (entrada == "3") {
+
+        std::cout << "Has escollit l'opcio Consultes \n";
+        void procesarConsultes();
+    }
+    else {
+
+        std::cout << "Has escollit l'opcio Sortir \n";
+    }
+    //int select_num;
+    //std::cin >> entrada;
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
