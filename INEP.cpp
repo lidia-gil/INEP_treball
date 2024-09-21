@@ -10,7 +10,7 @@ void procesarRegistreUsuari() {
     std::cout << "3. Modifica usuari \n";
     std::cout << "4. Esborra usuari \n"; 
     std::cout << "5. Tornar \n";
-
+    
     std::string entrada2;
 
     std::cout << "Escriu un nombre:";
