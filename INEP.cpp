@@ -5,37 +5,41 @@
 
 //menu principal
 void menuPrincipal() {
-
+    
+    std::cout << "Menu inicial \n";
     std::cout << "1. Gestio usuaris \n";
     std::cout << "2. Gestio continguts \n";
     std::cout << "3. Consultes \n";
-    std::cout << "4. Sortir \n";
-    std::cout << "Escriu un nombre:";
+    std::cout << "4. Sortir \n\n";
+    std::cout << "Escull una opcio: ";
 }
 //submenus
 void subMenuPrincipal1() {
 
+    std::cout << "Menu Gestio Usuaris \n";
     std::cout << "1. Registre usuari \n";
     std::cout << "2. Consulta usuari \n";
     std::cout << "3. Modifica usuari \n";
     std::cout << "4. Esborra usuari \n";
-    std::cout << "5. Tornar \n";
-    std::cout << "Escriu un nombre:";
+    std::cout << "5. Tornar \n\n";
+    std::cout << "Escull una opcio: ";
 }
 void subMenuPrincipal2() {
 
+    std::cout << "Menu Gestio Continguts \n";
     std::cout << "1. Gestio pel.licules \n";
     std::cout << "2. Gestio series \n";
-    std::cout << "3. Tornar \n";
-    std::cout << "Escriu un nombre:";
+    std::cout << "3. Tornar \n\n";
+    std::cout << "Escull una opcio: ";
 }
 void subMenuPrincipal3() {
 
+    std::cout << "Menu Consultes \n";
     std::cout << "1. Consulta per qualificacio de edat \n";
     std::cout << "2. Ultimes novetats \n";
     std::cout << "3. Proximes estrenes \n";
-    std::cout << "4. Tornar \n";
-    std::cout << "Escriu un nombre:";
+    std::cout << "4. Tornar \n\n";
+    std::cout << "Escull una opcio: ";
 }
 
 //subfuncions1
@@ -287,28 +291,29 @@ int main()
     std::string entrada;
 
     while (continua_programa and std::cin >> entrada){
+
         if (entrada == "1") {
 
-            std::cout << "Has escollit l'opcio " + entrada + ". Gestio usuaris \n";
+            std::cout << "\nHas escollit l'opcio " + entrada + ": Gestio Usuaris \n\n";
             gestioUsuari();
         }
         else if (entrada == "2") {
 
-            std::cout << "Has escollit l'opcio " + entrada + ". Gestio continguts \n";
+            std::cout << "\nHas escollit l'opcio " + entrada + ": Gestio Continguts \n\n";
             gestioContinguts();
         }
         else if (entrada == "3") {
 
-            std::cout << "Has escollit l'opcio " + entrada + ". Consultes \n";
+            std::cout << "\nHas escollit l'opcio " + entrada + ": Consultes \n\n";
             consultes();
         }
         else {
 
-            std::cout << "Has escollit l'opcio " + entrada + ". Sortir \n";
+            std::cout << "\nHas escollit l'opcio " + entrada + ": Sortir \n\n";
             continua_programa = false;
-            // bool para sortir 
         }
         if (continua_programa) {
+
             menuPrincipal();
         }
     }
