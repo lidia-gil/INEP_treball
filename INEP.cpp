@@ -46,64 +46,68 @@ void subMenuPrincipal3() {
 void procesarRegistreUsuari() {
 
     std::string nom;
-    std::string cognom;
-    std::string sobrenom;
     std::cout << "Escriure nom: ";
     std::cin >> nom;
+    std::string cognom;
     std::cout << "Escriure congnom: ";
     std::cin >> cognom;
+    std::string sobrenom;
     std::cout << "Escriure sobrenom: ";
     std::cin >> sobrenom;
     if (nom == " " or cognom == " " or sobrenom == " ") {
-        std::cout << "Error al registrar usuari \n";
+
+        std::cout << "Error al registrar usuari \n\n";
     }
     else {
-        std::cout << "El registre de el usuari " + nom + " " + cognom + " ( " + sobrenom + " ) s,ha processat correctament. \n";
+
+        std::cout << "El registre de el usuari " + nom + " " + cognom + " ( " + sobrenom + " ) s,ha processat correctament. \n\n";
     }
 }
 void procesarConsultaUsuari() {
 
     std::string nom;
-    std::string cognom;
-    std::string sobrenom;
     std::cout << "Escriure nom: ";
     std::cin >> nom;
+    std::string cognom;
     std::cout << "Escriure congnom: ";
     std::cin >> cognom;
+    std::string sobrenom;
     std::cout << "Escriure sobrenom: ";
     std::cin >> sobrenom;
     if (nom == " " or cognom == " " or sobrenom == " ") {
-        std::cout << "Aquest usuari no esta registrat \n";
+
+        std::cout << "Aquest usuari no esta registrat \n\n";
     }
     else {
-        std::cout << "El usuari " + nom + " " + cognom + " ( " + sobrenom + " ) esta registrat. \n";
+
+        std::cout << "El usuari " + nom + " " + cognom + " ( " + sobrenom + " ) esta registrat. \n\n";
     }
 }
 void procesarModificaUsuari() {
 
     std::string nom;
-    std::string cognom;
-    std::string sobrenom;
-    std::string apartat;
     std::cout << "Escriure nom: ";
     std::cin >> nom;
+    std::string cognom;
     std::cout << "Escriure congnom: ";
     std::cin >> cognom;
+    std::string sobrenom;
     std::cout << "Escriure sobrenom: ";
     std::cin >> sobrenom;
+    std::string apartat;
     std::cout << "Quin dels apartats anterior vols modificar 1,2 o 3 ?";
     std::cin >> apartat;
     if (apartat == "1") {
         
         std::cout << "Escriure nom: ";
         std::cin >> nom;
-        std::cout << "El usuari " + nom + " " + cognom + " ( " + sobrenom + " ) s,ha modificat correctament. \n";
+        std::cout << "El usuari " + nom + " " + cognom + " ( " + sobrenom + " ) s,ha modificat correctament. \n\n";
     }
     else if (apartat == "2") {
 
         std::cout << "Escriure cognom: ";
         std::cin >> cognom;
-        std::cout << "El usuari " + nom + " " + cognom + " ( " + sobrenom + " ) s,ha modificat correctament. \n";
+        std::cout << "El usuari " + nom + " " + cognom + " ( " + sobrenom + " ) s,ha modificat correctament. \n\n";
     }
     else if (apartat == "3") {
 
@@ -119,19 +123,21 @@ void procesarModificaUsuari() {
 void procesarEsborraUsuari() {
  
     std::string nom;
-    std::string cognom;
-    std::string sobrenom;
     std::cout << "Escriure nom: ";
     std::cin >> nom;
+    std::string cognom;
     std::cout << "Escriure congnom: ";
     std::cin >> cognom;
+    std::string sobrenom;
     std::cout << "Escriure sobrenom: ";
     std::cin >> sobrenom;
     if (nom == " " or cognom == " " or sobrenom == " ") {
-        std::cout << "Error al esborrar usuari \n";
+
+        std::cout << "Error al esborrar usuari \n\n";
     }
     else {
-        std::cout << "El usuari " + nom + " " + cognom + " ( " + sobrenom + " ) s,ha esborrat correctament. \n";
+
+        std::cout << "El usuari " + nom + " " + cognom + " ( " + sobrenom + " ) s,ha esborrat correctament. \n\n";
     }
 }
 
@@ -144,23 +150,35 @@ void gestioUsuari() {
 
     while (continua and std::cin >> entrada2) {
 
+        std::cout << "\n";
         if (entrada2 == "1") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ". Registre usuari \n";
+            std::cout << "Has escollit l'opcio " + entrada2 + ": Registre usuari. \n\n";
             procesarRegistreUsuari();
         }
         else if (entrada2 == "2") {
+
+            std::cout << "Has escollit l'opcio " + entrada2 + ": Consulta usuari. \n\n";
             procesarConsultaUsuari();
         }
         else if (entrada2 == "3") {
+
+            std::cout << "Has escollit l'opcio " + entrada2 + ": Modifica usuari. \n\n";
             procesarModificaUsuari();
         }
         else if (entrada2 == "4") {
+
+            std::cout << "Has escollit l'opcio " + entrada2 + ": Esborra usuari. \n\n";
             procesarEsborraUsuari();
         }
-        else {
-            std::cout << "Has escollit l'opcio " + entrada2 + ". Tornar \n";
+        else if (entrada2 == "5") {
+
+            std::cout << "Has escollit l'opcio " + entrada2 + ": Tornar. \n\n";
             continua = false;
+        }
+        else {
+
+            std::cout << "No existeix l'opcio escollida, torna a intentar-ho. \n\n";
         }
         if (continua) {
             subMenuPrincipal1();
@@ -175,10 +193,10 @@ void procesarGestioPelicules(){
     std::cout << "Escriu el nom de la pel.licula que busques: ";
     std::cin >> nom_peli;
     if (nom_peli == " ") {
-        std::cout << "No s,ha trobat la pel.licula que busques. \n";
+        std::cout << "No s,ha trobat la pel.licula que busques. \n\n";
     }
     else {
-        std::cout << "La pel.licula " + nom_peli + " s,ha trobat. \n";
+        std::cout << "La pel.licula " + nom_peli + " s,ha trobat. \n\n";
     }
 }
 void procesarGestioSeries(){
@@ -187,10 +205,10 @@ void procesarGestioSeries(){
     std::cout << "Escriu el nom de la serie que busques: ";
     std::cin >> nom_serie;
     if (nom_serie == " ") {
-        std::cout << "No s,ha trobat la serie que busques. \n";
+        std::cout << "No s,ha trobat la serie que busques. \n\n";
     }
     else {
-        std::cout << "La serie " + nom_serie + " s,ha trobat. \n";
+        std::cout << "La serie " + nom_serie + " s,ha trobat. \n\n";
     }
 }
 
@@ -202,22 +220,27 @@ void gestioContinguts() {
     bool continua = true;
 
     while (continua and std::cin >> entrada2) {
+
+        std::cout << "\n";
         if (entrada2 == "1") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ". Gestio pel.licules \n";
+            std::cout << "Has escollit l'opcio " + entrada2 + ": Gestio pel.licules. \n\n";
             procesarGestioPelicules();
         }
         else if (entrada2 == "2") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ". Gestio series \n";
+            std::cout << "Has escollit l'opcio " + entrada2 + ": Gestio series. \n\n";
             procesarGestioSeries();
+        }
+        else if (entrada2 == "3") {
+
+            std::cout << "Has escollit l'opcio " + entrada2 + ": Tornar. \n\n";
+            continua = false; 
         }
         else {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ". Tornar \n";
-            continua = false;
-            //procesarTornar();
-        }
+            std::cout << "No existeix l'opcio escollida, torna a intentar-ho. \n\n";
+        } 
         if (continua) {
             subMenuPrincipal2();
         }
@@ -245,11 +268,11 @@ void procesarConsultaPerQualificacioDeEdat(){
 }
 void procesarUltimesNovetats(){
 
-    std::cout << "Mostrant les ultimes novetats. \n\n";
+    std::cout << "Mostrant les ultimes novetats. \n\n ... \n\n";
 }
 void procesarProximesEstrenes(){
 
-    std::cout << "Mostrant les proximes estrenes. \n\n";
+    std::cout << "Mostrant les proximes estrenes. \n\n ... \n\n";
 }
 
 //pricipal 3
@@ -261,22 +284,30 @@ void consultes() {
 
     while (continua and std::cin >> entrada2) {
 
+        std::cout << "\n";
         if (entrada2 == "1") {
 
+            std::cout << "Has escollit l'opcio " + entrada2 + ": Consulta per qualificaio de edat. \n\n";
             procesarConsultaPerQualificacioDeEdat();
         }
         else if (entrada2 == "2") {
 
+            std::cout << "Has escollit l'opcio " + entrada2 + ": Ultimes novetats. \n\n";
             procesarUltimesNovetats();
         }
         else if (entrada2 == "3") {
 
+            std::cout << "Has escollit l'opcio " + entrada2 + ": Proximes estrenes. \n\n";
             procesarProximesEstrenes();
+        }
+        else if (entrada2 == "4") {
+
+            std::cout << "Has escollit l'opcio " + entrada2 + ". Tornar. \n";
+            continua = false;
         }
         else {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ". Tornar \n";
-            continua = false;
+             std::cout << "No existeix l'opcio escollida, torna a intentar-ho. \n\n";
         }
         if (continua) {
             subMenuPrincipal3();
@@ -294,22 +325,22 @@ int main()
 
         if (entrada == "1") {
 
-            std::cout << "\nHas escollit l'opcio " + entrada + ": Gestio Usuaris \n\n";
+            std::cout << "\nHas escollit l'opcio " + entrada + ": Gestio Usuaris. \n\n";
             gestioUsuari();
         }
         else if (entrada == "2") {
 
-            std::cout << "\nHas escollit l'opcio " + entrada + ": Gestio Continguts \n\n";
+            std::cout << "\nHas escollit l'opcio " + entrada + ": Gestio Continguts. \n\n";
             gestioContinguts();
         }
         else if (entrada == "3") {
 
-            std::cout << "\nHas escollit l'opcio " + entrada + ": Consultes \n\n";
+            std::cout << "\nHas escollit l'opcio " + entrada + ": Consultes. \n\n";
             consultes();
         }
         else {
 
-            std::cout << "\nHas escollit l'opcio " + entrada + ": Sortir \n\n";
+            std::cout << "\nHas escollit l'opcio " + entrada + ": Sortir. \n\n";
             continua_programa = false;
         }
         if (continua_programa) {
