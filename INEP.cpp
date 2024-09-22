@@ -302,7 +302,7 @@ void consultes() {
         }
         else if (entrada2 == "4") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ". Tornar. \n";
+            std::cout << "Has escollit l'opcio " + entrada2 + ": Tornar. \n\n";
             continua = false;
         }
         else {
