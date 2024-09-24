@@ -255,16 +255,18 @@ void procesarConsultaPerQualificacioDeEdat(){
     std::cin >> edat;
 
     if (edat > 0 and edat <= 12) {
-        std::cout << "Mostrant apartat infantil. \n \n";
+
+        std::cout << "\nMostrant apartat infantil. \n \n";
     }
     else if (edat > 12 and edat < 18) {
     
-        std::cout << "Mostrant apartat juvenil. \n \n";
+        std::cout << "\nMostrant apartat juvenil. \n \n";
     }
     else {
 
-        std::cout << "Mostrant apartat adult. \n \n";
+        std::cout << "\nMostrant apartat adult. \n \n";
     }
+    std::cout << " ...\n \n";
 }
 void procesarUltimesNovetats(){
 
