@@ -98,7 +98,6 @@ void procesarRegistreUsuari() {
         std::cerr << "SQL Error: " << e.what() << std::endl;
     }
 }
-
 void procesarConsultaUsuari() {
     std::cout << "Escriu el sobrenom d'un usuari" << std::endl;
     std::string sobrenom_usuari;
@@ -119,7 +118,6 @@ void procesarConsultaUsuari() {
         std::cerr << "SQL Error: " << e.what() << std::endl;
     }
 }
-
 void procesarModificaUsuari() {
     std::cout << "Escriu el nou usuari aixi: sobrenom nom_nou correu_electronic_nou" << std::endl;
     std::string sobrenom_usuari, nomNou, correuNou;
@@ -135,7 +133,6 @@ void procesarModificaUsuari() {
         std::cerr << "SQL Error: " << e.what() << std::endl;
     }
 }
-
 void procesarEsborraUsuari() {
     std::cout << "Escriu el sobrenom d'un usuari" << std::endl;
     std::string sobrenom_usuari;
@@ -145,13 +142,12 @@ void procesarEsborraUsuari() {
         ConnexioBD connexio;
         std::string sql = "DELETE FROM usuari WHERE sobrenom = '" + sobrenom_usuari + "'";
         connexio.executarComanda(sql);
-        std::cout << "S'ha eliminat la fila amb el sobrenom especificat." << std::endl << std::endl;
+        std::cout << "S'ha eliminat l'usuari amb el sobrenom especificat." << std::endl << std::endl;
     }
     catch (sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
     }
 }
-
 void procesarConsultaUsuaris() {
     try {
         ConnexioBD connexio;
@@ -168,7 +164,6 @@ void procesarConsultaUsuaris() {
         std::cerr << "SQL Error: " << e.what() << std::endl;
     }
 }
-
 
 //principal 1
 void gestioUsuari() {
