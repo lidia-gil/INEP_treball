@@ -7,36 +7,7 @@
 #include <iostream>
 #include <string>
 
-class ConnexioBD {
-private:
-    sql::mysql::MySQL_Driver* driver;
-    sql::Connection* con;
-
-public:
-    // Constructor: estableix la connexió
-    ConnexioBD() {
-        driver = sql::mysql::get_mysql_driver_instance();
-        con = driver->connect("ubiwan.epsevg.upc.edu:3306", "inep02", "rai2Laavaey6ph");
-        con->setSchema("inep02");
-    }
-
-    // Destructor: tanca la connexió
-    ~ConnexioBD() {
-        if (con) con->close();
-    }
-
-    // Mètode per a consultes (SELECT)
-    sql::ResultSet* executarConsulta(const std::string& consultaSQL) {
-        sql::Statement* stmt = con->createStatement();
-        return stmt->executeQuery(consultaSQL);
-    }
-
-    // Mètode per a comandes (INSERT, UPDATE, DELETE)
-    void executarComanda(const std::string& comandaSQL) {
-        sql::Statement* stmt = con->createStatement();
-        stmt->executeUpdate(comandaSQL);
-    }
-};
+#include "CapaDePresentacio.h"
 
 // Modifiquem les funcions existents per utilitzar la classe ConnexioBD
 
@@ -83,7 +54,7 @@ void subMenuPrincipal3() {
 
 
 //subfuncions1
-void procesarRegistreUsuari() {
+/*void procesarRegistreUsuari() {
     std::cout << "Escriu el nou usuari aixi: sobrenom nom correu_electronic" << std::endl;
     std::string sobrenomNou, nomNou, correuNou;
     std::cin >> sobrenomNou >> nomNou >> correuNou;
@@ -97,8 +68,8 @@ void procesarRegistreUsuari() {
     catch (sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
     }
-}
-void procesarConsultaUsuari() {
+}*/
+/*void procesarConsultaUsuari() {
     std::cout << "Escriu el sobrenom d'un usuari" << std::endl;
     std::string sobrenom_usuari;
     std::cin >> sobrenom_usuari;
@@ -117,7 +88,7 @@ void procesarConsultaUsuari() {
     catch (sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
     }
-}
+}*/
 void procesarModificaUsuari() {
     std::cout << "Escriu el nou usuari aixi: sobrenom nom_nou correu_electronic_nou" << std::endl;
     std::string sobrenom_usuari, nomNou, correuNou;
@@ -133,7 +104,7 @@ void procesarModificaUsuari() {
         std::cerr << "SQL Error: " << e.what() << std::endl;
     }
 }
-void procesarEsborraUsuari() {
+/*void procesarEsborraUsuari() {
     std::cout << "Escriu el sobrenom d'un usuari" << std::endl;
     std::string sobrenom_usuari;
     std::cin >> sobrenom_usuari;
@@ -147,7 +118,7 @@ void procesarEsborraUsuari() {
     catch (sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
     }
-}
+}*/
 void procesarConsultaUsuaris() {
     try {
         ConnexioBD connexio;
@@ -171,6 +142,7 @@ void gestioUsuari() {
     std::string entrada2;
     subMenuPrincipal1();
     bool continua = true;
+    CapaDePresentacio& presentacio = CapaDePresentacio::getInstance();
 
     while (continua and std::cin >> entrada2) {
 
@@ -178,12 +150,14 @@ void gestioUsuari() {
         if (entrada2 == "1") {
 
             std::cout << "Has escollit l'opcio " + entrada2 + ": Registre usuari. \n\n";
-            procesarRegistreUsuari();
+            presentacio.procesarRegistreUsuari(); break;
+//procesarRegistreUsuari();  
         }
         else if (entrada2 == "2") {
 
             std::cout << "Has escollit l'opcio " + entrada2 + ": Consulta usuari. \n\n";
-            procesarConsultaUsuari();
+            presentacio.procesarConsultaUsuari(); break;
+//procesarConsultaUsuari();
         }
         else if (entrada2 == "3") {
 
@@ -193,7 +167,7 @@ void gestioUsuari() {
         else if (entrada2 == "4") {
 
             std::cout << "Has escollit l'opcio " + entrada2 + ": Esborra usuari. \n\n";
-            procesarEsborraUsuari();
+            presentacio.procesarEsborraUsuari(); break;
         }
         else if (entrada2 == "5") {
 
