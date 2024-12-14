@@ -27,17 +27,33 @@ void CapaDePresentacio::procesarRegistreUsuari() {
         std::cout << "Error: "  << e.what() << std::endl;
     }
 }
+void CapaDePresentacio::procesarConsultaUsuari() {
+    std::cout << "Sobreom usuari:";
+    std::string sobrenomU;
+    std::cin >> sobrenomU;
+    CapaDeDomini& domini = CapaDeDomini::getInstance();
+    try {
+        DTOUsuari usu = domini.consultarUsuari(sobrenomU);
+        std::cout << "Informació usuari: " << usu.obteNom();
+        std::cout << std::endl;
+        std::cout << "Nom: " << usu.obteNom() << std::endl;
+        //Aplicació patrons de disseny 4 Introducció a l’Enginyeria del Programari Laboratori, sessió 3
+        std::cout << "Correu: " << usu.obteCorreu() << std::endl;
+    }
+    catch (const exception& e) {
+        std::out << "Error: " << e.what() << endl;
+    }
+}
 
 void CapaDePresentacio::procesarConsultaUsuari() {
     std::cout << "** Consulta Usuari **" << std::endl;
-    std::cout << "Escriu el sobrenom d'un usuari" << std::endl;
-    std::string sobrenom_usuari;
-    std::cin >> sobrenom_usuari;
-
+    std::cout << "Escriu el sobrenom d'un usuari:" ;
+    std::string sobrenomU;
+    std::cin >> sobrenomU;
+    CapaDeDomini& domini = CapaDeDomini::getInstance();
     try {
-        ConnexioBD connexio;
-        std::string sql = "SELECT * FROM usuari WHERE sobrenom='" + sobrenom_usuari + "'";
-        sql::ResultSet* res = connexio.executarConsulta(sql);
+
+        sql::ResultSet* res = domini.consultarUsuari(sobrenomU);
 
         while (res->next()) {
             std::cout << "Sobrenom: " << res->getString("sobrenom") << std::endl;

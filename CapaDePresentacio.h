@@ -2,6 +2,7 @@
 #include "ConnexioBD.h"
 #include "CapaDeDomini.h"
 
+
 // classe singleton
 
 class CapaDePresentacio {

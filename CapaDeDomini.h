@@ -1,6 +1,10 @@
 #pragma once
 #include <iostream>
 #include "ConnexioBD.h"
+#include "PassarelaUsuari.h"
+#include "CercadoraUsuari.h"
+#include "DTOUsuari.h"
+
 class CapaDeDomini
 {
 	private:
@@ -10,6 +14,8 @@ class CapaDeDomini
 		static CapaDeDomini& getInstance();
 
 		void registrarUsuari(std::string sobrenomU, std::string nomU, std::string correuU);
+
+		DTOUsuari consultarUsuari(std::string sobrenomU);
 
 };
 
