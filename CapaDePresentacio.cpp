@@ -27,6 +27,7 @@ void CapaDePresentacio::procesarRegistreUsuari() {
         std::cout << "Error: "  << e.what() << std::endl;
     }
 }
+
 void CapaDePresentacio::procesarConsultaUsuari() {
     std::cout << "Sobreom usuari:";
     std::string sobrenomU;
@@ -40,11 +41,11 @@ void CapaDePresentacio::procesarConsultaUsuari() {
         //Aplicació patrons de disseny 4 Introducció a l’Enginyeria del Programari Laboratori, sessió 3
         std::cout << "Correu: " << usu.obteCorreu() << std::endl;
     }
-    catch (const exception& e) {
-        std::out << "Error: " << e.what() << endl;
+    catch (const std::exception& e) {
+        std::cout << "Error: " << e.what() << std::endl;
     }
 }
-
+/*
 void CapaDePresentacio::procesarConsultaUsuari() {
     std::cout << "** Consulta Usuari **" << std::endl;
     std::cout << "Escriu el sobrenom d'un usuari:" ;
@@ -64,7 +65,7 @@ void CapaDePresentacio::procesarConsultaUsuari() {
     catch (sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
     }
-}
+}*/
 
 void CapaDePresentacio::procesarEsborraUsuari() {
     std::cout << "Escriu el sobrenom d'un usuari" << std::endl;

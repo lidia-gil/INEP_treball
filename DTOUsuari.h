@@ -1,5 +1,6 @@
 #pragma once
 #include "PassarelaUsuari.h"
+#include "CercadoraUsuari.h"
 
 class DTOUsuari
 {
@@ -8,7 +9,7 @@ private:
 	std::string nom = "";
 	std::string correu = "";
 public:
-	DTOUsuari() {}
+	DTOUsuari();
 	DTOUsuari(PassarelaUsuari usu);
 	std::string obteSobrenom();
 	std::string obteNom();

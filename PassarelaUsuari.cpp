@@ -9,7 +9,7 @@ PassarelaUsuari::PassarelaUsuari(std::string sobrenomU, std::string nomU, std::s
 	correu_electronic = correuElectronicU; // correuElectronic atribut
 }
 
-void PassarelaUsuari::obteSobrenom() {
+std::string PassarelaUsuari::obteSobrenom() {
 
 	return sobrenom;
 }

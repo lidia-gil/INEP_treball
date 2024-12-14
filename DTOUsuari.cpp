@@ -1,11 +1,11 @@
 #include "DTOUsuari.h"
 
-DTOUsuari::DTOUsuari() {}
+DTOUsuari::DTOUsuari() { }
 
 DTOUsuari::DTOUsuari(PassarelaUsuari usu) {
 	sobrenom = usu.obteSobrenom();
 	nom = usu.obteNom();
-	correu = usu.obteCorreuElectronic();
+	correu = usu.obteCorreu();
 }
 std::string DTOUsuari::obteSobrenom() {
 	return sobrenom; 

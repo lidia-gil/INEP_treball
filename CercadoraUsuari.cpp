@@ -13,13 +13,15 @@ PassarelaUsuari CercadoraUsuari::cercaPerSobrenom(std::string sobrenomU) {
     sql::ResultSet* res = con.executarConsulta(sql);
     // Si no troba cap fila, activa excepció
     if (!res->next()) {
+        std::cout << "ERROR" << std::endl;
         //throw runtime_error("Usuari no existeix");
 
     }
     else {
+        std::cout << "CORRECTE" << std::endl;
         u.posaSobrenom(res->getString("sobrenom"));
         u.posaNom(res->getString("nom"));
-        u.posaCorreuElectronic(res->getString("correu_electronic"));
+        u.posaCorreu(res->getString("correu_electronic"));
         delete res;
     }
     return u;
