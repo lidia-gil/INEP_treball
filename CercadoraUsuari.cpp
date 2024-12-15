@@ -9,9 +9,9 @@ PassarelaUsuari CercadoraUsuari::cercaPerSobrenom(std::string sobrenomU) {
 
     PassarelaUsuari u;
     ConnexioBD con ;
-    std::string sql = "SELECT * FROM Usuari WHERE sobrenom = '" + sobrenomU + "'";
+    std::string sql = "SELECT * FROM usuari WHERE sobrenom = '" + sobrenomU + "'";
     sql::ResultSet* res = con.executarConsulta(sql);
-    // Si no troba cap fila, activa excepció
+    // Si no troba cap fila, activa excepciÃ³
     if (!res->next()) {
         //throw runtime_error("Usuari no existeix");
     }
