@@ -9,6 +9,7 @@ PassarelaUsuari CercadoraUsuari::cercaPerSobrenom(std::string sobrenomU) {
     // Si no troba cap fila, activa excepciÃ³
     if (!res->next()) {
         //throw exception("Usuari no existeix");  // no ens funciona aquesta operació 
+        throw std::runtime_error("Usuari no existeix");
     }
     else {
         u.posaSobrenom(res->getString("sobrenom"));
