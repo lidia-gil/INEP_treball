@@ -39,20 +39,23 @@ void menuPrincipalUsuariAmbIniciSessio() {
     std::cout << "Escull una opcio: ";
 }
 //submenus
-void subMenuPrincipal1() {
+void subMenuGestioUsuari() {
 
-    std::cout << "Menu Gestio Usuaris \n";
-    std::cout << "1. Registre usuari \n";
-    std::cout << "2. Consulta usuari \n"; 
-    std::cout << "3. Modifica usuari \n";
+    std::cout << "- - - - - - - - - - - - - \n";
+    std::cout << "  Menu Gestio Usuaris \n";
+    std::cout << "- - - - - - - - - - - - - \n";
+    std::cout << "1. Consulta usuari \n"; 
+    std::cout << "2. Modifica usuari \n";
+    std::cout << "3. Modifica contrasenya \n";
     std::cout << "4. Esborra usuari \n";
-    std::cout << "5. Consulta usuaris \n";
-    std::cout << "6. Tornar \n\n";
+    std::cout << "5. Tornar \n\n";
     std::cout << "Escull una opcio: ";
 }
 void subMenuVisualitzar() {
 
-    std::cout << "Menu Gestio Continguts \n";
+    std::cout << "- - - - - - - - - - - - - \n";
+    std::cout << "  Menu Gestio Continguts \n";
+    std::cout << "- - - - - - - - - - - - - \n";
     std::cout << "1. Visualitzar pel.licula \n";
     std::cout << "2. Visualitzar capitol \n";
     std::cout << "3. Consultar visualitzacions \n";
@@ -61,9 +64,9 @@ void subMenuVisualitzar() {
 }
 void subMenuConsultes() {
 
-    std::cout << "- - - - - - - - - - \n";
+    std::cout << "- - - - - - - - - - - - - \n";
     std::cout << "  Menu Consultes \n";
-    std::cout << "- - - - - - - - - - \n";
+    std::cout << "- - - - - - - - - - - - - \n";
     std::cout << "1. Properes estrenes \n";
     std::cout << "2. Ultimes novetats \n";
     std::cout << "3. Pel.licules mes vistes \n";
@@ -158,10 +161,10 @@ void procesarConsultaUsuaris() {
 
 
 //principal 1
-void gestioUsuari() {
+void menuGestioUsuari() {
 
     std::string entrada2;
-    subMenuPrincipal1();
+    subMenuGestioUsuari();
     bool continua = true;
     CapaDePresentacio& presentacio = CapaDePresentacio::getInstance();
 
@@ -170,20 +173,19 @@ void gestioUsuari() {
         std::cout << "\n";
         if (entrada2 == "1") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ": Registre usuari. \n\n";
-            presentacio.procesarRegistreUsuari(); break;
-//procesarRegistreUsuari();  
-        }
-        else if (entrada2 == "2") {
-
             std::cout << "Has escollit l'opcio " + entrada2 + ": Consulta usuari. \n\n";
             presentacio.procesarConsultaUsuari(); break;
 //procesarConsultaUsuari();
         }
-        else if (entrada2 == "3") {
+        else if (entrada2 == "2") {
 
             std::cout << "Has escollit l'opcio " + entrada2 + ": Modifica usuari. \n\n";
             procesarModificaUsuari();
+        }
+        else if (entrada2 == "3") {
+
+            std::cout << "Has escollit l'opcio " + entrada2 + ": Modifica contrasenya. \n\n";
+            //MODIFICA CONTRASENYA, FER!!!!!!!
         }
         else if (entrada2 == "4") {
 
@@ -192,20 +194,14 @@ void gestioUsuari() {
         }
         else if (entrada2 == "5") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ": Consulta usuaris. \n\n";
-            procesarConsultaUsuaris();
-        }
-        else if (entrada2 == "6") {
-
             std::cout << "Has escollit l'opcio " + entrada2 + ": Tornar. \n\n";
             continua = false;
         }
         else {
-
             std::cout << "No existeix l'opcio escollida, torna a intentar-ho. \n\n";
         }
         if (continua) {
-            subMenuPrincipal1();
+            subMenuGestioUsuari();
         }
     }
 }
@@ -344,7 +340,7 @@ void menuSessioIniciada() {
         if (entrada == "1") {
 
             std::cout << "\nHas escollit l'opcio " + entrada + ": Gestio Usuaris. \n\n";
-            gestioUsuari();
+            menuGestioUsuari();
         }
         else if (entrada == "2") {
 
@@ -398,7 +394,7 @@ int main()
         else if (entrada == "2") {
 
             std::cout << "\nHas escollit l'opcio " + entrada + ": Registrar usuari. \n\n";
-            presentacio.procesarRegistreUsuari(); break;
+            presentacio.procesarRegistreUsuari(); 
         }
         else if (entrada == "3") {
 
@@ -420,32 +416,3 @@ int main()
         }
     }
 }
-
-/* while (continua_programa and std::cin >> entrada) {
-
-        if (entrada == "1") {
-
-            std::cout << "\nHas escollit l'opcio " + entrada + ": Gestio Usuaris. \n\n";
-            gestioUsuari();
-        }
-        else if (entrada == "2") {
-
-            std::cout << "\nHas escollit l'opcio " + entrada + ": Gestio Continguts. \n\n";
-            gestioContinguts();
-        }
-        else if (entrada == "3") {
-
-            std::cout << "\nHas escollit l'opcio " + entrada + ": Consultes. \n\n";
-            consultes();
-        }
-        else {
-
-            std::cout << "\nHas escollit l'opcio " + entrada + ": Sortir. \n\n";
-            continua_programa = false;
-        }
-        if (continua_programa) {
-
-           menuPrincipalUsuariSenseIniciSessio();
-        }
-    }
-}*/
