@@ -8,7 +8,7 @@ PassarelaUsuari CercadoraUsuari::cercaPerSobrenom(std::string sobrenomU) {
     sql::ResultSet* res = con.executarConsulta(sql);
     // Si no troba cap fila, activa excepciÃ³
     if (!res->next()) {
-        //throw runtime_error("Usuari no existeix");
+        //throw exception("Usuari no existeix");  // no ens funciona aquesta operació 
     }
     else {
         u.posaSobrenom(res->getString("sobrenom"));
@@ -18,3 +18,4 @@ PassarelaUsuari CercadoraUsuari::cercaPerSobrenom(std::string sobrenomU) {
     }
     return u;
 }
+

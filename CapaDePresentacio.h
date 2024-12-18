@@ -13,6 +13,7 @@ class CapaDePresentacio {
         static CapaDePresentacio& getInstance();
 
         // aquí tots els métodes que
+        void IniciSessio();
         void procesarRegistreUsuari();
         void procesarConsultaUsuari();
         void procesarEsborraUsuari();

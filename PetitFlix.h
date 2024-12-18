@@ -10,5 +10,6 @@ class PetitFlix
 		PassarelaUsuari obtéUsuari();
 		void iniciaSessió(PassarelaUsuari);
 		void tancaSessió();
+
 };
 

@@ -19,7 +19,7 @@ std::string DTOUsuari::obteCorreu() {
 
 DTOUsuari DTOUsuari::consultaUsuari(std::string sobrenom) {
 
-	CercadoraUsuari& cerca = CercadoraUsuari::getInstance();
+	CercadoraUsuari cerca;
 	PassarelaUsuari usu = cerca.cercaPerSobrenom(sobrenom);
 	return DTOUsuari(usu);
 }

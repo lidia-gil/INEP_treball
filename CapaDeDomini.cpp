@@ -22,3 +22,6 @@ DTOUsuari CapaDeDomini::consultarUsuari(std::string sobrenomU) {
 	DTOUsuari dto = cerca.cercaPerSobrenom(sobrenomU);
 	return dto;
 }
+
+
+
