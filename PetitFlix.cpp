@@ -1,9 +1,7 @@
 #include "PetitFlix.h"
 
 
-PetitFlix::PetitFlix () {
-
-}
+PetitFlix::PetitFlix () { }
 PetitFlix& PetitFlix::getInstance() {
 
 }
