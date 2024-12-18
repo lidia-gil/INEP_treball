@@ -1,10 +1,5 @@
 #include "CercadoraUsuari.h"
 
-CercadoraUsuari& CercadoraUsuari::getInstance() {
-	static CercadoraUsuari instance;
-	return instance;
-}
-
 PassarelaUsuari CercadoraUsuari::cercaPerSobrenom(std::string sobrenomU) {
 
     PassarelaUsuari u;

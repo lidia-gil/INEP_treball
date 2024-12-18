@@ -7,7 +7,6 @@ class CercadoraUsuari
         
     public:
         //Metode per obtenir la única instància
-        static CercadoraUsuari& getInstance();
 	    PassarelaUsuari cercaPerSobrenom(std::string sobrenomU);
 };
 
