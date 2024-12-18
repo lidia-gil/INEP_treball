@@ -137,6 +137,7 @@
     <ClCompile Include="DTOUsuari.cpp" />
     <ClCompile Include="INEP.cpp" />
     <ClCompile Include="PassarelaUsuari.cpp" />
+    <ClCompile Include="PetitFlix.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapaDeDomini.h" />
@@ -145,6 +146,7 @@
     <ClInclude Include="ConnexioBD.h" />
     <ClInclude Include="DTOUsuari.h" />
     <ClInclude Include="PassarelaUsuari.h" />
+    <ClInclude Include="PetitFlix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
