@@ -3,13 +3,14 @@
 class PetitFlix
 {
 	private:	
+		// creadora 
 		PetitFlix();
 		PassarelaUsuari usuari;
 	public: 
 		static PetitFlix& getInstance();
-		PassarelaUsuari obtéUsuari();
-		void iniciaSessió(PassarelaUsuari);
-		void tancaSessió();
+		PassarelaUsuari obteUsuari();
+		void iniciaSessio(PassarelaUsuari);
+		void tancaSessio();
 
 };
 

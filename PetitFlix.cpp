@@ -1,17 +1,23 @@
 #include "PetitFlix.h"
 
 
-PetitFlix::PetitFlix () { }
+PetitFlix::PetitFlix() { }
 PetitFlix& PetitFlix::getInstance() {
 
+	static PetitFlix instance;
+	return instance;
 }
-PassarelaUsuari PetitFlix::obtéUsuari() {
+PassarelaUsuari PetitFlix::obteUsuari() {
 
+	return usuari;	// retornem usuari que és un atribut priva
 }
-void PetitFlix::iniciaSessió(PassarelaUsuari) {
+void PetitFlix::iniciaSessio(PassarelaUsuari pUsuari) {
 
+	usuari = pUsuari;
 }
-void PetitFlix::tancaSessió() {
+void PetitFlix::tancaSessio() {
 
+	PassarelaUsuari pUsuari;
+	usuari = pUsuari;
 }
 

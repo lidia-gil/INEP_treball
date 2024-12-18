@@ -24,7 +24,7 @@ void menuPrincipalUsuariSenseIniciSessio() {
     std::cout << "Escull una opcio: ";
 }
 
-//menu principal
+//menu principal Usuari Amb Inici de Sessió
 void menuPrincipalUsuariAmbIniciSessio() {
 
     std::cout << "\n";
@@ -75,7 +75,7 @@ void subMenuConsultes() {
 }
 
 
-//subfuncions1
+//subfuncions gestio usu
 /*void procesarRegistreUsuari() {
     std::cout << "Escriu el nou usuari aixi: sobrenom nom correu_electronic" << std::endl;
     std::string sobrenomNou, nomNou, correuNou;
@@ -158,9 +158,7 @@ void procesarConsultaUsuaris() {
     }
 }
 
-
-
-//principal 1
+//menu gestio usuari
 void menuGestioUsuari() {
 
     std::string entrada2;
@@ -175,7 +173,7 @@ void menuGestioUsuari() {
 
             std::cout << "Has escollit l'opcio " + entrada2 + ": Consulta usuari. \n\n";
             presentacio.procesarConsultaUsuari(); break;
-//procesarConsultaUsuari();
+            //procesarConsultaUsuari();
         }
         else if (entrada2 == "2") {
 
@@ -206,8 +204,8 @@ void menuGestioUsuari() {
     }
 }
 
-
-/*subfuncions2
+//subfuncions visualitzar
+/*subfuncions visualitzar 
 void procesarGestioPelicules() {
 
     std::string nom_peli;
@@ -233,7 +231,7 @@ void procesarGestioPelicules() {
     }
 }*/
 
-//principal 2
+//menu visualitzar
 void menuVisualitzar() {
 
     std::string entrada2;
@@ -273,7 +271,7 @@ void menuVisualitzar() {
     }
 }
 
-//subfuncions3
+//subfuncions consultes
 void procesarProperesEstrenes() {
 
     std::cout << " prox estrenes ...\n \n";
@@ -408,7 +406,7 @@ int main()
         }
         else {
 
-            std::cout << "No existeix l'opcio escollida, torna a intentar-ho. \n\n";
+            std::cout << "\nNo existeix l'opcio escollida, torna a intentar-ho. \n\n";
         }
         if (continua_programa) {
 

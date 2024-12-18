@@ -5,6 +5,7 @@
 CapaDePresentacio::CapaDePresentacio() {}
 
 CapaDePresentacio& CapaDePresentacio::getInstance() {
+
     static CapaDePresentacio instance;
     return instance;
 }
