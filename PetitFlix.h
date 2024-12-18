@@ -4,9 +4,11 @@ class PetitFlix
 {
 	private:	
 		PetitFlix();
-		PassarelaUsuari u;
+		PassarelaUsuari usuari;
 	public: 
 		static PetitFlix& getInstance();
 		PassarelaUsuari obtéUsuari();
+		void iniciaSessió(PassarelaUsuari);
+		void tancaSessió();
 };
 
