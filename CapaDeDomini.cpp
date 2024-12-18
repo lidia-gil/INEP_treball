@@ -18,7 +18,7 @@ void CapaDeDomini::registrarUsuari(std::string sobrenomU, std::string nomU, std:
 
 DTOUsuari CapaDeDomini::consultarUsuari(std::string sobrenomU) {
 
-	CercadoraUsuari& cerca = CercadoraUsuari::getInstance();
+	CercadoraUsuari cerca;
 	DTOUsuari dto = cerca.cercaPerSobrenom(sobrenomU);
 	return dto;
 }
