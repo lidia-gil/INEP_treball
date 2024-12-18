@@ -17,6 +17,10 @@ std::string PassarelaUsuari::obteNom() {
 
 	return nom;
 }
+std::string PassarelaUsuari::obteContrasenya() {
+
+	return contrasenya;
+}
 std::string PassarelaUsuari::obteCorreu() {
 
 	return correu_electronic;

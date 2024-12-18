@@ -6,15 +6,20 @@ class PassarelaUsuari
 private: 
 	std::string sobrenom;
 	std::string nom;
+	std::string contrasenya;
 	std::string correu_electronic;
+	//std::string dataNaixament; (DATE)?
+	std::string modalitatSubscripcio;
 
 public:
 	PassarelaUsuari();
 	//constructora
 	PassarelaUsuari(std::string sobrenomU, std::string nomU, std::string correuElectronicU);
 	//obte
+	//FALTAN OBTE I POSA PER FER, DE MOMENT NO ELS HEM NECESITAT
 	std::string obteSobrenom();
 	std::string obteNom();
+	std::string obteContrasenya();
 	std::string obteCorreu();
 
 	//posa

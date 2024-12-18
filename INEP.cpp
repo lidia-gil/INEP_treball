@@ -386,7 +386,7 @@ int main()
         if (entrada == "1") {
 
             std::cout << "\nHas escollit l'opcio " + entrada + ": Iniciar sessio. \n\n";
-            //iniciSessio();
+            presentacio.iniciSessio();
             menuSessioIniciada();
         }
         else if (entrada == "2") {

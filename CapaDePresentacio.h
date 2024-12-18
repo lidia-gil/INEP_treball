@@ -1,7 +1,7 @@
 #pragma once
 #include "ConnexioBD.h"
 #include "CapaDeDomini.h"
-
+#include "TxIniciSessio.h"
 
 // classe singleton
 
@@ -13,7 +13,7 @@ class CapaDePresentacio {
         static CapaDePresentacio& getInstance();
 
         // aquí tots els métodes que
-        void IniciSessio();
+        void iniciSessio();
         void procesarRegistreUsuari();
         void procesarConsultaUsuari();
         void procesarEsborraUsuari();

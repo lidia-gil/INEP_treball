@@ -10,6 +10,23 @@ CapaDePresentacio& CapaDePresentacio::getInstance() {
     return instance;
 }
 
+void CapaDePresentacio::iniciSessio() {
+
+    std::string sobrenomU, contrasenyaU;
+    std::cout << "** Inici Sessio **" << std::endl;
+    std::cout << "Sobrenom: ";
+    std::cin >> sobrenomU;
+    std::cout << "Contrasenya: ";
+    std::cin >> contrasenyaU;
+    TxIniciSessio Tx(sobrenomU, contrasenyaU);
+    try {
+        Tx.executa();
+        std::cout << "S'ha iniciat sessio correctament" << std::endl;
+    }
+    catch (const std::exception& e) {
+        std::cout << "Error: " << e.what() << std::endl;
+    }
+}
 void CapaDePresentacio::procesarRegistreUsuari() {
     std::string sobrenomU, nomU, correuU;
     std::cout << "** Registra usuari **" << std::endl;
