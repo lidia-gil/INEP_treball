@@ -341,8 +341,7 @@ int main()
         else if (entrada == "2") {
 
             std::cout << "\nHas escollit l'opcio " + entrada + ": Registrar usuari. \n\n";
-            presentacio.procesarRegistreUsuari(); 
-            break;
+            presentacio.procesarRegistreUsuari(); break;
         }
         else if (entrada == "3") {
 
