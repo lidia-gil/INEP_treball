@@ -15,6 +15,7 @@ PassarelaUsuari CercadoraUsuari::cercaPerSobrenom(std::string sobrenomU) {
         u.posaSobrenom(res->getString("sobrenom"));
         u.posaNom(res->getString("nom"));
         u.posaCorreu(res->getString("correu_electronic"));
+        u.posaContrasenya(res->getString("contrasenya"));
         delete res;
     }
     return u;

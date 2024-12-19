@@ -12,9 +12,10 @@ void TxIniciSessio::executa(){
     usuari = cercadoraU.cercaPerSobrenom(sobrenomU);
     std::string contrasenyaRealUsuari;
     contrasenyaRealUsuari = usuari.obteContrasenya();
+    std::cout << sobrenomU << " " << contrasenyaU << " " << contrasenyaRealUsuari << std::endl;
     if (contrasenyaRealUsuari != contrasenyaU) {
 
-        //activa excepcio ErrorContrasenya
+        throw std::runtime_error("Algun dels parametres no existeix o es incorrecte");
     }
     PetitFlix& petitFlix = PetitFlix::getInstance();
     petitFlix.iniciaSessio(usuari);

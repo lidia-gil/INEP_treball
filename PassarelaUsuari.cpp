@@ -38,6 +38,10 @@ void PassarelaUsuari::posaCorreu(std::string correuElectronicU){
 	
 	correu_electronic = correuElectronicU;
 }
+void PassarelaUsuari::posaContrasenya(std::string contrasenyaU) {
+
+	contrasenya = contrasenyaU;
+}
 
 void PassarelaUsuari::insereix() {
 

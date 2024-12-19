@@ -24,7 +24,7 @@ void CapaDePresentacio::iniciSessio() {
         std::cout << "S'ha iniciat sessio correctament" << std::endl;
     }
     catch (const std::exception& e) {
-        std::cout << "Error: " << e.what() << std::endl;
+        std::cout << "Error: Algun dels parametres no existeix o es incorrecte" << std::endl; // NO e.what(), ja que el missatge no ha de dir que ha fallat per seguretat
     }
 }
 void CapaDePresentacio::procesarRegistreUsuari() {

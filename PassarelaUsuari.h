@@ -26,6 +26,7 @@ public:
 	void posaSobrenom(std::string sobrenomU);
 	void posaNom(std::string nomU);
 	void posaCorreu(std::string correuElectronicU);
+	void posaContrasenya(std::string contrasenyaU);
 
 	//insereix 
 	void insereix();
