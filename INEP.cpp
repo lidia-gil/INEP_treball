@@ -353,7 +353,8 @@ void menuSessioIniciada() {
         else if (entrada == "4") {
 
             std::cout << "\nHas escollit l'opcio " + entrada + ": Tancar sessio. \n\n";
-            continua_programa = false;
+            presentacio.tancarSessio(); 
+            continua_programa = false;  // HEM DE VEURE SI S'HA TANCAT O NO, POTSER USUARI SELECCIONA N
         }
         else if (entrada == "5"){
 
@@ -386,7 +387,7 @@ int main()
         if (entrada == "1") {
 
             std::cout << "\nHas escollit l'opcio " + entrada + ": Iniciar sessio. \n\n";
-            presentacio.iniciSessio();
+            presentacio.iniciSessio(); // ens falta condicio per accedir només a la Sessio Iniciada si el inici és correcte
             menuSessioIniciada();
         }
         else if (entrada == "2") {

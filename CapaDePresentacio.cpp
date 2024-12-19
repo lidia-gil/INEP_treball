@@ -21,12 +21,27 @@ void CapaDePresentacio::iniciSessio() {
     TxIniciSessio Tx(sobrenomU, contrasenyaU);
     try {
         Tx.executa();
-        std::cout << "S'ha iniciat sessio correctament" << std::endl;
+        std::cout << "Sessio iniciada correctament!" << std::endl;
     }
     catch (const std::exception& e) {
-        std::cout << "Error: Algun dels parametres no existeix o es incorrecte" << std::endl; // NO e.what(), ja que el missatge no ha de dir que ha fallat per seguretat
+        std::cout << "Error: Hi ha hagut un error amb el sobrenom o la contrasenya." << std::endl; // NO e.what(), ja que el missatge no ha de dir que ha fallat per seguretat
     }
 }
+
+void CapaDePresentacio::tancarSessio() {
+
+    std::string resposta;
+    std::cout << "** Tancar Sessio **" << std::endl;
+    std::cout << "Vols tancar la sessio (S/N):" << std::endl;
+    std::cin >> resposta; 
+    if (resposta == "S"){
+
+        TxTancaSessio tx;
+        tx.executa();
+        std::cout << "Sessio tancada correctament!" << std::endl;
+    }
+}
+
 void CapaDePresentacio::procesarRegistreUsuari() {
     std::string sobrenomU, nomU, correuU;
     std::cout << "** Registra usuari **" << std::endl;

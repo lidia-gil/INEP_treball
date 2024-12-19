@@ -7,12 +7,12 @@ TxIniciSessio::TxIniciSessio(std::string sU, std::string cU){
 }
 
 void TxIniciSessio::executa(){
+
     CercadoraUsuari cercadoraU;
     PassarelaUsuari usuari;
     usuari = cercadoraU.cercaPerSobrenom(sobrenomU);
     std::string contrasenyaRealUsuari;
     contrasenyaRealUsuari = usuari.obteContrasenya();
-    std::cout << sobrenomU << " " << contrasenyaU << " " << contrasenyaRealUsuari << std::endl;
     if (contrasenyaRealUsuari != contrasenyaU) {
 
         throw std::runtime_error("Algun dels parametres no existeix o es incorrecte");

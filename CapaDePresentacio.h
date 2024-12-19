@@ -2,6 +2,7 @@
 #include "ConnexioBD.h"
 #include "CapaDeDomini.h"
 #include "TxIniciSessio.h"
+#include "TxTancaSessio.h"
 
 // classe singleton
 
@@ -14,6 +15,7 @@ class CapaDePresentacio {
 
         // aquí tots els métodes que
         void iniciSessio();
+        void tancarSessio();
         void procesarRegistreUsuari();
         void procesarConsultaUsuari();
         void procesarEsborraUsuari();

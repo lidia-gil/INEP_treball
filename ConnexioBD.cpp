@@ -12,11 +12,13 @@ ConnexioBD::~ConnexioBD() {
 }
 
 sql::ResultSet* ConnexioBD::executarConsulta(const std::string& consultaSQL) {
+
     sql::Statement* stmt = con->createStatement();
     return stmt->executeQuery(consultaSQL);
 }
 
 void ConnexioBD::executarComanda(const std::string& comandaSQL) {
+
     sql::Statement* stmt = con->createStatement();
     stmt->executeUpdate(comandaSQL);
 }

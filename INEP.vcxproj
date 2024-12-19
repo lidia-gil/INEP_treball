@@ -139,6 +139,7 @@
     <ClCompile Include="PassarelaUsuari.cpp" />
     <ClCompile Include="PetitFlix.cpp" />
     <ClCompile Include="TxIniciSessio.cpp" />
+    <ClCompile Include="TxTancaSessio.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapaDeDomini.h" />
@@ -149,6 +150,7 @@
     <ClInclude Include="PassarelaUsuari.h" />
     <ClInclude Include="PetitFlix.h" />
     <ClInclude Include="TxIniciSessio.h" />
+    <ClInclude Include="TxTancaSessio.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
