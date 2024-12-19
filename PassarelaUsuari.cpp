@@ -1,12 +1,18 @@
 #include "PassarelaUsuari.h"
+#include <iomanip>
+#include <sstream> 
 
 PassarelaUsuari::PassarelaUsuari(){ }
 
-PassarelaUsuari::PassarelaUsuari(std::string sobrenomU, std::string nomU, std::string correuElectronicU) {
+PassarelaUsuari::PassarelaUsuari( std::string nomU, std::string sobrenomU, std::string contrasenyaU,
+	std::string correuElectronicU, std::string dataNaixementU, std::string modalitatU) {
 	
 	sobrenom = sobrenomU; // sobrenom atribut privat de la classe
 	nom = nomU; // nom atribut privat de la classe
-	correu_electronic = correuElectronicU; // correuElectronic atribut
+	contrasenya = contrasenyaU;
+	correuElectronic = correuElectronicU; // correuElectronic atribut
+	dataNaixement = dataNaixementU;
+	modalitatSubs = modalitatU;
 }
 
 std::string PassarelaUsuari::obteSobrenom() {
@@ -23,8 +29,18 @@ std::string PassarelaUsuari::obteContrasenya() {
 }
 std::string PassarelaUsuari::obteCorreu() {
 
-	return correu_electronic;
+	return correuElectronic;
 }
+std::string PassarelaUsuari::obteDataNaixement() {
+
+	return dataNaixement;
+}
+std::string PassarelaUsuari::obteModalitatSubs() {
+
+	return modalitatSubs;
+}
+
+
 
 void PassarelaUsuari::posaSobrenom(std::string sobrenomU) {
 
@@ -36,18 +52,26 @@ void PassarelaUsuari::posaNom(std::string nomU){
 }
 void PassarelaUsuari::posaCorreu(std::string correuElectronicU){
 	
-	correu_electronic = correuElectronicU;
+	correuElectronic = correuElectronicU;
 }
 void PassarelaUsuari::posaContrasenya(std::string contrasenyaU) {
 
 	contrasenya = contrasenyaU;
 }
+void PassarelaUsuari::posaDataNaixament(std::string DataNaixU) {
+
+	dataNaixement = DataNaixU;
+}
+void PassarelaUsuari::posaModalitatSubscripcio(std::string modalitatU) {
+
+	modalitatSubs = modalitatU;
+}
 
 void PassarelaUsuari::insereix() {
 
 	ConnexioBD con;
-	//ConnexioBD con = ConnexioBD::getInstance();
-	std::string query = "INSERT INTO usuari (sobrenom, nom, correu_electronic) VALUES('" + sobrenom + "', '" + nom + "', '" + correu_electronic + "')";
+
+	std::string query = "INSERT INTO usuari (sobrenom, nom, correu_electronic, contrasenya, data_naixement, subscripcio) VALUES('" + sobrenom + "', '" + nom + "', '" + correuElectronic + "' , '" + contrasenya + "' , '" + dataNaixement +  "' , '" + modalitatSubs + "')";
 	con.executarComanda(query);
 }
 

@@ -3,7 +3,8 @@
 #include "CapaDeDomini.h"
 #include "TxIniciSessio.h"
 #include "TxTancaSessio.h"
-
+#include "TxRegistreUsuari.h"
+#include "TxConsultaUsuari.h"
 // classe singleton
 
 class CapaDePresentacio {

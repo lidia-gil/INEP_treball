@@ -1,7 +1,7 @@
 #include "CapaDePresentacio.h"
 
 
-// Constructor privado
+// Constructor privat
 CapaDePresentacio::CapaDePresentacio() {}
 
 CapaDePresentacio& CapaDePresentacio::getInstance() {
@@ -43,36 +43,72 @@ void CapaDePresentacio::tancarSessio() {
 }
 
 void CapaDePresentacio::procesarRegistreUsuari() {
-    std::string sobrenomU, nomU, correuU;
+    std::string sobrenomU, nomU, contrasenyaU, correuU, dataNaixementU, modalitatU;
     std::cout << "** Registra usuari **" << std::endl;
+    std::cout << "Nom complet: ";
+    std::cin >> nomU;
     std::cout << "Sobrenom: ";
     std::cin >> sobrenomU;
-    std::cout << "Nom: ";
-    std::cin >> nomU;
+    std::cout << "contrasenya: ";
+    std::cin >> contrasenyaU;
     std::cout << "Correu electronic: ";
     std::cin >> correuU;
-    CapaDeDomini& domini = CapaDeDomini::getInstance();
-    try {
-            domini.registrarUsuari(sobrenomU, nomU, correuU);
-            std::cout << "Usuari registrat correctament!" << std::endl;
+    std::cout << "Data naixement (YYYY-MM-DD): ";
+    std::cin >> dataNaixementU;
+    std::cout << "Modalitats de subscripcio disponibles " << std::endl;
+    std::cout << " > 1. Completa" << std::endl;
+    std::cout << " > 2. Cinefil" << std::endl;
+    std::cout << " > 3. Infantil" << std::endl;
+    std::string eleccio;
+    std::cout << "Escriu el numero de la modalitat a escollir: ";
+    std::cin >> eleccio;
+    bool continua = true;
+    if (eleccio == "1"){
+        
+        modalitatU = "Completa";
     }
-    catch (const std::exception& e) {
-        std::cout << "Error: "  << e.what() << std::endl;
+    else if (eleccio == "2"){
+        
+        modalitatU = "Cinefil";
+    }
+    else if (eleccio == "3"){
+        
+        modalitatU = "Infantil";
+    }
+    else {
+        continua = false;
+        std::cout << "Error: La modalitat escollida no es valida." << std::endl;
+    }
+
+    if (continua){
+        try {
+                TxRegistreUsuari tx(nomU, sobrenomU, contrasenyaU, correuU, dataNaixementU, modalitatU);
+                tx.executa();
+                std::cout << "Usuari registrat correctament!" << std::endl;
+        }
+        catch (const std::exception& e) {
+
+            std::cout << "Error: "  << e.what() << std::endl;
+        }
     }
 }
 
 void CapaDePresentacio::procesarConsultaUsuari() {
-    std::cout << "Sobreom usuari:";
-    std::string sobrenomU;
-    std::cin >> sobrenomU;
-    CapaDeDomini& domini = CapaDeDomini::getInstance();
+    std::cout << "** Consulta Usuari **" << std::endl;
+   
+    //CapaDeDomini& domini = CapaDeDomini::getInstance();
     try {
-        DTOUsuari usu = domini.consultarUsuari(sobrenomU);
-        std::cout << "Informació usuari: " << usu.obteNom();
-        std::cout << std::endl;
-        std::cout << "Nom: " << usu.obteNom() << std::endl;
+
+        TxConsultaUsuari tx;
+        tx.executa();
+        DTOUsuari usu = tx.obteResultat();
+
+        std::cout << "Nom complet: " << usu.obteNom() << std::endl;
         //Aplicació patrons de disseny 4 Introducció a l’Enginyeria del Programari Laboratori, sessió 3
-        std::cout << "Correu: " << usu.obteCorreu() << std::endl;
+        std::cout << "Sobrenom: " << usu.obteSobrenom() << std::endl;
+        std::cout << "Correu electronic: " << usu.obteCorreu() << std::endl;
+        std::cout << "Data naixement (AAAA-MM-DD): " << usu.obteDataNeix() << std::endl;
+        std::cout << "Modalitat subscripcio: " << usu.obteModalitatSubscripcio() << std::endl;
     }
     catch (const std::exception& e) {
         std::cout << "Error: " << e.what() << std::endl;

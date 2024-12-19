@@ -138,7 +138,9 @@
     <ClCompile Include="INEP.cpp" />
     <ClCompile Include="PassarelaUsuari.cpp" />
     <ClCompile Include="PetitFlix.cpp" />
+    <ClCompile Include="TxConsultaUsuari.cpp" />
     <ClCompile Include="TxIniciSessio.cpp" />
+    <ClCompile Include="TxRegistreUsuari.cpp" />
     <ClCompile Include="TxTancaSessio.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,7 +151,9 @@
     <ClInclude Include="DTOUsuari.h" />
     <ClInclude Include="PassarelaUsuari.h" />
     <ClInclude Include="PetitFlix.h" />
+    <ClInclude Include="TxConsultaUsuari.h" />
     <ClInclude Include="TxIniciSessio.h" />
+    <ClInclude Include="TxRegistreUsuari.h" />
     <ClInclude Include="TxTancaSessio.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

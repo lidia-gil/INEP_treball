@@ -13,9 +13,9 @@ class CapaDeDomini
 		//Metode per obtenir la única instància
 		static CapaDeDomini& getInstance();
 
-		void registrarUsuari(std::string sobrenomU, std::string nomU, std::string correuU);
-
-		DTOUsuari consultarUsuari(std::string sobrenomU);
+		//void registrarUsuari(std::string sobrenomU, std::string nomU, std::string correuU);
+		
+		//DTOUsuari consultarUsuari(std::string sobrenomU);
 
 };
 
