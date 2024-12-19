@@ -20,6 +20,7 @@ void TxConsultaUsuari::executa(){
     std::string modalitatU;
     modalitatU = usuari.obteModalitatSubs();
 
+
     DTOUsuari dto(nomU, sobrenomU, correuU, dataNeixU, modalitatU);
     resultat = dto;
 }

@@ -171,7 +171,7 @@ void menuGestioUsuari() {
         std::cout << "\n";
         if (entrada2 == "1") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ": Consulta usuari. \n\n";
+            //std::cout << "Has escollit l'opcio " + entrada2 + ": Consulta usuari. \n\n";
             presentacio.procesarConsultaUsuari(); break;
             //procesarConsultaUsuari();
         }

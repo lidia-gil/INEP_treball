@@ -2,7 +2,16 @@
 #include <iomanip>
 #include <sstream> 
 
-PassarelaUsuari::PassarelaUsuari(){ }
+PassarelaUsuari::PassarelaUsuari(){ 
+	
+	sobrenom = "";
+	nom = "";
+	contrasenya = "";
+	correuElectronic = "";
+	dataNaixement = "";
+	modalitatSubs = "";
+
+}
 
 PassarelaUsuari::PassarelaUsuari( std::string nomU, std::string sobrenomU, std::string contrasenyaU,
 	std::string correuElectronicU, std::string dataNaixementU, std::string modalitatU) {
