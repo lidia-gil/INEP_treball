@@ -186,10 +186,6 @@ void menuGestioUsuari() {
             //std::cout << "Has escollit l'opcio " + entrada2 + ": Esborra usuari. \n\n";
             presentacio.procesarEsborraUsuari();
             continua = false;
-            if (presentacio.sessioModificadaCorrectament) {
-                
-                //menuPrincipalUsuariSenseIniciSessio();
-            }
         }
         else if (entrada2 == "4") {
 
@@ -341,7 +337,7 @@ void menuSessioIniciada() {
 
             std::cout << "\nHas escollit l'opcio " + entrada + ": Gestio Usuaris. \n\n";
             menuGestioUsuari();
-            if (presentacio.sessioModificadaCorrectament) {
+            if (not presentacio.sessioIniciada) {
                 
                 continua_programa = false;
             }
@@ -360,7 +356,10 @@ void menuSessioIniciada() {
 
             std::cout << "\nHas escollit l'opcio " + entrada + ": Tancar sessio. \n\n";
             presentacio.tancarSessio(); 
-            continua_programa = false;  // HEM DE VEURE SI S'HA TANCAT O NO, POTSER USUARI SELECCIONA N
+            if (not presentacio.sessioIniciada) {
+                
+                continua_programa = false;
+            }
         }
         else if (entrada == "5"){
 
@@ -386,25 +385,21 @@ int main()
     std::string entrada;
 
     CapaDePresentacio& presentacio = CapaDePresentacio::getInstance();
-
     while (continua_programa and std::cin >> entrada) {
 
+        presentacio.sessioIniciada = false;
         if (entrada == "1") {
 
-            std::cout << "\nHas escollit l'opcio " + entrada + ": Iniciar sessio. \n\n";
+            //std::cout << "\nHas escollit l'opcio " + entrada + ": Iniciar sessio. \n\n";
             presentacio.iniciSessio(); // ens falta condicio per accedir només a la Sessio Iniciada si el inici és correcte
-            if (presentacio.sessioModificadaCorrectament){
+            if (presentacio.sessioIniciada){
 
                 menuSessioIniciada();
-            }
-            else {
-
-                presentacio.sessioModificadaCorrectament = true;
             }
         }
         else if (entrada == "2") {
 
-            std::cout << "\nHas escollit l'opcio " + entrada + ": Registrar usuari. \n\n";
+            //std::cout << "\nHas escollit l'opcio " + entrada + ": Registrar usuari. \n\n";
             presentacio.procesarRegistreUsuari(); 
         }
         else if (entrada == "3") {

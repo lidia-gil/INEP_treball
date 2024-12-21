@@ -11,7 +11,7 @@ CapaDePresentacio& CapaDePresentacio::getInstance() {
 }
 
 void CapaDePresentacio::iniciSessio() {
-    sessioModificadaCorrectament = true;
+    
     std::string sobrenomU, contrasenyaU;
     std::cout << "** Inici Sessio **" << std::endl;
     std::cout << "Sobrenom: ";
@@ -22,9 +22,10 @@ void CapaDePresentacio::iniciSessio() {
     try {
         Tx.executa();
         std::cout << "Sessio iniciada correctament!" << std::endl;
+        sessioIniciada = true;
     }
     catch (const std::exception& e) {
-        sessioModificadaCorrectament = false;
+        sessioIniciada = false;
         std::cout << "Error: Hi ha hagut un error amb el sobrenom o la contrasenya." << std::endl; // NO e.what(), ja que el missatge no ha de dir que ha fallat per seguretat
     }
 }
@@ -37,6 +38,7 @@ void CapaDePresentacio::tancarSessio() {
     if (resposta == "S"){
         TxTancaSessio tx;
         tx.executa();
+        sessioIniciada = false;
         std::cout << "Sessio tancada correctament!" << std::endl;
     }
 }
@@ -86,7 +88,6 @@ void CapaDePresentacio::procesarRegistreUsuari() {
             std::cout << "Usuari registrat correctament!, per accedir al teu compte inicia sessio." << std::endl;
         }
         catch (const std::exception& e) {
-            sessioModificadaCorrectament = false;
             std::cout << "Error: "  << e.what() << std::endl;
         }
     }
@@ -95,7 +96,6 @@ void CapaDePresentacio::procesarRegistreUsuari() {
 void CapaDePresentacio::procesarConsultaUsuari() {
     
     std::cout << "** Consulta Usuari **" << std::endl;
-   
     //CapaDeDomini& domini = CapaDeDomini::getInstance();
     try {
 
@@ -243,7 +243,6 @@ void CapaDePresentacio::procesarConsultaUsuari() {
 }*/
 
 void CapaDePresentacio::procesarEsborraUsuari() {
-    sessioModificadaCorrectament = true;
     std::cout << "** Esborra Usuari **" << std::endl;
     std::cout << "Per confirmar l'esborrat s'ha d'entrar la contrasenya:";
     std::string contrasenya;
@@ -253,10 +252,11 @@ void CapaDePresentacio::procesarEsborraUsuari() {
         TxEsborraUsuari TxEsborra (contrasenya);
         TxEsborra.executa();
         std::cout << "L'usuari s'ha esborrat correctament." << std::endl << std::endl;
+        sessioIniciada = false;
     }
     catch (const std::exception& e) {
 
-        sessioModificadaCorrectament = false;
+        sessioIniciada = true;
         std::cerr << "Error: " << e.what() << std::endl;
     }
 }
