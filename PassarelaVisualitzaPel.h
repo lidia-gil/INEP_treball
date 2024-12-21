@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "ConnexioBD.h"
+#include <sstream>
 class PassarelaVisualitzaPel
 {
     private:

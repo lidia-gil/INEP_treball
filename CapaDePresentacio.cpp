@@ -111,7 +111,6 @@ void CapaDePresentacio::procesarConsultaUsuari() {
 
 
         std::cout << "Nom complet: " << usu.obteNom() << std::endl;
-        //Aplicació patrons de disseny 4 Introducció a l’Enginyeria del Programari Laboratori, sessió 3
         std::cout << "Sobrenom: " << usu.obteSobrenom() << std::endl;
         std::cout << "Correu electronic: " << usu.obteCorreu() << std::endl;
         std::string dataNeix = usu.obteDataNeix();
@@ -125,11 +124,19 @@ void CapaDePresentacio::procesarConsultaUsuari() {
         else {
             std::cout << res.nP << " pel.licules visualitzades" << std::endl;
         }
+
+        if (res.nS == 1){
+            std::cout << res.nS << " capitol visualitzat" << std::endl;
+        }
+        else {
+            std::cout << res.nS << " capitols visualitzats" << std::endl;
+        }
     }
     catch (const std::exception& e) {
         std::cout << "Error: " << e.what() << std::endl;
     }
 }
+
 /*
 void CapaDePresentacio::procesarConsultaUsuari() {
     std::cout << "** Consulta Usuari **" << std::endl;

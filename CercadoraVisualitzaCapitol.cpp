@@ -14,7 +14,9 @@ std::vector<PassarelaVisualitzaCapitol> CercadoraVisualitzaCapitol::cercaVisuali
         while (res->next()) {
             PassarelaVisualitzaCapitol passarela;
             passarela.posaSobrenom(res->getString("sobrenom_usuari"));
-            passarela.posaTitolPelicula(res->getString("titol_pelicula"));
+            passarela.posaTitolSerie(res->getString("titol_serie"));
+            passarela.posaNumTemporada(res->getInt("num_temporada"));
+            passarela.posaNumCapitol(res->getInt("num_capitol"));
             passarela.posaData(res->getString("data"));
             passarela.posaNumVisualitzacions(res->getInt("num_visualitzacions"));
 

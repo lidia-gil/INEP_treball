@@ -17,10 +17,14 @@ void TxInfoVisualitzacions::executa(){
 
     std::vector<PassarelaVisualitzaPel> vectorPelicules;
     CercadoraVisualitzaPel visualitzacionsPel;
-    
     vectorPelicules = visualitzacionsPel.cercaVisualitzacions(sobrenomU);
 
+    std::vector<PassarelaVisualitzaCapitol> vectorCapitols;
+    CercadoraVisualitzaCapitol visualitzacionsCapitol;
+    vectorCapitols = visualitzacionsCapitol.cercaVisualitzacions(sobrenomU);
+
     result.nP = vectorPelicules.size();
+    result.nS = vectorCapitols.size();
 }
 
 TxInfoVisualitzacions::Resultat TxInfoVisualitzacions::obteResultat() const {

@@ -1,5 +1,5 @@
 #include "PassarelaVisualitzaPel.h"
-#include <sstream> // Para std::ostringstream
+
 
     PassarelaVisualitzaPel::PassarelaVisualitzaPel() { 
 
@@ -56,9 +56,9 @@
     void PassarelaVisualitzaPel::insereix(){
         
         ConnexioBD con;
-        std::ostringstream oss;
-        oss << numVisualitzacions;
-        std::string query = "INSERT INTO visualitzacio_pelicula (sobrenom_usuari, titol_pelicula, data, num_visualitzacions) VALUES('" + sobrenom + "', '" + titolPelicula + "', '" + data + "' , '" + oss.str() + "')";
+        std::ostringstream numVisu;
+        numVisu << numVisualitzacions;
+        std::string query = "INSERT INTO visualitzacio_pelicula (sobrenom_usuari, titol_pelicula, data, num_visualitzacions) VALUES('" + sobrenom + "', '" + titolPelicula + "', '" + data + "' , '" + numVisu.str() + "')";
         con.executarComanda(query);
     }
 
@@ -66,11 +66,6 @@
 
         ConnexioBD con;
     
-        if (sobrenom.empty() or titolPelicula.empty() or data.empty()) {
-
-            throw std::runtime_error("Els camps necessaris no estan configurats."); //POTSER NO FA FALTA, REVISAR
-        }
-
         std::ostringstream oss;
         oss << numVisualitzacions;
 
@@ -80,10 +75,9 @@
 
    
     void PassarelaVisualitzaPel::esborra() {
+
         ConnexioBD con;
-        if (sobrenom.empty() or titolPelicula.empty()) {
-            throw std::runtime_error("Els camps necessaris no estan configurats."); //POTSER NO FA FALTA, REVISAR
-        }
+        
         con.executarComanda("DELETE FROM visualitzacio_pelicula WHERE sobrenom_usuari = '" + sobrenom + "' AND titol_pelicula = '" + titolPelicula + "'");
 
     }

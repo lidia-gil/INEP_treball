@@ -1,6 +1,7 @@
 #pragma once
 #include "PassarelaUsuari.h"
 #include "CercadoraVisualitzaPel.h"
+#include "CercadoraVisualitzaCapitol.h"
 #include "PetitFlix.h"
 class TxInfoVisualitzacions
 {
