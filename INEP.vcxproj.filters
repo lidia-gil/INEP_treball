@@ -69,6 +69,9 @@
     <ClCompile Include="TxEsborraUsuari.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="TxConsultaVisualitzacions.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapaDePresentacio.h">
@@ -120,6 +123,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="TxEsborraUsuari.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="TxConsultaVisualitzacions.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

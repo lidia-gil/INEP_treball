@@ -44,8 +44,10 @@ void CapaDePresentacio::tancarSessio() {
 }
 
 void CapaDePresentacio::procesarRegistreUsuari() {
-    std::string sobrenomU, nomU, contrasenyaU, correuU, dataNaixementU, modalitatU;
+    
     std::cout << "** Registra usuari **" << std::endl;
+
+    std::string sobrenomU, nomU, contrasenyaU, correuU, dataNaixementU, modalitatU;
     std::cout << "Nom complet: ";
     std::cin >> nomU;
     std::cout << "Sobrenom: ";
@@ -138,12 +140,14 @@ void CapaDePresentacio::procesarConsultaUsuari() {
 }
 
 void CapaDePresentacio::procesarModificarUsuari() {
+
+    std::cout << "** Modifica Usuari **" << std::endl;
+
     try {
         CtrlModificaUsuari ctrlModifica;
         DTOUsuari usu;
         usu = ctrlModifica.consultarUsuari();
 
-        std::cout << "** Modifica Usuari **" << std::endl;
         std::cout << "Nom complet: " << usu.obteNom() << std::endl;
         std::cout << "Sobrenom: " << usu.obteSobrenom() << std::endl;
         std::cout << "Correu electronic: " << usu.obteCorreu() << std::endl;
@@ -220,29 +224,9 @@ void CapaDePresentacio::procesarModificarUsuari() {
         std::cout << "Error: " << e.what() << std::endl;
     }
 }
-/*
-void CapaDePresentacio::procesarConsultaUsuari() {
-    std::cout << "** Consulta Usuari **" << std::endl;
-    std::cout << "Escriu el sobrenom d'un usuari:" ;
-    std::string sobrenomU;
-    std::cin >> sobrenomU;
-    CapaDeDomini& domini = CapaDeDomini::getInstance();
-    try {
-
-        sql::ResultSet* res = domini.consultarUsuari(sobrenomU);
-
-        while (res->next()) {
-            std::cout << "Sobrenom: " << res->getString("sobrenom") << std::endl;
-            std::cout << "Nom: " << res->getString("nom") << std::endl;
-            std::cout << "Correu: " << res->getString("correu_electronic") << std::endl << std::endl;
-        }
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}*/
 
 void CapaDePresentacio::procesarEsborraUsuari() {
+
     std::cout << "** Esborra Usuari **" << std::endl;
     std::cout << "Per confirmar l'esborrat s'ha d'entrar la contrasenya:";
     std::string contrasenya;
@@ -262,3 +246,27 @@ void CapaDePresentacio::procesarEsborraUsuari() {
 }
 
 
+void CapaDePresentacio::procesarConsultaVisualitzacions() {
+
+    std::cout << "** Consulta Visualitzacions **" << std::endl;
+    try {
+        TxConsultaVisualitzacions txConsulta;
+        txConsulta.executa();
+        TxConsultaVisualitzacions::Resultat res;
+        res = txConsulta.obteResultat();
+
+        PassarelaUsuari usuari;
+        PetitFlix& petitF = PetitFlix::getInstance();
+        usuari = petitF.obteUsuari();
+
+        std::cout << "Nom complet: " << usu.obteNom() << std::endl;
+        std::cout << "Sobrenom: " << usu.obteSobrenom() << std::endl;
+        std::cout << "Correu electronic: " << usu.obteCorreu() << std::endl;
+        std::string dataNeix = usu.obteDataNeix();
+    }
+    catch (const std::exception& e) {
+
+        sessioIniciada = true;
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+}

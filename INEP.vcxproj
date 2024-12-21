@@ -143,6 +143,7 @@
     <ClCompile Include="PassarelaVisualitzaPel.cpp" />
     <ClCompile Include="PetitFlix.cpp" />
     <ClCompile Include="TxConsultaUsuari.cpp" />
+    <ClCompile Include="TxConsultaVisualitzacions.cpp" />
     <ClCompile Include="TxEsborraUsuari.cpp" />
     <ClCompile Include="TxInfoVisualitzacions.cpp" />
     <ClCompile Include="TxIniciSessio.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="PassarelaVisualitzaPel.h" />
     <ClInclude Include="PetitFlix.h" />
     <ClInclude Include="TxConsultaUsuari.h" />
+    <ClInclude Include="TxConsultaVisualitzacions.h" />
     <ClInclude Include="TxEsborraUsuari.h" />
     <ClInclude Include="TxInfoVisualitzacions.h" />
     <ClInclude Include="TxIniciSessio.h" />

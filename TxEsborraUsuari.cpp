@@ -1,6 +1,7 @@
 #include "TxEsborraUsuari.h"
 
 TxEsborraUsuari::TxEsborraUsuari(std::string contra) {
+
     contraU = contra;
 }
 
