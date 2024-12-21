@@ -46,9 +46,8 @@ void subMenuGestioUsuari() {
     std::cout << "- - - - - - - - - - - - - \n";
     std::cout << "1. Consulta usuari \n"; 
     std::cout << "2. Modifica usuari \n";
-    std::cout << "3. Modifica contrasenya \n";
-    std::cout << "4. Esborra usuari \n";
-    std::cout << "5. Tornar \n\n";
+    std::cout << "3. Esborra usuari \n";
+    std::cout << "4. Tornar \n\n";
     std::cout << "Escull una opcio: ";
 }
 void subMenuVisualitzar() {
@@ -172,25 +171,27 @@ void menuGestioUsuari() {
         if (entrada2 == "1") {
 
             //std::cout << "Has escollit l'opcio " + entrada2 + ": Consulta usuari. \n\n";
-            presentacio.procesarConsultaUsuari(); break;
+            presentacio.procesarConsultaUsuari(); 
+            continua = false;
             //procesarConsultaUsuari();
         }
         else if (entrada2 == "2") {
 
             //std::cout << "Has escollit l'opcio " + entrada2 + ": Modifica usuari. \n\n";
-            presentacio.procesarModificarUsuari(); break;
+            presentacio.procesarModificarUsuari(); 
+            continua = false;
         }
         else if (entrada2 == "3") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ": Modifica contrasenya. \n\n";
-            //MODIFICA CONTRASENYA, FER!!!!!!!
+            //std::cout << "Has escollit l'opcio " + entrada2 + ": Esborra usuari. \n\n";
+            presentacio.procesarEsborraUsuari();
+            continua = false;
+            if (presentacio.sessioModificadaCorrectament) {
+                
+                //menuPrincipalUsuariSenseIniciSessio();
+            }
         }
         else if (entrada2 == "4") {
-
-            std::cout << "Has escollit l'opcio " + entrada2 + ": Esborra usuari. \n\n";
-            presentacio.procesarEsborraUsuari(); break;
-        }
-        else if (entrada2 == "5") {
 
             std::cout << "Has escollit l'opcio " + entrada2 + ": Tornar. \n\n";
             continua = false;
@@ -199,6 +200,7 @@ void menuGestioUsuari() {
             std::cout << "No existeix l'opcio escollida, torna a intentar-ho. \n\n";
         }
         if (continua) {
+
             subMenuGestioUsuari();
         }
     }
@@ -339,6 +341,10 @@ void menuSessioIniciada() {
 
             std::cout << "\nHas escollit l'opcio " + entrada + ": Gestio Usuaris. \n\n";
             menuGestioUsuari();
+            if (presentacio.sessioModificadaCorrectament) {
+                
+                continua_programa = false;
+            }
         }
         else if (entrada == "2") {
 
@@ -371,7 +377,6 @@ void menuSessioIniciada() {
            menuPrincipalUsuariAmbIniciSessio();
         }
     }
-
 }
 
 int main()
@@ -388,11 +393,14 @@ int main()
 
             std::cout << "\nHas escollit l'opcio " + entrada + ": Iniciar sessio. \n\n";
             presentacio.iniciSessio(); // ens falta condicio per accedir només a la Sessio Iniciada si el inici és correcte
-            if (presentacio.sessioIniciadaCorrectament == true ){
+            if (presentacio.sessioModificadaCorrectament){
 
                 menuSessioIniciada();
             }
-            else presentacio.sessioIniciadaCorrectament = true;
+            else {
+
+                presentacio.sessioModificadaCorrectament = true;
+            }
         }
         else if (entrada == "2") {
 

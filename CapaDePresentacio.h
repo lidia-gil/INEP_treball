@@ -6,6 +6,7 @@
 #include "TxConsultaUsuari.h"
 #include "TxInfoVisualitzacions.h"
 #include "CtrlModificaUsuari.h"
+#include "TxEsborraUsuari.h"
 // classe singleton
 
 class CapaDePresentacio {
@@ -13,7 +14,7 @@ class CapaDePresentacio {
         
         CapaDePresentacio();
     public:
-        bool sessioIniciadaCorrectament = true;
+        bool sessioModificadaCorrectament = true;
         //Metode per obtenir la única instància
         static CapaDePresentacio& getInstance();
 

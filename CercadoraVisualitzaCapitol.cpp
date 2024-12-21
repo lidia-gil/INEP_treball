@@ -23,12 +23,6 @@ std::vector<PassarelaVisualitzaCapitol> CercadoraVisualitzaCapitol::cercaVisuali
             passareles.push_back(passarela); // Añadir al vector
         }
 
-        // Si el vector sigue vacío, el usuario no existe
-        if (passareles.empty()) {
-
-            throw std::runtime_error("Usuari no existeix");
-        }
-
         delete res; // Liberar memoria
     }
     catch (const sql::SQLException& e) {

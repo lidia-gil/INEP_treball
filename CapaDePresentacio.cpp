@@ -11,7 +11,7 @@ CapaDePresentacio& CapaDePresentacio::getInstance() {
 }
 
 void CapaDePresentacio::iniciSessio() {
-    sessioIniciadaCorrectament = true;
+    sessioModificadaCorrectament = true;
     std::string sobrenomU, contrasenyaU;
     std::cout << "** Inici Sessio **" << std::endl;
     std::cout << "Sobrenom: ";
@@ -24,7 +24,7 @@ void CapaDePresentacio::iniciSessio() {
         std::cout << "Sessio iniciada correctament!" << std::endl;
     }
     catch (const std::exception& e) {
-        sessioIniciadaCorrectament = false;
+        sessioModificadaCorrectament = false;
         std::cout << "Error: Hi ha hagut un error amb el sobrenom o la contrasenya." << std::endl; // NO e.what(), ja que el missatge no ha de dir que ha fallat per seguretat
     }
 }
@@ -86,7 +86,7 @@ void CapaDePresentacio::procesarRegistreUsuari() {
             std::cout << "Usuari registrat correctament!, per accedir al teu compte inicia sessio." << std::endl;
         }
         catch (const std::exception& e) {
-            sessioIniciadaCorrectament = false;
+            sessioModificadaCorrectament = false;
             std::cout << "Error: "  << e.what() << std::endl;
         }
     }
@@ -101,10 +101,11 @@ void CapaDePresentacio::procesarConsultaUsuari() {
 
         TxConsultaUsuari tx;
         tx.executa();
+        
         DTOUsuari usu = tx.obteResultat();
-
+        
         TxInfoVisualitzacions TxInfoVis;
-        TxInfoVis.executa();
+        TxInfoVis.executa();    
         TxInfoVisualitzacions::Resultat res;
         res = TxInfoVis.obteResultat();
 
@@ -135,7 +136,6 @@ void CapaDePresentacio::procesarConsultaUsuari() {
         std::cout << "Error: " << e.what() << std::endl;
     }
 }
-
 
 void CapaDePresentacio::procesarModificarUsuari() {
     try {
@@ -243,17 +243,22 @@ void CapaDePresentacio::procesarConsultaUsuari() {
 }*/
 
 void CapaDePresentacio::procesarEsborraUsuari() {
-    std::cout << "Escriu el sobrenom d'un usuari" << std::endl;
-    std::string sobrenom_usuari;
-    std::cin >> sobrenom_usuari;
+    sessioModificadaCorrectament = true;
+    std::cout << "** Esborra Usuari **" << std::endl;
+    std::cout << "Per confirmar l'esborrat s'ha d'entrar la contrasenya:";
+    std::string contrasenya;
+    std::cin >> contrasenya;
 
     try {
-        ConnexioBD connexio;
-        std::string sql = "DELETE FROM usuari WHERE sobrenom = '" + sobrenom_usuari + "'";
-        connexio.executarComanda(sql);
-        std::cout << "S'ha eliminat l'usuari amb el sobrenom especificat." << std::endl << std::endl;
+        TxEsborraUsuari TxEsborra (contrasenya);
+        TxEsborra.executa();
+        std::cout << "L'usuari s'ha esborrat correctament." << std::endl << std::endl;
     }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
+    catch (const std::exception& e) {
+
+        sessioModificadaCorrectament = false;
+        std::cerr << "Error: " << e.what() << std::endl;
     }
 }
+
+

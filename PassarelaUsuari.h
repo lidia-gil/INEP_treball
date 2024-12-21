@@ -40,5 +40,6 @@ public:
 	void modifica();
 
 	//esborra
+	void esborra();
 };
 

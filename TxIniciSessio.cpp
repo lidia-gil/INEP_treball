@@ -19,5 +19,4 @@ void TxIniciSessio::executa(){
     }
     PetitFlix& petitFlix = PetitFlix::getInstance();
     petitFlix.iniciaSessio(usuari);
-
 }   
