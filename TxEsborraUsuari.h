@@ -2,6 +2,7 @@
 #include<iostream>
 #include "PassarelaUsuari.h"
 #include "PetitFlix.h"
+#include "TxTancaSessio.h"
 class TxEsborraUsuari
 {
 	private:
