@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
+#include <sstream> 
 #include "ConnexioBD.h"
-#include <ctime>
 class PassarelaUsuari
 {
 private: 

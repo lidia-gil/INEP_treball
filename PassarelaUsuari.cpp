@@ -1,6 +1,5 @@
 #include "PassarelaUsuari.h"
-#include <iomanip>
-#include <sstream> 
+//#include <iomanip>
 
 PassarelaUsuari::PassarelaUsuari(){ 
 	
@@ -10,7 +9,6 @@ PassarelaUsuari::PassarelaUsuari(){
 	correuElectronic = "";
 	dataNaixement = "";
 	modalitatSubs = "";
-
 }
 
 PassarelaUsuari::PassarelaUsuari( std::string nomU, std::string sobrenomU, std::string contrasenyaU,

@@ -5,6 +5,7 @@
 #include "TxTancaSessio.h"
 #include "TxRegistreUsuari.h"
 #include "TxConsultaUsuari.h"
+#include "TxInfoVisualitzacions.h"
 // classe singleton
 
 class CapaDePresentacio {

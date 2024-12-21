@@ -94,6 +94,7 @@ void CapaDePresentacio::procesarRegistreUsuari() {
 }
 
 void CapaDePresentacio::procesarConsultaUsuari() {
+    
     std::cout << "** Consulta Usuari **" << std::endl;
    
     //CapaDeDomini& domini = CapaDeDomini::getInstance();
@@ -103,12 +104,27 @@ void CapaDePresentacio::procesarConsultaUsuari() {
         tx.executa();
         DTOUsuari usu = tx.obteResultat();
 
+        TxInfoVisualitzacions TxInfoVis;
+        TxInfoVis.executa();
+        TxInfoVisualitzacions::Resultat res;
+        res = TxInfoVis.obteResultat();
+
+
         std::cout << "Nom complet: " << usu.obteNom() << std::endl;
         //Aplicació patrons de disseny 4 Introducció a l’Enginyeria del Programari Laboratori, sessió 3
         std::cout << "Sobrenom: " << usu.obteSobrenom() << std::endl;
         std::cout << "Correu electronic: " << usu.obteCorreu() << std::endl;
-        std::cout << "Data naixement (AAAA-MM-DD): " << usu.obteDataNeix() << std::endl;
+        std::string dataNeix = usu.obteDataNeix();
+        dataNeix = dataNeix.substr(0, 10);  // Obtener solo los primeros 10 caracteres (YYYY-MM-DD)
+        std::cout << "Data naixement (AAAA-MM-DD): " << dataNeix << std::endl;
         std::cout << "Modalitat subscripcio: " << usu.obteModalitatSubscripcio() << std::endl;
+        std::cout  << std::endl;
+        if (res.nP == 1){
+            std::cout << res.nP << " pel.licula visualitzada" << std::endl;
+        }
+        else {
+            std::cout << res.nP << " pel.licules visualitzades" << std::endl;
+        }
     }
     catch (const std::exception& e) {
         std::cout << "Error: " << e.what() << std::endl;
