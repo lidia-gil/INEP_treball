@@ -29,3 +29,8 @@ DTOUsuari TxConsultaUsuari::obteResultat(){
 
     return resultat;
 }
+
+PassarelaUsuari TxConsultaUsuari::obteUsuari(){
+
+    return usuari;
+}

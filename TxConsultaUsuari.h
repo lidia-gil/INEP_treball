@@ -14,5 +14,6 @@ class TxConsultaUsuari
 		TxConsultaUsuari();
 		void executa();
         DTOUsuari obteResultat();
+		PassarelaUsuari obteUsuari();
 };
 

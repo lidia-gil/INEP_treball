@@ -82,3 +82,10 @@ void PassarelaUsuari::insereix() {
 	con.executarComanda(query);
 }
 
+void PassarelaUsuari::modifica(){
+	ConnexioBD con;
+
+    std::string query = "UPDATE usuari SET nom = '" + nom + "', correu_electronic = '" + correuElectronic + "', contrasenya = '" + contrasenya + "', data_naixement = '" + dataNaixement + "', subscripcio = '" + modalitatSubs + "' WHERE sobrenom = '" + sobrenom + "'";
+
+    con.executarComanda(query);
+}

@@ -37,6 +37,7 @@ public:
 	void insereix();
 		
 	//modifica 
+	void modifica();
 
 	//esborra
 };

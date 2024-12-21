@@ -111,7 +111,7 @@ void subMenuConsultes() {
         std::cerr << "SQL Error: " << e.what() << std::endl;
     }
 }*/
-void procesarModificaUsuari() {
+/*void procesarModificaUsuari() {
     std::cout << "Escriu el nou usuari aixi: sobrenom nom_nou correu_electronic_nou" << std::endl;
     std::string sobrenom_usuari, nomNou, correuNou;
     std::cin >> sobrenom_usuari >> nomNou >> correuNou;
@@ -125,7 +125,7 @@ void procesarModificaUsuari() {
     catch (sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
     }
-}
+}*/
 /*void procesarEsborraUsuari() {
     std::cout << "Escriu el sobrenom d'un usuari" << std::endl;
     std::string sobrenom_usuari;
@@ -177,8 +177,8 @@ void menuGestioUsuari() {
         }
         else if (entrada2 == "2") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ": Modifica usuari. \n\n";
-            procesarModificaUsuari();
+            //std::cout << "Has escollit l'opcio " + entrada2 + ": Modifica usuari. \n\n";
+            presentacio.procesarModificarUsuari(); break;
         }
         else if (entrada2 == "3") {
 
@@ -388,7 +388,11 @@ int main()
 
             std::cout << "\nHas escollit l'opcio " + entrada + ": Iniciar sessio. \n\n";
             presentacio.iniciSessio(); // ens falta condicio per accedir només a la Sessio Iniciada si el inici és correcte
-            menuSessioIniciada();
+            if (presentacio.sessioIniciadaCorrectament == true ){
+
+                menuSessioIniciada();
+            }
+            else presentacio.sessioIniciadaCorrectament = true;
         }
         else if (entrada == "2") {
 

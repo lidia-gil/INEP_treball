@@ -11,7 +11,7 @@ CapaDePresentacio& CapaDePresentacio::getInstance() {
 }
 
 void CapaDePresentacio::iniciSessio() {
-
+    sessioIniciadaCorrectament = true;
     std::string sobrenomU, contrasenyaU;
     std::cout << "** Inici Sessio **" << std::endl;
     std::cout << "Sobrenom: ";
@@ -24,18 +24,17 @@ void CapaDePresentacio::iniciSessio() {
         std::cout << "Sessio iniciada correctament!" << std::endl;
     }
     catch (const std::exception& e) {
+        sessioIniciadaCorrectament = false;
         std::cout << "Error: Hi ha hagut un error amb el sobrenom o la contrasenya." << std::endl; // NO e.what(), ja que el missatge no ha de dir que ha fallat per seguretat
     }
 }
 
 void CapaDePresentacio::tancarSessio() {
-
     std::string resposta;
     std::cout << "** Tancar Sessio **" << std::endl;
     std::cout << "Vols tancar la sessio (S/N):" << std::endl;
     std::cin >> resposta; 
     if (resposta == "S"){
-
         TxTancaSessio tx;
         tx.executa();
         std::cout << "Sessio tancada correctament!" << std::endl;
@@ -82,12 +81,12 @@ void CapaDePresentacio::procesarRegistreUsuari() {
 
     if (continua){
         try {
-                TxRegistreUsuari tx(nomU, sobrenomU, contrasenyaU, correuU, dataNaixementU, modalitatU);
-                tx.executa();
-                std::cout << "Usuari registrat correctament!" << std::endl;
+            TxRegistreUsuari tx(nomU, sobrenomU, contrasenyaU, correuU, dataNaixementU, modalitatU);
+            tx.executa();
+            std::cout << "Usuari registrat correctament!, per accedir al teu compte inicia sessio." << std::endl;
         }
         catch (const std::exception& e) {
-
+            sessioIniciadaCorrectament = false;
             std::cout << "Error: "  << e.what() << std::endl;
         }
     }
@@ -137,6 +136,90 @@ void CapaDePresentacio::procesarConsultaUsuari() {
     }
 }
 
+
+void CapaDePresentacio::procesarModificarUsuari() {
+    try {
+        CtrlModificaUsuari ctrlModifica;
+        DTOUsuari usu;
+        usu = ctrlModifica.consultarUsuari();
+
+        std::cout << "** Modifica Usuari **" << std::endl;
+        std::cout << "Nom complet: " << usu.obteNom() << std::endl;
+        std::cout << "Sobrenom: " << usu.obteSobrenom() << std::endl;
+        std::cout << "Correu electronic: " << usu.obteCorreu() << std::endl;
+        std::string dataNeix = usu.obteDataNeix();
+        dataNeix = dataNeix.substr(0, 10);  // Obtener solo los primeros 10 caracteres (YYYY-MM-DD)
+        std::cout << "Data naixement (AAAA-MM-DD): " << dataNeix << std::endl;
+        std::cout << "Modalitat subscripcio: " << usu.obteModalitatSubscripcio() << std::endl;
+        std::cout << std::endl;
+
+        // ** Limpieza del buffer **
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        
+        std::cout << std::endl;
+
+        std::string nomU, contrasenyaU, correuU, dataNaixementU, modalitatU;
+        std::cout << "Polsar enter als camps que NO es volen modificar i omplir la informacio que SI es vol modificar ..." << std::endl;
+    
+        std::cout << "Nom complet: ";
+        std::getline(std::cin, nomU);  // Cambiar a getline
+        std::cout << "Contrasenya: ";
+        std::getline(std::cin, contrasenyaU);  // Cambiar a getline
+        std::cout << "Correu electronic: ";
+        std::getline(std::cin, correuU);  // Cambiar a getline
+        std::cout << "Data naixement (YYYY-MM-DD): ";
+        std::getline(std::cin, dataNaixementU);  // Cambiar a getline
+
+        std::cout << "Modalitats de subscripcio disponibles " << std::endl;
+        std::cout << " > 1. Completa" << std::endl;
+        std::cout << " > 2. Cinefil" << std::endl;
+        std::cout << " > 3. Infantil" << std::endl;
+
+        std::string eleccio;
+        std::cout << "Escriu el numero de la modalitat a canviar: ";
+        std::getline(std::cin, eleccio);  // Cambiar a getline
+
+        bool continua = true;
+        if (eleccio == "1") {
+            modalitatU = "Completa";
+        }
+        else if (eleccio == "2") {
+            modalitatU = "Cinefil";
+        }
+        else if (eleccio == "3") {
+            modalitatU = "Infantil";
+        }
+        else if (eleccio != ""){
+
+            throw std::invalid_argument("Error: La modalitat escollida no es valida.");
+        }
+        ctrlModifica.modificaUsuari(nomU, contrasenyaU, correuU, dataNaixementU, modalitatU);
+
+        std::cout << std::endl;
+        std::cout << "** Dades Usuari Modificades **" << std::endl;
+
+        PassarelaUsuari usuari;
+        PetitFlix& petitF = PetitFlix::getInstance();
+        usuari = petitF.obteUsuari();
+
+        std::cout << "Nom complet: " << usuari.obteNom() << std::endl;
+        std::cout << "Sobrenom: " << usuari.obteSobrenom() << std::endl;
+        std::cout << "Correu electronic: " << usuari.obteCorreu() << std::endl;
+        dataNeix = usuari.obteDataNaixement();
+        dataNeix = dataNeix.substr(0, 10);  // Obtener solo los primeros 10 caracteres (YYYY-MM-DD)
+        std::cout << "Data naixement (AAAA-MM-DD): " << dataNeix << std::endl;
+        std::cout << "Modalitat subscripcio: " << usuari.obteModalitatSubs() << std::endl;
+        std::cout << std::endl;
+
+    }
+    catch (const std::invalid_argument& e) {
+
+        std::cout << e.what() << std::endl;
+    }
+    catch (const std::exception& e) {
+        std::cout << "Error: " << e.what() << std::endl;
+    }
+}
 /*
 void CapaDePresentacio::procesarConsultaUsuari() {
     std::cout << "** Consulta Usuari **" << std::endl;

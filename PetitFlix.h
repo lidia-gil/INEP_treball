@@ -10,6 +10,7 @@ class PetitFlix
 		static PetitFlix& getInstance();
 		PassarelaUsuari obteUsuari();
 		void iniciaSessio(PassarelaUsuari);
+		void actualitzaUsuari(PassarelaUsuari);
 		void tancaSessio();
 
 };
