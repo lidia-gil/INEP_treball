@@ -45,7 +45,7 @@ void TxConsultaVisualitzacions::executa(){
     std::string  titolC, dataVisualitzacioC, qualificacioEdatC; //declarem les variables per fer els DTOContingutMesVisualitzacioCap
     int numTemporada,numCapitol, numVisualitzacionsC;
 
-    for (int i = 0; i < midaVecPel; i++) {
+    for (int i = 0; i < midaVecCap; i++) {
         //info que treiem de les visualitzacions
         titolC = vec_Capitols[i].obteTitolSerie();
         dataVisualitzacioC = vec_Capitols[i].obteData();

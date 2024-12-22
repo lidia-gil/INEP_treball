@@ -66,10 +66,10 @@
 
         ConnexioBD con;
     
-        std::ostringstream oss;
-        oss << numVisualitzacions;
+        std::ostringstream numVisu;
+        numVisu << numVisualitzacions;
 
-        std::string query = "UPDATE visualitzacio_pelicula SET data = '" + data + "', num_visualitzacions = '" + oss.str() + "' WHERE sobrenom_usuari = '" + sobrenom + "' AND titol_pelicula = '" + titolPelicula + "'";
+        std::string query = "UPDATE visualitzacio_pelicula SET data = '" + data + "', num_visualitzacions = '" + numVisu.str() + "' WHERE sobrenom_usuari = '" + sobrenom + "' AND titol_pelicula = '" + titolPelicula + "'";
         con.executarComanda(query);
     }
 
