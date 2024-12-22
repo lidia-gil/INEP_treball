@@ -32,7 +32,14 @@ void CtrlVisualitzarPel::registrarVisualitzacions(std::string titolP, std::strin
 	std::vector <PassarelaVisualitzaPel> visualitzaPel;
 	CercadoraVisualitzaPel cercaPel;
 
-	visualitzaPel = cercaPel.cercaVisualitzacions(titolP);
+	PassarelaUsuari usuari;
+	PetitFlix& petitF = PetitFlix::getInstance();
+	usuari = petitF.obteUsuari();
+
+	std::string sobrenomU;
+	sobrenomU = usuari.obteSobrenom();
+
+	visualitzaPel = cercaPel.cercaVisualitzacions(sobrenomU);
 	bool trobat = false;
 	int i = 0;
     while ((not trobat) and (i < visualitzaPel.size())){
@@ -41,10 +48,12 @@ void CtrlVisualitzarPel::registrarVisualitzacions(std::string titolP, std::strin
         if (titolC == titolP){
             trobat = true;
         }
-		++i;
+		else {
+			++i;
+		}
     }
 	if (trobat) {
-
+		
         int visualitzacions = visualitzaPel[i].obteNumVisualitzacions();
 		visualitzaPel[i].posaNumVisualitzacions(++visualitzacions);
 		visualitzaPel[i].posaData(dataHora);
@@ -52,13 +61,6 @@ void CtrlVisualitzarPel::registrarVisualitzacions(std::string titolP, std::strin
 	}
 	else {
 
-		PassarelaUsuari usuari;
-        PetitFlix& petitF = PetitFlix::getInstance();
-		usuari = petitF.obteUsuari();
- 
-        std::string sobrenomU;
-		sobrenomU = usuari.obteSobrenom();
-        
 		PassarelaVisualitzaPel peli(sobrenomU, titolP, dataHora, 1);
         peli.insereix();
 	}

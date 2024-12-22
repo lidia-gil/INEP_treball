@@ -4,7 +4,6 @@
 std::vector<PassarelaVisualitzaPel> CercadoraVisualitzaPel::cercaVisualitzacions(std::string sobrenomU) {
 
     std::vector<PassarelaVisualitzaPel> passareles;
-
     //try {
         ConnexioBD connexio;
         std::string sql = "SELECT * FROM visualitzacio_pelicula WHERE sobrenom_usuari ='" + sobrenomU + "'";
@@ -12,6 +11,7 @@ std::vector<PassarelaVisualitzaPel> CercadoraVisualitzaPel::cercaVisualitzacions
 
         // Verificar si hay resultados
         while (res->next()) {
+            
             PassarelaVisualitzaPel passarela;
             passarela.posaSobrenom(res->getString("sobrenom_usuari"));
             passarela.posaTitolPelicula(res->getString("titol_pelicula"));
