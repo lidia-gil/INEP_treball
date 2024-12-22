@@ -62,7 +62,6 @@ void PassarelaContingut::modifica() {
 void PassarelaContingut::esborra() {
 
 	ConnexioBD con;
-
 	std::string query = "DELETE FROM contingut WHERE titol = '" + titol + "'";
 	con.executarComanda(query);
 }
