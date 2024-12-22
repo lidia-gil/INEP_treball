@@ -3,14 +3,17 @@
 #include "CercadoraVisualitzaPel.h"
 #include "CercadoraVisualitzaCapitol.h"
 #include "PetitFlix.h"
+#include "DTOContingutMesVisualitzacioPel.h"
+#include "DTOContingutMesVisualitzacioCap.h"
+#include "CercadoraContingut.h"
 class TxConsultaVisualitzacions
 {
 
     public:
         struct Resultat {
 
-            std::vector<PassarelaVisualitzaCapitol> vec_Cap;
-            std::vector<PassarelaVisualitzaPel> vec_Pel;
+            std::vector<DTOContingutMesVisualitzacioCap> vec_Cap;
+            std::vector<DTOContingutMesVisualitzacioPel> vec_Pel;
         };
     private:
 

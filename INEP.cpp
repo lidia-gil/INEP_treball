@@ -235,7 +235,7 @@ void menuVisualitzar() {
     std::string entrada2;
     subMenuVisualitzar();
     bool continua = true;
-
+    CapaDePresentacio& presentacio = CapaDePresentacio::getInstance();
     while (continua and std::cin >> entrada2) {
 
         std::cout << "\n";
@@ -251,8 +251,9 @@ void menuVisualitzar() {
         }
         else if (entrada2 == "3") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ": Consultar visualitzacions. \n\n";
-            // CANVIAR !!!!!!!!!
+            //std::cout << "Has escollit l'opcio " + entrada2 + ": Consultar visualitzacions. \n\n";
+            presentacio.procesarConsultaVisualitzacions();
+            continua = false;
         }
         else if (entrada2 == "4") {
 

@@ -49,7 +49,7 @@ void PassarelaContingut::insereix() {
 
 	ConnexioBD con;
 
-	std::string query = "INSERT INTO contingut (titol, descripcio, qualificacio, tipus) VALUES('" + titol + "', '" + descripcio + "', '" qualificacio_edat +  "' , '" + tipus + "')";
+	std::string query = "INSERT INTO contingut (titol, descripcio, qualificacio, tipus) VALUES('" + titol + "', '" + descripcio + "', '" + qualificacio_edat +  "' , '" + tipus + "')";
 	con.executarComanda(query);
 }
 void PassarelaContingut::modifica() {

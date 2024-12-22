@@ -137,6 +137,8 @@
     <ClCompile Include="CercadoraVisualitzaPel.cpp" />
     <ClCompile Include="ConnexioBD.cpp" />
     <ClCompile Include="CtrlModificaUsuari.cpp" />
+    <ClCompile Include="DTOContingutMesVisualitzacioCap.cpp" />
+    <ClCompile Include="DTOContingutMesVisualitzacioPel.cpp" />
     <ClCompile Include="DTOUsuari.cpp" />
     <ClCompile Include="INEP.cpp" />
     <ClCompile Include="PassarelaContingut.cpp" />
@@ -160,6 +162,8 @@
     <ClInclude Include="CercadoraVisualitzaPel.h" />
     <ClInclude Include="ConnexioBD.h" />
     <ClInclude Include="CtrlModificaUsuari.h" />
+    <ClInclude Include="DTOContingutMesVisualitzacioCap.h" />
+    <ClInclude Include="DTOContingutMesVisualitzacioPel.h" />
     <ClInclude Include="DTOUsuari.h" />
     <ClInclude Include="PassarelaContingut.h" />
     <ClInclude Include="PassarelaUsuari.h" />

@@ -248,27 +248,54 @@ void CapaDePresentacio::procesarEsborraUsuari() {
 
 void CapaDePresentacio::procesarConsultaVisualitzacions() {
 
-    std::cout << "** Consulta Visualitzacions **" << std::endl;
+    std::cout << "** Consulta Visualitzacions **" << std::endl ;
     try {
+        std::cout << std::endl;
+        std::cout << "** Visualitzacions Pel.licules **" << std::endl;
+        std::cout << "*********************************" << std::endl;
+        
         TxConsultaVisualitzacions txConsulta;
         txConsulta.executa();
+        
         TxConsultaVisualitzacions::Resultat res;
         res = txConsulta.obteResultat();
 
-        PassarelaUsuari usuari;
-        PetitFlix& petitF = PetitFlix::getInstance();
-        usuari = petitF.obteUsuari();
+        int midaVecPel = res.vec_Pel.size();
+        
+        std::string titolP, dataVisualitzacioP, descripcioP, qualificacioEdatP, numVisualitzacionsP;
+        for (int i = 0; i < midaVecPel; i++) {
 
-        //----------------------------- canviar
+            dataVisualitzacioP = res.vec_Pel[i].obteDataVisualitzacio();
+            titolP = res.vec_Pel[i].obteTitol();
+            descripcioP = res.vec_Pel[i].obteDescripcio();
+            qualificacioEdatP = res.vec_Pel[i].obteQualificacioEdat();
+            numVisualitzacionsP = res.vec_Pel[i].obteVisualitzacions();
+            
+            std::cout << " - " << dataVisualitzacioP << ": " << titolP << "; " << descripcioP << "; " << qualificacioEdatP << "; nombre de visualitzacions: " << numVisualitzacionsP << std::endl;
+        }
 
-        std::cout << "Nom complet: " << usu.obteNom() << std::endl;
-        std::cout << "Sobrenom: " << usu.obteSobrenom() << std::endl;
-        std::cout << "Correu electronic: " << usu.obteCorreu() << std::endl;
-        std::string dataNeix = usu.obteDataNeix();
+        std::cout << std::endl;
+        std::cout << "** Visualitzacions Series **" << std::endl;
+        std::cout << "****************************" << std::endl;
+
+        int midaVecCap = res.vec_Cap.size();
+
+        std::string titolS, dataVisualitzacioC, qualificacioEdatC, numVisualitzacionsC;
+        int numTemporada, numCapitol;
+        for (int i = 0; i < midaVecPel; i++) {
+
+            dataVisualitzacioC = res.vec_Cap[i].obteDataVisualitzacio();
+            titolP = res.vec_Cap[i].obteTitol();
+            numTemporada = res.vec_Cap[i].obteNumTemporada();
+            numCapitol = res.vec_Cap[i].obteNumCapitol();
+            qualificacioEdatC = res.vec_Cap[i].obteQualificacioEdat();
+            numVisualitzacionsC = res.vec_Cap[i].obteVisualitzacions();
+
+            std::cout << " - " << dataVisualitzacioP << ": " << titolP << "; " << qualificacioEdatC << "; temporada " << numTemporada << ", capitol " << numCapitol  << "; nombre de visualitzacions: " << numVisualitzacionsC << std::endl;
+        }
     }
     catch (const std::exception& e) {
 
-        sessioIniciada = true;
         std::cerr << "Error: " << e.what() << std::endl;
     }
 }
