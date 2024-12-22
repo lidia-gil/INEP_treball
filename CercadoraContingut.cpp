@@ -1,7 +1,7 @@
 #include "CercadoraContingut.h"
 
 
-PassarelaContingut cercaPerTitol(std::string titolC) {
+PassarelaContingut CercadoraContingut::cercaPerTitol(std::string titolC) {
 
     PassarelaContingut contingut;
     ConnexioBD con;
