@@ -245,10 +245,9 @@ void CapaDePresentacio::procesarEsborraUsuari() {
     }
 }
 
-
 void CapaDePresentacio::procesarConsultaVisualitzacions() {
 
-    std::cout << "** Consulta Visualitzacions **" << std::endl ;
+    std::cout << "** Consulta Visualitzacions **" << std::endl;
     try {
         std::cout << std::endl;
         std::cout << "** Visualitzacions Pel.licules **" << std::endl;
@@ -304,6 +303,50 @@ void CapaDePresentacio::procesarConsultaVisualitzacions() {
                 std::cout << " - " << dataVisualitzacioC << ": " << titolS << "; " << qualificacioEdatC << "; temporada " << numTemporada << ", capitol " << numCapitol  << "; nombre de visualitzacions: " << numVisualitzacionsC << std::endl;
             }
         }
+    }
+    catch (const std::exception& e) {
+
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+}
+
+void CapaDePresentacio::procesarVisualitzarPel() {
+
+    std::cout << "** Visualitzar Pel.licula **" << std::endl;
+    try {
+        std::string titol;
+        std::cout << "Nom pel.licula:";
+        std::cin >> titol;
+
+        CtrlVisualitzarPel ctrlVisualitza;
+      
+        std::string descripcio, qualificacioEdat, dataEstrena, duracio;
+        DTOContingutPelicula dto;
+
+        dto = ctrlVisualitza.consultaInfoPeli(titol);
+
+        descripcio = dto.obteDescripcio();
+        qualificacioEdat = dto.obteQualificacioEdat();
+        dataEstrena = dto.obteDataEstrena();
+        duracio = dto.obteDuracio();
+       
+        std::cout << std::endl;
+        std::cout << "Informacio pel.licula ..." << std::endl << std::endl;
+        std::cout << "Nom pel.licula: " << titol << std::endl;
+        std::cout << "Descripcio: " << descripcio << std::endl;
+        std::cout << "Qualificacio edat: " << qualificacioEdat << std::endl;
+        std::cout << "Data estrena: " << dataEstrena.substr(0, 10) << std::endl; // Obtenir només els 10 primers chars (YYYY-MM-DD)
+        std::cout << "Duracio: " << duracio << std::endl;
+        std::cout << "Vols continuar amb la visualitzacio (S/N):" << std::endl;
+
+        std::string resposta;
+
+        std::cin >> resposta;
+        if (resposta == "S") {
+
+            
+        }
+
     }
     catch (const std::exception& e) {
 

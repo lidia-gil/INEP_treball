@@ -241,7 +241,9 @@ void menuVisualitzar() {
         std::cout << "\n";
         if (entrada2 == "1") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ": Visualitzar pel.licula. \n\n";
+            //std::cout << "Has escollit l'opcio " + entrada2 + ": Visualitzar pel.licula. \n\n";
+            presentacio.procesarVisualitzarPel();
+            continua = false;
             //procesarGestioPelicules(); CANVIAR!!!!!!!
         }
         else if (entrada2 == "2") {

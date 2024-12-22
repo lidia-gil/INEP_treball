@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include <iostream>
 #include "ConnexioBD.h"
 #include <sstream> // Para std::ostringstream
@@ -25,7 +24,6 @@ class PassarelaContingut
         void posaQualificacioEdat(std::string qualificacio_edatC);
         void posaTipus(std::string tipusC);
 
-        //falta !!
         void insereix();
         void modifica();
         void esborra();

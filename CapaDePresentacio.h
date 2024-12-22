@@ -8,6 +8,7 @@
 #include "CtrlModificaUsuari.h"
 #include "TxEsborraUsuari.h"
 #include "TxConsultaVisualitzacions.h"
+#include "CtrlVisualitzarpel.h"
 // classe singleton
 
 class CapaDePresentacio {
@@ -27,5 +28,6 @@ class CapaDePresentacio {
         void procesarEsborraUsuari();
         void procesarModificarUsuari();
         void procesarConsultaVisualitzacions();
+        void procesarVisualitzarPel();
 };
 
