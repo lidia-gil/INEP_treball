@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CapaDePresentacio.cpp" />
+    <ClCompile Include="CercadoraContingut.cpp" />
     <ClCompile Include="CercadoraUsuari.cpp" />
     <ClCompile Include="CercadoraVisualitzaCapitol.cpp" />
     <ClCompile Include="CercadoraVisualitzaPel.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="CtrlModificaUsuari.cpp" />
     <ClCompile Include="DTOUsuari.cpp" />
     <ClCompile Include="INEP.cpp" />
+    <ClCompile Include="PassarelaContingut.cpp" />
     <ClCompile Include="PassarelaUsuari.cpp" />
     <ClCompile Include="PassarelaVisualitzaCapitol.cpp" />
     <ClCompile Include="PassarelaVisualitzaPel.cpp" />
@@ -152,12 +154,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapaDePresentacio.h" />
+    <ClInclude Include="CercadoraContingut.h" />
     <ClInclude Include="CercadoraUsuari.h" />
     <ClInclude Include="CercadoraVisualitzaCapitol.h" />
     <ClInclude Include="CercadoraVisualitzaPel.h" />
     <ClInclude Include="ConnexioBD.h" />
     <ClInclude Include="CtrlModificaUsuari.h" />
     <ClInclude Include="DTOUsuari.h" />
+    <ClInclude Include="PassarelaContingut.h" />
     <ClInclude Include="PassarelaUsuari.h" />
     <ClInclude Include="PassarelaVisualitzaCapitol.h" />
     <ClInclude Include="PassarelaVisualitzaPel.h" />
