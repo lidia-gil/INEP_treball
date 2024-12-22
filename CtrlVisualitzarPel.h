@@ -4,17 +4,25 @@
 #include "CercadoraContingut.h"
 #include "PassarelaPelicula.h"
 #include "PassarelaContingut.h"
+
+#include "PassarelaVisualitzaPel.h"
+#include "CercadoraVisualitzaPel.h"
+
+#include "PassarelaContingutsRelacionats.h"
+#include "CercadoraContingutsRelacionats.h"
+
+#include "PetitFlix.h"
 class CtrlVisualitzarPel
 {
 	private:
 
-        std::string titolPelicula;
 	public: 
 
 		CtrlVisualitzarPel();
 
         DTOContingutPelicula consultaInfoPeli(std::string titolP);
 
+		void registrarVisualitzacions(std::string titolP, std::string dataHora);
+		
 		std::vector<DTOContingutPelicula> pelisRelacionades(std::string titolP);
 };
-

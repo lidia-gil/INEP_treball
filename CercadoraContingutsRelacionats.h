@@ -1,11 +1,11 @@
 #pragma once
-#include "PassarelaContingutsRelacionats"
-class CercadoraContingutRelacionats
+#include "PassarelaContingutsRelacionats.h"
+class CercadoraContingutsRelacionats
 {
     private:
 
     public:
-
-        PassarelaContingutsRelacionats cercaPerTitol(std::string titolC);
+        CercadoraContingutsRelacionats();
+        std::vector <PassarelaContingutsRelacionats> cercaPerTitol(std::string titolC);
 };
 

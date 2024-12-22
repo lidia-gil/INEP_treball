@@ -5,7 +5,7 @@ std::vector<PassarelaVisualitzaCapitol> CercadoraVisualitzaCapitol::cercaVisuali
 
     std::vector<PassarelaVisualitzaCapitol> passareles;
 
-    try {
+    //try {
         ConnexioBD connexio;
         std::string sql = "SELECT * FROM visualitzacio_capitol WHERE sobrenom_usuari ='" + sobrenomU + "'";
         sql::ResultSet* res = connexio.executarConsulta(sql);
@@ -24,10 +24,10 @@ std::vector<PassarelaVisualitzaCapitol> CercadoraVisualitzaCapitol::cercaVisuali
         }
 
         delete res; // Liberar memoria
-    }
+    /*}
     catch (const sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
+    }*/
     return passareles;
 }
 

@@ -8,7 +8,13 @@
 #include "CtrlModificaUsuari.h"
 #include "TxEsborraUsuari.h"
 #include "TxConsultaVisualitzacions.h"
-#include "CtrlVisualitzarpel.h"
+#include "CtrlVisualitzarPel.h"
+
+#include <chrono>
+#include <ctime>
+#include <iomanip>
+#include <sstream>
+
 // classe singleton
 
 class CapaDePresentacio {

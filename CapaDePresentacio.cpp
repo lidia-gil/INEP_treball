@@ -33,7 +33,7 @@ void CapaDePresentacio::iniciSessio() {
 void CapaDePresentacio::tancarSessio() {
     std::string resposta;
     std::cout << "** Tancar Sessio **" << std::endl;
-    std::cout << "Vols tancar la sessio (S/N):" << std::endl;
+    std::cout << "Vols tancar la sessio (S/N): " << std::endl;
     std::cin >> resposta; 
     if (resposta == "S"){
         TxTancaSessio tx;
@@ -228,7 +228,7 @@ void CapaDePresentacio::procesarModificarUsuari() {
 void CapaDePresentacio::procesarEsborraUsuari() {
 
     std::cout << "** Esborra Usuari **" << std::endl;
-    std::cout << "Per confirmar l'esborrat s'ha d'entrar la contrasenya:";
+    std::cout << "Per confirmar l'esborrat s'ha d'entrar la contrasenya: ";
     std::string contrasenya;
     std::cin >> contrasenya;
 
@@ -315,7 +315,7 @@ void CapaDePresentacio::procesarVisualitzarPel() {
     std::cout << "** Visualitzar Pel.licula **" << std::endl;
     try {
         std::string titol;
-        std::cout << "Nom pel.licula:";
+        std::cout << "Nom pel.licula: ";
         std::cin >> titol;
 
         CtrlVisualitzarPel ctrlVisualitza;
@@ -337,16 +337,54 @@ void CapaDePresentacio::procesarVisualitzarPel() {
         std::cout << "Qualificacio edat: " << qualificacioEdat << std::endl;
         std::cout << "Data estrena: " << dataEstrena.substr(0, 10) << std::endl; // Obtenir només els 10 primers chars (YYYY-MM-DD)
         std::cout << "Duracio: " << duracio << std::endl;
-        std::cout << "Vols continuar amb la visualitzacio (S/N):" << std::endl;
-
+        std::cout << "Vols continuar amb la visualitzacio (S/N): ";
         std::string resposta;
-
         std::cin >> resposta;
+        std::cout << std::endl << std::endl;
         if (resposta == "S") {
 
-            
-        }
+            ////// data i hora actual
+            auto ara = std::chrono::system_clock::now();
+            std::time_t tempsActual = std::chrono::system_clock::to_time_t(ara);
+            std::tm tempsFinal = *std::localtime(&tempsActual);
 
+            // Formatear directamente en un std::ostringstream
+            std::ostringstream stream;
+            stream << std::put_time(&tempsFinal, "%Y-%m-%d %H:%M:%S");
+            std::string dataHora = stream.str();
+
+            //---------------------------------------------------
+
+            ctrlVisualitza.registrarVisualitzacions(titol, dataHora);
+
+            //------------------------------------------------------------
+
+            std::cout << "Visualitzacio registrada: " << dataHora << std::endl;
+
+            std::vector< DTOContingutPelicula> vecDTOContingutPeli;
+            vecDTOContingutPeli = ctrlVisualitza.pelisRelacionades(titol);
+
+            int midaVecDto = vecDTOContingutPeli.size();
+
+            std::string titolP, descripcio, qualificacioEdat, dataEstrena, duracio;
+            if (midaVecDto == 0) {
+
+                std::cout << "No hi ha pel.licules relacionades." << std::endl;
+            }
+            else {
+                std::cout << "Pel.licules relacionades: " << std::endl;
+                for (int i = 0; i < midaVecDto; i++) {
+
+                    titolP = vecDTOContingutPeli[i].obteTitol();
+                    descripcio = vecDTOContingutPeli[i].obteDescripcio();
+                    qualificacioEdat = vecDTOContingutPeli[i].obteQualificacioEdat();
+                    dataEstrena = vecDTOContingutPeli[i].obteDataEstrena();
+                    duracio = vecDTOContingutPeli[i].obteDuracio();
+
+                    std::cout << " - " << titolP << "; " << descripcio << "; " << qualificacioEdat << "; " << duracio << " min; " << dataEstrena.substr(0, 10) << std::endl;
+                }
+            }
+        }
     }
     catch (const std::exception& e) {
 
