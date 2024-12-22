@@ -20,7 +20,7 @@ class CtrlVisualitzarPel
 
 		CtrlVisualitzarPel();
 
-        DTOContingutPelicula consultaInfoPeli(std::string titolP);
+        DTOContingutPelicula consultaInfoPeli(std::string titolP, std::string dataHora);
 
 		void registrarVisualitzacions(std::string titolP, std::string dataHora);
 		

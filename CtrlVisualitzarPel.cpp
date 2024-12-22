@@ -1,9 +1,9 @@
 #include "CtrlVisualitzarPel.h"
-
+#include <string>
 CtrlVisualitzarPel::CtrlVisualitzarPel() { }
 
 
-DTOContingutPelicula CtrlVisualitzarPel::consultaInfoPeli(std::string titolP) {
+DTOContingutPelicula CtrlVisualitzarPel::consultaInfoPeli(std::string titolP, std::string dataHora) {
 
 	PassarelaPelicula pelicula;
 	CercadoraPelicula cercaPeli;
@@ -12,6 +12,14 @@ DTOContingutPelicula CtrlVisualitzarPel::consultaInfoPeli(std::string titolP) {
 
 	std::string dataEstrena, duracio;
 	dataEstrena = pelicula.obteDataEstrena();
+
+	// Comparem si la Data D'estrena de la pel.licula és major que la actual
+	//-------------------------------------------
+	if (dataEstrena > dataHora){
+		
+		throw std::runtime_error("La pelicula encara no s'ha estrenat. S'estrenara el '" + dataEstrena.substr(0, 10) + "'");
+	}
+	//-------------------------------------------
 	duracio = pelicula.obteDuracio();
 
 	PassarelaContingut contingut;
@@ -39,9 +47,46 @@ void CtrlVisualitzarPel::registrarVisualitzacions(std::string titolP, std::strin
 	std::string sobrenomU;
 	sobrenomU = usuari.obteSobrenom();
 
+	// comparació data Naixement del Usuari amb la qualificació d'edat de la pel.licula 
+	//----------------------------------------------------
+
+	PassarelaContingut cont;
+	CercadoraContingut cercaCont;
+	cont = cercaCont.cercaPerTitol(titolP);
+
+	std::string qualificacioEdat = cont.obteQualificacioEdat();
+	std::string edat;
+	int i=0;
+	while (qualificacioEdat[i] != '+'){
+		edat+=qualificacioEdat[i]; 
+		i++;
+	}
+	
+	std::string dataNaixement = usuari.obteDataNaixement();
+
+	//Calculem l'edat de l'usuari a partir de la data de neixament i la data actual:
+	int edatUsuari = 0;
+    if (dataNaixement.substr(0, 4) <= dataHora.substr(0, 4)) { // Comparar anys
+		edatUsuari = std::stoi(dataHora.substr(0, 4)) - std::stoi(dataNaixement.substr(0, 4));
+
+        // Verificar si ja ha complert anys aquest any
+        if (dataNaixement.substr(5, 2) > dataHora.substr(5, 2) ||  // Si el mes no ha arribat
+        (dataNaixement.substr(5, 2) == dataHora.substr(5, 2) && dataNaixement.substr(8, 2) > dataHora.substr(8, 2))) { // Si el dia no ha arribat
+			edatUsuari--;
+        }
+    }
+	
+	if ( edat > std::to_string(edatUsuari) ){
+		
+		throw std::runtime_error("L'usuari loguejat no pot veure la pelicula. Edat de l'usuari: '" +  std::to_string(edatUsuari) + "' Edat necessaria: '" + edat + "'");
+
+	}
+	//-----------------------------------------------------
+	
+
 	visualitzaPel = cercaPel.cercaVisualitzacions(sobrenomU);
 	bool trobat = false;
-	int i = 0;
+	i = 0;
     while ((not trobat) and (i < visualitzaPel.size())){
 
 		std::string titolC = visualitzaPel[i].obteTitolPelicula();

@@ -318,12 +318,22 @@ void CapaDePresentacio::procesarVisualitzarPel() {
         std::cout << "Nom pel.licula: ";
         std::cin >> titol;
 
+        ////// data i hora actual
+        auto ara = std::chrono::system_clock::now();
+        std::time_t tempsActual = std::chrono::system_clock::to_time_t(ara);
+        std::tm tempsFinal = *std::localtime(&tempsActual);
+        // Formatear directamente en un std::ostringstream
+        std::ostringstream stream;
+        stream << std::put_time(&tempsFinal, "%Y-%m-%d %H:%M:%S");
+        std::string dataHora = stream.str();
+
+
         CtrlVisualitzarPel ctrlVisualitza;
       
         std::string descripcio, qualificacioEdat, dataEstrena, duracio;
         DTOContingutPelicula dto;
 
-        dto = ctrlVisualitza.consultaInfoPeli(titol);
+        dto = ctrlVisualitza.consultaInfoPeli(titol,dataHora);
 
         descripcio = dto.obteDescripcio();
         qualificacioEdat = dto.obteQualificacioEdat();
@@ -342,16 +352,6 @@ void CapaDePresentacio::procesarVisualitzarPel() {
         std::cin >> resposta;
         std::cout << std::endl << std::endl;
         if (resposta == "S") {
-
-            ////// data i hora actual
-            auto ara = std::chrono::system_clock::now();
-            std::time_t tempsActual = std::chrono::system_clock::to_time_t(ara);
-            std::tm tempsFinal = *std::localtime(&tempsActual);
-
-            // Formatear directamente en un std::ostringstream
-            std::ostringstream stream;
-            stream << std::put_time(&tempsFinal, "%Y-%m-%d %H:%M:%S");
-            std::string dataHora = stream.str();
 
             //---------------------------------------------------
 
