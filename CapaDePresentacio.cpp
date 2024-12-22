@@ -259,6 +259,8 @@ void CapaDePresentacio::procesarConsultaVisualitzacions() {
         PetitFlix& petitF = PetitFlix::getInstance();
         usuari = petitF.obteUsuari();
 
+        //----------------------------- canviar
+
         std::cout << "Nom complet: " << usu.obteNom() << std::endl;
         std::cout << "Sobrenom: " << usu.obteSobrenom() << std::endl;
         std::cout << "Correu electronic: " << usu.obteCorreu() << std::endl;
