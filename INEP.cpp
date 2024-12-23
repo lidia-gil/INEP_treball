@@ -275,10 +275,10 @@ void menuVisualitzar() {
 }
 
 //subfuncions consultes
-void procesarProperesEstrenes() {
+/*void procesarProperesEstrenes() {
 
     std::cout << " prox estrenes ...\n \n";
-}
+}*/
 void procesarUltimesNovetats() {
 
     std::cout << "Mostrant les ultimes novetats. \n\n ... \n\n";
@@ -294,19 +294,21 @@ void consultes() {
     std::string entrada2;
     subMenuConsultes();
     bool continua = true;
+    CapaDePresentacio& presentacio = CapaDePresentacio::getInstance();
 
     while (continua and std::cin >> entrada2) {
 
         std::cout << "\n";
         if (entrada2 == "1") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ": Properes estrenes. \n\n";
-            procesarProperesEstrenes();
+            //std::cout << "Has escollit l'opcio " + entrada2 + ": Properes estrenes. \n\n";
+            presentacio.procesarProperesEstrenes();
         }
         else if (entrada2 == "2") {
 
             std::cout << "Has escollit l'opcio " + entrada2 + ": Ultimes novetats. \n\n";
-            procesarUltimesNovetats();
+            //presentacio.procesarUltimesNovetats();
+            //procesarUltimesNovetats();
         }
         else if (entrada2 == "3") {
 

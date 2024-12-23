@@ -10,6 +10,7 @@
 #include "TxConsultaVisualitzacions.h"
 #include "CtrlVisualitzarPel.h"
 #include "CtrlVisualitzarCapitol.h"
+#include "TxProperesEstrenes.h"
 
 #include <chrono>
 #include <ctime>
@@ -37,5 +38,6 @@ class CapaDePresentacio {
         void procesarConsultaVisualitzacions();
         void procesarVisualitzarPel();
         void procesarVisualitzarCapitol();
+        void procesarProperesEstrenes();
 };
 

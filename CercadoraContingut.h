@@ -7,5 +7,7 @@ class CercadoraContingut
     public:
         //Metode per obtenir la única instància
 	    PassarelaContingut cercaPerTitol(std::string titolC);
+
+        std::vector<PassarelaContingut> cercaPerTipus();
 };
 

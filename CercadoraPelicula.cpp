@@ -22,3 +22,7 @@ PassarelaPelicula CercadoraPelicula::cercaPerTitol(std::string titolP){
     }
     return pelicula;
 }
+
+//std::vector<PassarelaPelicula> CercadoraPelicula::cercaPerDataEstrena() {
+
+//}

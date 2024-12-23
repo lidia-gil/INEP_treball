@@ -13,6 +13,10 @@ class TxRegistreUsuari
         
     public:
         TxRegistreUsuari(std::string nomU, std::string sobrenomU, std::string contrasenyaU, std::string coreuElectronicU, std::string data_naixementU, std::string modalitatSubscripcio);
+        
+        //falta 
+        //void insereix();
         void executa();
+        //void esborra();
 };
 

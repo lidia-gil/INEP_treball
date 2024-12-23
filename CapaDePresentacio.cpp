@@ -472,3 +472,51 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
         std::cerr << "Error: " << e.what() << std::endl;
     }
 }
+
+void CapaDePresentacio::procesarProperesEstrenes() {
+
+    std::cout << "** Properes estrenes **" << std::endl <<std::endl;
+    try {
+        ////// data i hora actual
+        auto ara = std::chrono::system_clock::now();
+        std::time_t tempsActual = std::chrono::system_clock::to_time_t(ara);
+        std::tm tempsFinal = *std::localtime(&tempsActual);
+        std::ostringstream stream;
+        stream << std::put_time(&tempsFinal, "%Y-%m-%d %H:%M:%S");
+        std::string dataHoraActual = stream.str();
+
+        if (sessioIniciada) {   // aixo que ho faci el tx
+                                // aprofitar el DTO
+
+            // usuari ha registrat sessio la modalitat sub és la de l'usuari
+            //-cinefil -> només pelis
+            //-completa -> tot
+            //-infantil -> tot però limitat per rang d'edat
+            
+        }
+        else {
+
+            // usuari no ha inciat sessio li preguntem quina modalitat vol consultar 
+        }
+        TxProperesEstrenes tx("Cinefil",dataHoraActual);
+        tx.executa();
+        std::vector <DTOPelicula> properesEstrenes;
+        properesEstrenes = tx.obteResultat();
+
+        std::string dataEstrena, text, titolP, qualificacioEdat, duracio;
+        int mida = properesEstrenes.size();
+
+        for (int i = 0; i < mida; i++) {
+
+            dataEstrena = properesEstrenes[i].obteData();
+            titolP = properesEstrenes[i].obteTitol();
+            qualificacioEdat = properesEstrenes[i].obteQualificacioEdat();
+            duracio = properesEstrenes[i].obteDuracio();
+            std::cout << i+1 << ".- " << dataEstrena << " [Pel.licula]: " << titolP <<"; " << qualificacioEdat << "; " << duracio << "h."<< std::endl;
+        }
+    }
+    catch (const std::exception& e) {
+
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+}
