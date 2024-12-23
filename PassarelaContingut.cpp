@@ -47,21 +47,25 @@ void PassarelaContingut::posaTipus(std::string tipusC) {
 
 void PassarelaContingut::insereix() {
 
-	ConnexioBD con;
+	ConnexioBD& con = ConnexioBD::getInstance();
+	//ConnexioBD con;
 
 	std::string query = "INSERT INTO contingut (titol, descripcio, qualificacio, tipus) VALUES('" + titol + "', '" + descripcio + "', '" + qualificacio_edat +  "' , '" + tipus + "')";
 	con.executarComanda(query);
 }
 void PassarelaContingut::modifica() {
 
-	ConnexioBD con;
+	ConnexioBD& con = ConnexioBD::getInstance();
+	//ConnexioBD con;
 
     std::string query = "UPDATE contingut SET descripcio = '" + descripcio + "', qualificacio = '" + qualificacio_edat + "', tipus = '" + tipus + "' WHERE titol = '" + titol + "'";
     con.executarComanda(query);
 }
 void PassarelaContingut::esborra() {
 
-	ConnexioBD con;
+	ConnexioBD& con = ConnexioBD::getInstance();
+	//ConnexioBD con;
+
 	std::string query = "DELETE FROM contingut WHERE titol = '" + titol + "'";
 	con.executarComanda(query);
 }

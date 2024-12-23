@@ -140,7 +140,7 @@ void subMenuConsultes() {
         std::cerr << "SQL Error: " << e.what() << std::endl;
     }
 }*/
-void procesarConsultaUsuaris() {
+/*void procesarConsultaUsuaris() {
     try {
         ConnexioBD connexio;
         std::string sql = "SELECT * FROM usuari";
@@ -155,7 +155,7 @@ void procesarConsultaUsuaris() {
     catch (sql::SQLException& e) {
         std::cerr << "SQL Error: " << e.what() << std::endl;
     }
-}
+}*/
 
 //menu gestio usuari
 void menuGestioUsuari() {
@@ -248,7 +248,9 @@ void menuVisualitzar() {
         }
         else if (entrada2 == "2") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ": Visualitzar capitol. \n\n";
+            //std::cout << "Has escollit l'opcio " + entrada2 + ": Visualitzar capitol. \n\n";
+            presentacio.procesarVisualitzarCapitol();
+            continua = false;
             //procesarGestioSeries(); CANVIAR!!!!!!!
         }
         else if (entrada2 == "3") {

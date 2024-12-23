@@ -13,11 +13,11 @@ class ConnexioBD
     private:
         sql::mysql::MySQL_Driver* driver;
         sql::Connection* con;
-
-    public:
         // Constructor: estableix la connexió
         ConnexioBD();
-
+    public:
+       
+        static ConnexioBD& getInstance();
         // Destructor: tanca la connexió
         ~ConnexioBD();
 

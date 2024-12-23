@@ -10,3 +10,4 @@ void TxTancaSessio::executa() {
     PetitFlix& petitFlix = PetitFlix::getInstance();
     petitFlix.tancaSessio();
 }
+

@@ -3,7 +3,8 @@
 PassarelaUsuari CercadoraUsuari::cercaPerSobrenom(std::string sobrenomU) {
 
     PassarelaUsuari u;
-    ConnexioBD con ;
+    //ConnexioBD con ;
+    ConnexioBD& con = ConnexioBD::getInstance();
     std::string sql = "SELECT * FROM usuari WHERE sobrenom = '" + sobrenomU + "'";
     sql::ResultSet* res = con.executarConsulta(sql);
     // Si no troba cap fila, activa excepció

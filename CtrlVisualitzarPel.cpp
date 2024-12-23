@@ -76,7 +76,7 @@ void CtrlVisualitzarPel::registrarVisualitzacions(std::string titolP, std::strin
         }
     }
 	
-	if ( edat > std::to_string(edatUsuari) ){
+	if ( std::stoi(edat) > edatUsuari){
 		
 		throw std::runtime_error("L'usuari loguejat no pot veure la pelicula. Edat de l'usuari: '" +  std::to_string(edatUsuari) + "' Edat necessaria: '" + edat + "'");
 

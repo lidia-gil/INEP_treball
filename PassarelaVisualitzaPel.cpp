@@ -54,8 +54,9 @@ void PassarelaVisualitzaPel::posaNumVisualitzacions (int numVisualitzacionsV){
 
     
 void PassarelaVisualitzaPel::insereix(){
-        
-    ConnexioBD con;
+    
+    ConnexioBD& con = ConnexioBD::getInstance();
+    //ConnexioBD con;
     std::ostringstream numVisu;
     numVisu << numVisualitzacions;
     std::string query = "INSERT INTO visualitzacio_pelicula (sobrenom_usuari, titol_pelicula, data, num_visualitzacions) VALUES('" + sobrenom + "', '" + titolPelicula + "', '" + data + "' , '" + numVisu.str() + "')";
@@ -64,7 +65,8 @@ void PassarelaVisualitzaPel::insereix(){
 
 void PassarelaVisualitzaPel::modifica(){
 
-    ConnexioBD con;
+    ConnexioBD& con = ConnexioBD::getInstance();
+    //ConnexioBD con;
     
     std::ostringstream numVisu;
     numVisu << numVisualitzacions;
@@ -76,7 +78,8 @@ void PassarelaVisualitzaPel::modifica(){
    
 void PassarelaVisualitzaPel::esborra() {
 
-    ConnexioBD con;
+    ConnexioBD& con = ConnexioBD::getInstance();
+    //ConnexioBD con;
         
     con.executarComanda("DELETE FROM visualitzacio_pelicula WHERE sobrenom_usuari = '" + sobrenom + "' AND titol_pelicula = '" + titolPelicula + "'");
 

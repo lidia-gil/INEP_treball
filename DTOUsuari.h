@@ -1,6 +1,4 @@
 #pragma once
-//#include "PassarelaUsuari.h"
-//#include "CercadoraUsuari.h"
 #include <iostream>
 
 class DTOUsuari

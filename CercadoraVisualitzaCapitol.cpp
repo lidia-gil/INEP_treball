@@ -6,7 +6,8 @@ std::vector<PassarelaVisualitzaCapitol> CercadoraVisualitzaCapitol::cercaVisuali
     std::vector<PassarelaVisualitzaCapitol> passareles;
 
     //try {
-        ConnexioBD connexio;
+        //ConnexioBD connexio;
+        ConnexioBD& connexio = ConnexioBD::getInstance();
         std::string sql = "SELECT * FROM visualitzacio_capitol WHERE sobrenom_usuari ='" + sobrenomU + "'";
         sql::ResultSet* res = connexio.executarConsulta(sql);
 

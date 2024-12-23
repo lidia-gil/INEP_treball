@@ -78,7 +78,8 @@ void PassarelaVisualitzaCapitol::posaData(std::string dataV) {
 
 void PassarelaVisualitzaCapitol::insereix() {
 
-    ConnexioBD con;
+    ConnexioBD& con = ConnexioBD::getInstance();
+    //ConnexioBD con;
     std::ostringstream numTemp, numCap, numVisu;
     numTemp << numTemporada;
     numCap << numCapitol;
@@ -90,16 +91,19 @@ void PassarelaVisualitzaCapitol::insereix() {
 
 void PassarelaVisualitzaCapitol::modifica() {
 
-    ConnexioBD con;
+    ConnexioBD& con = ConnexioBD::getInstance();
+    //ConnexioBD con;
 
     std::ostringstream numTemp, numCap, numVisu;
     numTemp << numTemporada;
     numCap << numCapitol;
     numVisu << numVisualitzacions;
 
-    std::string query = "UPDATE visualitzacio_capitol SET data = '" + data + "', num_visualitzacions = '" + numVisu.str() +
-        "' WHERE sobrenom_usuari = '" + sobrenom + "' AND titol_serie = '" + titolSerie + "' AND num_temporada = '" + numTemp.str() +
-        "' AND num_capitol = '" + numCap.str();
+std::string query = "UPDATE visualitzacio_capitol SET data = '" + data + "', num_visualitzacions = '" + numVisu.str() +
+    "' WHERE sobrenom_usuari = '" + sobrenom + "' AND titol_serie = '" + titolSerie + "' AND num_temporada = '" + numTemp.str() +
+    "' AND num_capitol = '" + numCap.str() + "'";
+
+
 
     con.executarComanda(query);
 }
@@ -107,7 +111,8 @@ void PassarelaVisualitzaCapitol::modifica() {
 
 void PassarelaVisualitzaCapitol::esborra() {
 
-    ConnexioBD con;
+    ConnexioBD& con = ConnexioBD::getInstance();
+    //ConnexioBD con;
     std::ostringstream numTemp, numCap, numVisu;
     numTemp << numTemporada;
     numCap << numCapitol;

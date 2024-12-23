@@ -6,6 +6,12 @@ ConnexioBD::ConnexioBD() {
     con->setSchema("inep02");
 }
 
+ConnexioBD& ConnexioBD::getInstance() {
+
+    static ConnexioBD instance;
+    return instance;
+}
+
 ConnexioBD::~ConnexioBD() {
     
     if (con) con->close();

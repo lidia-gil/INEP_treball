@@ -391,3 +391,84 @@ void CapaDePresentacio::procesarVisualitzarPel() {
         std::cerr << "Error: " << e.what() << std::endl;
     }
 }
+
+void CapaDePresentacio::procesarVisualitzarCapitol() {
+
+    std::cout << "** Visualitzar Capitol **" << std::endl;
+    try {
+        std::string titolS;
+        std::cout << "Nom de la serie: ";
+        std::cin >> titolS;
+
+        CtrlVisualitzarCapitol CtrlCap;
+        int numTemps;
+        numTemps = CtrlCap.consultaNumeroTemporades(titolS);
+        int temporadaEscollida = 1;
+        if (numTemps > 1) {
+            std::cout << "La serie te " << std::to_string(numTemps) << " temporades." << std::endl;
+            std::cout << "Escull una temporada: ";
+            std::cin >> temporadaEscollida;
+            std::cout << std::endl;
+        }
+        std::vector<DTOCapitol> capitols;//CANVIAR
+        capitols = CtrlCap.consultaCapitols(titolS, temporadaEscollida);
+        
+        int midaCapitols = capitols.size();
+        if (midaCapitols > 1){
+
+            std::cout << "LLista capitols:"<<std::endl;
+        }
+        if (midaCapitols == 1){
+
+            std::cout << "Capitol:" << std::endl;
+        }
+
+        std::string titolC, dataEstrena, dataVisualitzacio;
+        int numCapitol;
+        for (int i = 0; i < midaCapitols; i++ ) {
+  
+            dataEstrena = capitols[i].obteDataPublicacio();
+            dataVisualitzacio = capitols[i].obteDataVisualitzacio();
+            titolC = capitols[i].obteTitol();
+            numCapitol = capitols[i].obteNumCapitol();
+
+            std::cout << std::to_string(numCapitol) << ". " << titolC << "; " << dataEstrena.substr(0, 10) << "; ";
+            if (dataVisualitzacio == "") {
+
+                std::cout << "no visualitzat" << std::endl;
+            }
+            else {
+
+                std::cout << "visualitzat el " << dataVisualitzacio.substr(0, 10) << std::endl;
+            }
+        }
+        std::cout << std::endl;
+        std::cout << "Numero de capitol a visualitzar: ";
+        int capitol;
+        std::cin >> capitol;
+        std::cout << "Vols continuar amb la visualitzacio (S/N):";
+        std::string llegueix;
+        std::cin >> llegueix;
+        if (llegueix == "S"){
+                
+            ////// data i hora actual
+            auto ara = std::chrono::system_clock::now();
+            std::time_t tempsActual = std::chrono::system_clock::to_time_t(ara);
+            std::tm tempsFinal = *std::localtime(&tempsActual);
+            std::ostringstream stream;
+            stream << std::put_time(&tempsFinal, "%Y-%m-%d %H:%M:%S");
+            std::string dataHora = stream.str();
+
+
+            CtrlCap.registrarVisualitzacio(titolS, temporadaEscollida, capitol, dataHora);
+            std::cout << "Visualitzacio registrada: " << dataHora<< std::endl ;
+        }
+
+        //retornar un dto !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        
+    }
+    catch (const std::exception& e) {
+
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+}

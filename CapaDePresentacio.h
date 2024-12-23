@@ -9,6 +9,7 @@
 #include "TxEsborraUsuari.h"
 #include "TxConsultaVisualitzacions.h"
 #include "CtrlVisualitzarPel.h"
+#include "CtrlVisualitzarCapitol.h"
 
 #include <chrono>
 #include <ctime>
@@ -35,5 +36,6 @@ class CapaDePresentacio {
         void procesarModificarUsuari();
         void procesarConsultaVisualitzacions();
         void procesarVisualitzarPel();
+        void procesarVisualitzarCapitol();
 };
 

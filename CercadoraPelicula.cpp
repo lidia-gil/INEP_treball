@@ -5,7 +5,8 @@ CercadoraPelicula::CercadoraPelicula(){ }
 PassarelaPelicula CercadoraPelicula::cercaPerTitol(std::string titolP){
 
     PassarelaPelicula pelicula;
-    ConnexioBD con;
+    //ConnexioBD con;
+    ConnexioBD& con = ConnexioBD::getInstance();
     std::string sql = "SELECT * FROM pelicula WHERE titol = '" + titolP + "'";
     sql::ResultSet* res = con.executarConsulta(sql);
     // Si no troba cap fila, activa excepció

@@ -131,23 +131,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CapaDePresentacio.cpp" />
+    <ClCompile Include="CercadoraCapitol.cpp" />
     <ClCompile Include="CercadoraContingut.cpp" />
     <ClCompile Include="CercadoraContingutsRelacionats.cpp" />
     <ClCompile Include="CercadoraPelicula.cpp" />
+    <ClCompile Include="CercadoraTemporada.cpp" />
     <ClCompile Include="CercadoraUsuari.cpp" />
     <ClCompile Include="CercadoraVisualitzaCapitol.cpp" />
     <ClCompile Include="CercadoraVisualitzaPel.cpp" />
     <ClCompile Include="ConnexioBD.cpp" />
     <ClCompile Include="CtrlModificaUsuari.cpp" />
+    <ClCompile Include="CtrlVisualitzarCapitol.cpp" />
     <ClCompile Include="CtrlVisualitzarPel.cpp" />
+    <ClCompile Include="DTOCapitol.cpp" />
     <ClCompile Include="DTOContingutMesVisualitzacioCap.cpp" />
     <ClCompile Include="DTOContingutMesVisualitzacioPel.cpp" />
     <ClCompile Include="DTOContingutPelicula.cpp" />
     <ClCompile Include="DTOUsuari.cpp" />
     <ClCompile Include="INEP.cpp" />
+    <ClCompile Include="PassarelaCapitol.cpp" />
     <ClCompile Include="PassarelaContingut.cpp" />
     <ClCompile Include="PassarelaContingutsRelacionats.cpp" />
     <ClCompile Include="PassarelaPelicula.cpp" />
+    <ClCompile Include="PassarelaTemporada.cpp" />
     <ClCompile Include="PassarelaUsuari.cpp" />
     <ClCompile Include="PassarelaVisualitzaCapitol.cpp" />
     <ClCompile Include="PassarelaVisualitzaPel.cpp" />
@@ -162,22 +168,28 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapaDePresentacio.h" />
+    <ClInclude Include="CercadoraCapitol.h" />
     <ClInclude Include="CercadoraContingut.h" />
     <ClInclude Include="CercadoraContingutsRelacionats.h" />
     <ClInclude Include="CercadoraPelicula.h" />
+    <ClInclude Include="CercadoraTemporada.h" />
     <ClInclude Include="CercadoraUsuari.h" />
     <ClInclude Include="CercadoraVisualitzaCapitol.h" />
     <ClInclude Include="CercadoraVisualitzaPel.h" />
     <ClInclude Include="ConnexioBD.h" />
     <ClInclude Include="CtrlModificaUsuari.h" />
+    <ClInclude Include="CtrlVisualitzarCapitol.h" />
     <ClInclude Include="CtrlVisualitzarPel.h" />
+    <ClInclude Include="DTOCapitol.h" />
     <ClInclude Include="DTOContingutMesVisualitzacioCap.h" />
     <ClInclude Include="DTOContingutMesVisualitzacioPel.h" />
     <ClInclude Include="DTOContingutPelicula.h" />
     <ClInclude Include="DTOUsuari.h" />
+    <ClInclude Include="PassarelaCapitol.h" />
     <ClInclude Include="PassarelaContingut.h" />
     <ClInclude Include="PassarelaContingutsRelacionats.h" />
     <ClInclude Include="PassarelaPelicula.h" />
+    <ClInclude Include="PassarelaTemporada.h" />
     <ClInclude Include="PassarelaUsuari.h" />
     <ClInclude Include="PassarelaVisualitzaCapitol.h" />
     <ClInclude Include="PassarelaVisualitzaPel.h" />

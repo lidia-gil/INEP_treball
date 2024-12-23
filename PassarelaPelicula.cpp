@@ -38,21 +38,25 @@ void PassarelaPelicula::posaDuracio(std::string duracioP) {
 
 void PassarelaPelicula::insereix(){
     
-    ConnexioBD con;
+    ConnexioBD& con = ConnexioBD::getInstance();
+    //ConnexioBD con;
 
 	std::string query = "INSERT INTO pelicula (titol, data_estrena, duracio) VALUES('" + titol + "', '" + dataEstrena +  "' , '" + duracio + "')";
 	con.executarComanda(query);
 }
 void PassarelaPelicula::modifica(){
 
-    ConnexioBD con;
+    ConnexioBD& con = ConnexioBD::getInstance();
+    //ConnexioBD con;
 
     std::string query = "UPDATE pelicula SET data_estrena = '" + dataEstrena + "', duracio = '" + duracio + "' WHERE titol = '" + titol + "'";
     con.executarComanda(query);
 }
 void PassarelaPelicula::esborra() {
 
-    ConnexioBD con;
+    ConnexioBD& con = ConnexioBD::getInstance();
+    //ConnexioBD con;
+
 	std::string query = "DELETE FROM pelicula WHERE titol = '" + titol + "'";
 	con.executarComanda(query);
 }

@@ -30,14 +30,17 @@ void PassarelaContingutsRelacionats::posaTitolContingutY(std::string titolContin
 
 void PassarelaContingutsRelacionats::insereix(){
 
-    ConnexioBD con;
+    ConnexioBD& con = ConnexioBD::getInstance();
+    //ConnexioBD con;
 
     std::string query = "INSERT INTO relacionat (titol_x, titol_y) VALUES('" + titolContingutX +  "' , '" + titolContingutY + "')";
     con.executarComanda(query);
 }
 void PassarelaContingutsRelacionats::esborra(){
 
-    ConnexioBD con;
+    ConnexioBD& con = ConnexioBD::getInstance();
+    //ConnexioBD con;
+
     std::string query = "DELETE FROM relacionat WHERE titol_x = '" + titolContingutX + "' AND titol_y = '" + titolContingutY + "'";
     con.executarComanda(query);
 }

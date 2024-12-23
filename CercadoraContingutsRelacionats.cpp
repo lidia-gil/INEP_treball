@@ -6,7 +6,8 @@ std::vector <PassarelaContingutsRelacionats> CercadoraContingutsRelacionats::cer
 
     std::vector<PassarelaContingutsRelacionats> passareles;
     /*try {*/
-        ConnexioBD connexio;
+        //ConnexioBD connexio;
+        ConnexioBD& connexio = ConnexioBD::getInstance();
         std::string sql = "SELECT * FROM relacionat WHERE titol_x = '" + titolC + "' OR titol_y = '" + titolC + "'";
         sql::ResultSet* res = connexio.executarConsulta(sql);
 

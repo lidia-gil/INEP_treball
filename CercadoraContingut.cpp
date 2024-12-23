@@ -4,7 +4,8 @@
 PassarelaContingut CercadoraContingut::cercaPerTitol(std::string titolC) {
 
     PassarelaContingut contingut;
-    ConnexioBD con;
+    //ConnexioBD con;
+    ConnexioBD& con = ConnexioBD::getInstance();
     std::string sql = "SELECT * FROM contingut WHERE titol = '" + titolC + "'";
     sql::ResultSet* res = con.executarConsulta(sql);
     // Si no troba cap fila, activa excepció

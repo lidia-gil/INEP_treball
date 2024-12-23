@@ -76,7 +76,8 @@ void PassarelaUsuari::posaModalitatSubscripcio(std::string modalitatU) {
 
 void PassarelaUsuari::insereix() {
 
-	ConnexioBD con;
+	ConnexioBD& con = ConnexioBD::getInstance();
+	//ConnexioBD con;
 
 	std::string query = "INSERT INTO usuari (sobrenom, nom, correu_electronic, contrasenya, data_naixement, subscripcio) VALUES('" + sobrenom + "', '" + nom + "', '" + correuElectronic + "' , '" + contrasenya + "' , '" + dataNaixement +  "' , '" + modalitatSubs + "')";
 	con.executarComanda(query);
@@ -84,7 +85,8 @@ void PassarelaUsuari::insereix() {
 
 void PassarelaUsuari::modifica(){
 
-	ConnexioBD con;
+	ConnexioBD& con = ConnexioBD::getInstance();
+	//ConnexioBD con;
 
     std::string query = "UPDATE usuari SET nom = '" + nom + "', correu_electronic = '" + correuElectronic + "', contrasenya = '" + contrasenya + "', data_naixement = '" + dataNaixement + "', subscripcio = '" + modalitatSubs + "' WHERE sobrenom = '" + sobrenom + "'";
     con.executarComanda(query);
@@ -92,7 +94,8 @@ void PassarelaUsuari::modifica(){
 
 void PassarelaUsuari::esborra(){
 
-	ConnexioBD con;
+	ConnexioBD& con = ConnexioBD::getInstance();
+	//ConnexioBD con;
 
 	std::string query = "DELETE FROM usuari WHERE sobrenom = '" + sobrenom + "'";
 	con.executarComanda(query);

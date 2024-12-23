@@ -20,4 +20,3 @@ class DTOContingutMesVisualitzacioCap
 		std::string obteQualificacioEdat();
 		int obteVisualitzacions();
 };
-
