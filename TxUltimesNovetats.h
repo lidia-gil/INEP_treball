@@ -10,18 +10,17 @@
 #include "PassarelaCapitol.h"
 #include "PetitFlix.h"
 #include "PassarelaUsuari.h"
-
-class TxProperesEstrenes
+class TxUltimesNovetats
 {
-	private:
+    private:
+
 		std::string dataHora;
 		std::string modalitatSub;
-		std::vector<DTOEstrenes> resultat;
-	public:
+        std::vector<DTOEstrenes> resultat;
+    public:
 
-		TxProperesEstrenes(std::string modalitatEscollida, std::string dataHoraActual);
-		void executa();
-		std::vector<DTOEstrenes> obteResultat();
-		//PassarelaUsuari obteUsuari();
+        TxUltimesNovetats(std::string modalitatEscollida, std::string dataHoraActual);
+        void executa();
+        std::vector<DTOEstrenes> obteResultat();
 };
 

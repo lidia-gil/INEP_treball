@@ -123,7 +123,10 @@
     <ClCompile Include="TxProperesEstrenes.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="DTOProperesEstrenes.cpp">
+    <ClCompile Include="DTOEstrenes.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="TxUltimesNovetats.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -233,7 +236,10 @@
     <ClInclude Include="TxProperesEstrenes.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="DTOProperesEstrenes.h">
+    <ClInclude Include="DTOEstrenes.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="TxUltimesNovetats.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

@@ -147,7 +147,7 @@
     <ClCompile Include="DTOContingutMesVisualitzacioCap.cpp" />
     <ClCompile Include="DTOContingutMesVisualitzacioPel.cpp" />
     <ClCompile Include="DTOContingutPelicula.cpp" />
-    <ClCompile Include="DTOProperesEstrenes.cpp" />
+    <ClCompile Include="DTOEstrenes.cpp" />
     <ClCompile Include="DTOUsuari.cpp" />
     <ClCompile Include="INEP.cpp" />
     <ClCompile Include="PassarelaCapitol.cpp" />
@@ -167,6 +167,7 @@
     <ClCompile Include="TxProperesEstrenes.cpp" />
     <ClCompile Include="TxRegistreUsuari.cpp" />
     <ClCompile Include="TxTancaSessio.cpp" />
+    <ClCompile Include="TxUltimesNovetats.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CapaDePresentacio.h" />
@@ -186,7 +187,7 @@
     <ClInclude Include="DTOContingutMesVisualitzacioCap.h" />
     <ClInclude Include="DTOContingutMesVisualitzacioPel.h" />
     <ClInclude Include="DTOContingutPelicula.h" />
-    <ClInclude Include="DTOProperesEstrenes.h" />
+    <ClInclude Include="DTOEstrenes.h" />
     <ClInclude Include="DTOUsuari.h" />
     <ClInclude Include="PassarelaCapitol.h" />
     <ClInclude Include="PassarelaContingut.h" />
@@ -205,6 +206,7 @@
     <ClInclude Include="TxProperesEstrenes.h" />
     <ClInclude Include="TxRegistreUsuari.h" />
     <ClInclude Include="TxTancaSessio.h" />
+    <ClInclude Include="TxUltimesNovetats.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

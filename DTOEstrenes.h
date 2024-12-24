@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-class DTOProperesEstrenes
+class DTOEstrenes
 {
         private:
             std::string dataEstrena;
@@ -9,8 +9,8 @@ class DTOProperesEstrenes
             std::string duracioOnumTemp;
             int numCap;
         public:
-            DTOProperesEstrenes();
-		    DTOProperesEstrenes(std::string dataEstrenaC, std::string titolC, std::string qualificacioEdatC, std::string duracioOnumTempC, int numCapC);
+            DTOEstrenes();
+		    DTOEstrenes(std::string dataEstrenaC, std::string titolC, std::string qualificacioEdatC, std::string duracioOnumTempC, int numCapC);
 
             std::string obteData();
             std::string obteTitol();

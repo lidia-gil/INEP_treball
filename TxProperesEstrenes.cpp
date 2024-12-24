@@ -37,7 +37,7 @@ void TxProperesEstrenes::executa() {
 			if (dataEstrena > dataHora) {
 				qualificacioEdat = passarelesPelicules[i].obteQualificacioEdat();
 				duracio = pelicula.obteDuracio();
-				DTOProperesEstrenes dtoPel(dataEstrena, titol, qualificacioEdat, duracio, 0); //0 pq és una pel.licula i no té numero de capitol
+				DTOEstrenes dtoPel(dataEstrena, titol, qualificacioEdat, duracio, 0); //0 pq és una pel.licula i no té numero de capitol
 				resultat.push_back(dtoPel);
 			}
 		}
@@ -64,7 +64,7 @@ void TxProperesEstrenes::executa() {
 
 				numTemp = passarelesCapitols[i].obteNumTemporada();
 				numCap = passarelesCapitols[i].obteNumCapitol();
-				DTOProperesEstrenes dtoCap(dataEstrena, titol, qualificacioEdat, std::to_string(numTemp), numCap); 
+				DTOEstrenes dtoCap(dataEstrena, titol, qualificacioEdat, std::to_string(numTemp), numCap); 
 				resultat.push_back(dtoCap);
 			}
 		}
@@ -87,7 +87,7 @@ void TxProperesEstrenes::executa() {
 			if (dataEstrena > dataHora) {
 				qualificacioEdat = passarelesPelicules[i].obteQualificacioEdat();
 				duracio = pelicula.obteDuracio();
-				DTOProperesEstrenes dtoPel(dataEstrena, titol, qualificacioEdat, duracio, 0); //0 pq és una pel.licula i no té numero de capitol
+				DTOEstrenes dtoPel(dataEstrena, titol, qualificacioEdat, duracio, 0); //0 pq és una pel.licula i no té numero de capitol
 				resultat.push_back(dtoPel);
 			}
 		}
@@ -111,14 +111,14 @@ void TxProperesEstrenes::executa() {
 			if ( qualificacioEdat == "TP" ) {
 				numTemp = passarelesCapitols[i].obteNumTemporada();
 				numCap = passarelesCapitols[i].obteNumCapitol();
-				DTOProperesEstrenes dtoCap(dataEstrena, titol, qualificacioEdat, std::to_string(numTemp), numCap);
+				DTOEstrenes dtoCap(dataEstrena, titol, qualificacioEdat, std::to_string(numTemp), numCap);
 				resultat.push_back(dtoCap);
 			}
 		}
 	}
 }
 
-std::vector<DTOProperesEstrenes> TxProperesEstrenes::obteResultat() {
+std::vector<DTOEstrenes> TxProperesEstrenes::obteResultat() {
 
 	return resultat;
 }

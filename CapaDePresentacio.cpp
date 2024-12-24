@@ -526,7 +526,7 @@ void CapaDePresentacio::procesarProperesEstrenes() {
         }
         TxProperesEstrenes tx(modalitatConsultada,dataHoraActual);
         tx.executa();
-        std::vector <DTOProperesEstrenes> properesEstrenes;
+        std::vector <DTOEstrenes> properesEstrenes;
         properesEstrenes = tx.obteResultat();
 
         std::string dataEstrena, text, titol, qualificacioEdat, duracio, duracioOnumTemp;
@@ -545,7 +545,7 @@ void CapaDePresentacio::procesarProperesEstrenes() {
                 for (int j = 0; j < mida - i - 1; ++j) {
                     if (properesEstrenes[j].obteData() > properesEstrenes[j + 1].obteData()) {
                         // Intercambiar posiciones
-                        DTOProperesEstrenes temp = properesEstrenes[j];
+                        DTOEstrenes temp = properesEstrenes[j];
                         properesEstrenes[j] = properesEstrenes[j + 1];
                         properesEstrenes[j + 1] = temp;
                     }
@@ -575,4 +575,9 @@ void CapaDePresentacio::procesarProperesEstrenes() {
 
         std::cerr << "Error: " << e.what() << std::endl;
     }
+}
+
+void CapaDePresentacio::procesarUltimesNovetats() {
+
+
 }
