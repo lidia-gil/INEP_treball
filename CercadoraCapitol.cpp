@@ -67,8 +67,7 @@ std::vector<PassarelaCapitol> CercadoraCapitol::cercaUltimsCapitols(std::string 
     ConnexioBD& con = ConnexioBD::getInstance();
     std::string sql = "SELECT * FROM capitol WHERE data_estrena < '" + dataHora + "' ORDER BY data_estrena DESC";
     sql::ResultSet* res = con.executarConsulta(sql);
-    int i = 0;
-    while (res->next() and i < 5) {
+    while (res->next()) {
         PassarelaCapitol passarela;
         passarela.posaTitolSerie(res->getString("titol_serie"));
         passarela.posaNumTemporada(res->getInt("numero_temporada"));
@@ -77,7 +76,6 @@ std::vector<PassarelaCapitol> CercadoraCapitol::cercaUltimsCapitols(std::string 
         passarela.posaDataEstrena(res->getString("data_estrena"));
 
         passareles.push_back(passarela); // Añadir al vector
-        i++;
     }
 
     // Si no hay registros, lanzar excepción

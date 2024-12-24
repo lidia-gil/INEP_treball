@@ -579,5 +579,103 @@ void CapaDePresentacio::procesarProperesEstrenes() {
 
 void CapaDePresentacio::procesarUltimesNovetats() {
 
+    std::cout << "** NOVETATS **" << std::endl;
+    try {
 
+        //Hora actual
+        auto ara = std::chrono::system_clock::now();
+        std::time_t tempsActual = std::chrono::system_clock::to_time_t(ara);
+        std::tm tempsFinal = *std::localtime(&tempsActual);
+        std::ostringstream stream;
+        stream << std::put_time(&tempsFinal, "%Y-%m-%d %H:%M:%S");
+        std::string dataHoraActual = stream.str();
+
+        std::string modalitatConsultada;
+
+        if (sessioIniciada) {
+
+            modalitatConsultada = ".";
+        }
+        else {
+
+            std::cout << std::endl;
+            std::cout << "Modalitats Disponibles ... " << std::endl;
+            std::cout << " > 1. Completa" << std::endl;
+            std::cout << " > 2. Cinefil" << std::endl;
+            std::cout << " > 3. Infantil" << std::endl;
+            
+            std::string eleccio;
+            std::cout << "Escull la modalitat que vols consultar: ";
+            std::cin >> eleccio;
+            if (eleccio == "1") {
+                
+                modalitatConsultada = "Completa";
+            }
+            else if (eleccio == "2") {
+
+                modalitatConsultada = "Cinefil";
+            }
+            else if (eleccio == "3") {
+
+                modalitatConsultada = "Infantil";
+            }
+            else if (eleccio != ""){    
+
+                throw std::invalid_argument("Error: La modalitat escollida no es valida.");
+            }
+            // usuari no ha inciat sessio li preguntem quina modalitat vol consultar 
+        }
+        TxUltimesNovetats tx (modalitatConsultada, dataHoraActual);
+        tx.executa();
+        std::vector<DTOEstrenes> ultimesNovetats;
+        ultimesNovetats = tx.obteResultat();
+
+        std::string dataEstrena, text, titol, qualificacioEdat, duracio, duracioOnumTemp;
+        int numCap;
+        int mida = ultimesNovetats.size();
+
+        std::cout << std::endl;
+        if ( mida == 0 ) {
+
+            std::cout << "No hi ha cap contingut estrenat." << std::endl;
+        }
+        else {
+            bool primeraSerie = true;
+            bool primeraPelicula = true;
+            int j = 1;
+            for (int i = 0; i < mida; i++) {
+
+                duracioOnumTemp = ultimesNovetats[i].obteDuracioOnumTemp();
+                dataEstrena = ultimesNovetats[i].obteData();
+                titol = ultimesNovetats[i].obteTitol();
+                qualificacioEdat = ultimesNovetats[i].obteQualificacioEdat();
+                numCap = ultimesNovetats[i].obteNumCap();
+                if (numCap == 0) {
+                    if (primeraPelicula){
+                        
+                        primeraPelicula = false;
+                        std::cout << "** Novetats pel.licules **" << std::endl;
+                        std::cout << "**************************" << std::endl;
+                    }
+                    std::cout << i + 1 << ".- " << dataEstrena.substr(0, 10) << ": "<< titol << "; " << qualificacioEdat << "; " << duracioOnumTemp << "h." << std::endl;
+                }
+                else {
+                    if (primeraSerie){
+
+                        primeraSerie = false;
+                        std::cout << std::endl;
+                        std::cout << "** Novetats series **" << std::endl;
+                        std::cout << "*********************" << std::endl;
+                    }
+                    std::cout << j << ".- " << dataEstrena.substr(0, 10) << ": "<< titol << "; " << qualificacioEdat << "; Temporada " << duracioOnumTemp << " Capitol " << numCap << "." << std::endl;
+                    j++;
+                }
+            }
+            std::cout << std::endl;
+        }
+    }
+    catch (const std::exception& e) {
+
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
 }

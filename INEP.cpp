@@ -278,10 +278,10 @@ void menuVisualitzar() {
 
     std::cout << " prox estrenes ...\n \n";
 }*/
-void procesarUltimesNovetats() {
+/*void procesarUltimesNovetats() {
 
     std::cout << "Mostrant les ultimes novetats. \n\n ... \n\n";
-}
+}*/
 void procesarPeliculesMesVistes() {
 
     std::cout << "Mostrant les pelicules més vistes. \n\n ... \n\n";
@@ -307,7 +307,8 @@ void consultes() {
         else if (entrada2 == "2") {
 
             std::cout << "Has escollit l'opcio " + entrada2 + ": Ultimes novetats. \n\n";
-            //presentacio.procesarUltimesNovetats();
+            presentacio.procesarUltimesNovetats();
+            continua = false;
             //procesarUltimesNovetats();
         }
         else if (entrada2 == "3") {
