@@ -27,7 +27,6 @@ void menuPrincipalUsuariSenseIniciSessio() {
 //menu principal Usuari Amb Inici de Sessió
 void menuPrincipalUsuariAmbIniciSessio() {
 
-    std::cout << "\n";
     std::cout << "**************** \n";
     std::cout << "  Menu inicial \n";
     std::cout << "**************** \n";

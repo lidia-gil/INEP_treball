@@ -77,7 +77,7 @@ std::vector<PassarelaContingut> CercadoraContingut::cercaPerPelicula() {
     return passarelesCapitols;
 }*/
 
-std::vector<PassarelaContingut> CercadoraContingut::cercaInfantil(){
+std::vector<PassarelaContingut> CercadoraContingut::cercaPeliInfantil(){
 
     std::vector<PassarelaContingut> passarelesInfantils;
     ConnexioBD& con = ConnexioBD::getInstance();

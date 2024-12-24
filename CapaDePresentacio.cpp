@@ -21,25 +21,26 @@ void CapaDePresentacio::iniciSessio() {
     TxIniciSessio Tx(sobrenomU, contrasenyaU);
     try {
         Tx.executa();
-        std::cout << "Sessio iniciada correctament!" << std::endl;
+        std::cout << "Sessio iniciada correctament!" << std::endl << std::endl;
         sessioIniciada = true;
     }
     catch (const std::exception& e) {
         sessioIniciada = false;
-        std::cout << "Error: Hi ha hagut un error amb el sobrenom o la contrasenya." << std::endl; // NO e.what(), ja que el missatge no ha de dir que ha fallat per seguretat
+        std::cout << "Error: Hi ha hagut un error amb el sobrenom o la contrasenya." << std::endl  << std::endl; // NO e.what(), ja que el missatge no ha de dir que ha fallat per seguretat
     }
 }
 
 void CapaDePresentacio::tancarSessio() {
     std::string resposta;
     std::cout << "** Tancar Sessio **" << std::endl;
-    std::cout << "Vols tancar la sessio (S/N): " << std::endl;
+    std::cout << "Vols tancar la sessio (S/N): ";
     std::cin >> resposta; 
+
     if (resposta == "S"){
         TxTancaSessio tx;
         tx.executa();
         sessioIniciada = false;
-        std::cout << "Sessio tancada correctament!" << std::endl;
+        std::cout << "Sessio tancada correctament!" << std::endl << std::endl;
     }
 }
 
@@ -87,10 +88,10 @@ void CapaDePresentacio::procesarRegistreUsuari() {
         try {
             TxRegistreUsuari tx(nomU, sobrenomU, contrasenyaU, correuU, dataNaixementU, modalitatU);
             tx.executa();
-            std::cout << "Usuari registrat correctament!, per accedir al teu compte inicia sessio." << std::endl;
+            std::cout << "Usuari registrat correctament!, per accedir al teu compte inicia sessio." << std::endl << std::endl;
         }
         catch (const std::exception& e) {
-            std::cout << "Error: "  << e.what() << std::endl;
+            std::cout << "Error: "  << e.what() << std::endl << std::endl;
         }
     }
 }
@@ -473,7 +474,7 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
 
 void CapaDePresentacio::procesarProperesEstrenes() {
 
-    std::cout << "** Properes estrenes **" << std::endl <<std::endl;
+    std::cout << "** Properes estrenes **" << std::endl;
     try {
         ////// data i hora actual
         auto ara = std::chrono::system_clock::now();
@@ -495,7 +496,8 @@ void CapaDePresentacio::procesarProperesEstrenes() {
 
         }
         else {
-            
+
+            std::cout << std::endl;
             std::cout << "Modalitats Disponibles ... " << std::endl;
             std::cout << " > 1. Completa" << std::endl;
             std::cout << " > 2. Cinefil" << std::endl;

@@ -10,6 +10,6 @@ class CercadoraContingut
 
         std::vector<PassarelaContingut> cercaPerPelicula();
         //std::vector<PassarelaContingut> cercaPerCapitol();
-        std::vector<PassarelaContingut> cercaInfantil();
+        std::vector<PassarelaContingut> cercaPeliInfantil();
 };
 

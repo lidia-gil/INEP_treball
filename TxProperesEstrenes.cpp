@@ -67,10 +67,8 @@ void TxProperesEstrenes::executa() {
 				DTOProperesEstrenes dtoCap(dataEstrena, titol, qualificacioEdat, std::to_string(numTemp), numCap); 
 				resultat.push_back(dtoCap);
 			}
-
 		}
 	}
-	
 }
 
 std::vector<DTOProperesEstrenes> TxProperesEstrenes::obteResultat() {
