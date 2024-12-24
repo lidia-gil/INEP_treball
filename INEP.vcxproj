@@ -147,7 +147,7 @@
     <ClCompile Include="DTOContingutMesVisualitzacioCap.cpp" />
     <ClCompile Include="DTOContingutMesVisualitzacioPel.cpp" />
     <ClCompile Include="DTOContingutPelicula.cpp" />
-    <ClCompile Include="DTOPelicula.cpp" />
+    <ClCompile Include="DTOProperesEstrenes.cpp" />
     <ClCompile Include="DTOUsuari.cpp" />
     <ClCompile Include="INEP.cpp" />
     <ClCompile Include="PassarelaCapitol.cpp" />
@@ -186,7 +186,7 @@
     <ClInclude Include="DTOContingutMesVisualitzacioCap.h" />
     <ClInclude Include="DTOContingutMesVisualitzacioPel.h" />
     <ClInclude Include="DTOContingutPelicula.h" />
-    <ClInclude Include="DTOPelicula.h" />
+    <ClInclude Include="DTOProperesEstrenes.h" />
     <ClInclude Include="DTOUsuari.h" />
     <ClInclude Include="PassarelaCapitol.h" />
     <ClInclude Include="PassarelaContingut.h" />

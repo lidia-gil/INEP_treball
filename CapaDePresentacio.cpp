@@ -449,8 +449,8 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
         std::cout << "Vols continuar amb la visualitzacio (S/N):";
         std::string llegueix;
         std::cin >> llegueix;
-        if (llegueix == "S"){
-                
+        if (llegueix == "S") {
+
             ////// data i hora actual
             auto ara = std::chrono::system_clock::now();
             std::time_t tempsActual = std::chrono::system_clock::to_time_t(ara);
@@ -461,10 +461,8 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
 
 
             CtrlCap.registrarVisualitzacio(titolS, temporadaEscollida, capitol, dataHora);
-            std::cout << "Visualitzacio registrada: " << dataHora<< std::endl ;
+            std::cout << "Visualitzacio registrada: " << dataHora << std::endl;
         }
-
-        //retornar un dto !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         
     }
     catch (const std::exception& e) {
@@ -485,34 +483,76 @@ void CapaDePresentacio::procesarProperesEstrenes() {
         stream << std::put_time(&tempsFinal, "%Y-%m-%d %H:%M:%S");
         std::string dataHoraActual = stream.str();
 
-        if (sessioIniciada) {   // aixo que ho faci el tx
-                                // aprofitar el DTO
+        std::string modalitatConsultada;
 
-            // usuari ha registrat sessio la modalitat sub és la de l'usuari
-            //-cinefil -> només pelis
-            //-completa -> tot
-            //-infantil -> tot però limitat per rang d'edat
+        if (sessioIniciada) {   // aixo que ho faci el tx
+            // aprofitar el DTO
+            modalitatConsultada = ".";
+                // usuari ha registrat sessio la modalitat sub és la de l'usuari
+                //-cinefil -> només pelis
+                //-completa -> tot
+                //-infantil -> tot però limitat per rang d'edat
+
+        }
+        else {
             
+            std::cout << "Modalitats Disponibles ... " << std::endl;
+            std::cout << " > 1. Completa" << std::endl;
+            std::cout << " > 2. Cinefil" << std::endl;
+            std::cout << " > 3. Infantil" << std::endl;
+            
+            std::string eleccio;
+            std::cout << "Escull la modalitat que vols consultar: ";
+            std::cin >> eleccio;
+            if (eleccio == "1") {
+                
+                modalitatConsultada = "Completa";
+            }
+            else if (eleccio == "2") {
+
+                modalitatConsultada = "Cinefil";
+            }
+            else if (eleccio == "3") {
+
+                modalitatConsultada = "Infantil";
+            }
+            else if (eleccio != ""){    
+
+                throw std::invalid_argument("Error: La modalitat escollida no es valida.");
+            }
+            // usuari no ha inciat sessio li preguntem quina modalitat vol consultar 
+        }
+        TxProperesEstrenes tx(modalitatConsultada,dataHoraActual);
+        tx.executa();
+        std::vector <DTOProperesEstrenes> properesEstrenes;
+        properesEstrenes = tx.obteResultat();
+
+        std::string dataEstrena, text, titol, qualificacioEdat, duracio, duracioOnumTemp;
+        int numCap;
+        int mida = properesEstrenes.size();
+
+        if ( mida == 0 ) {
+
+            std::cout << "No hi ha properes estrenes." << std::endl;
         }
         else {
 
-            // usuari no ha inciat sessio li preguntem quina modalitat vol consultar 
-        }
-        TxProperesEstrenes tx("Cinefil",dataHoraActual);
-        tx.executa();
-        std::vector <DTOPelicula> properesEstrenes;
-        properesEstrenes = tx.obteResultat();
+            for (int i = 0; i < mida; i++) {
 
-        std::string dataEstrena, text, titolP, qualificacioEdat, duracio;
-        int mida = properesEstrenes.size();
+                duracioOnumTemp = properesEstrenes[i].obteDuracioOnumTemp();
+                dataEstrena = properesEstrenes[i].obteData();
+                titol = properesEstrenes[i].obteTitol();
+                qualificacioEdat = properesEstrenes[i].obteQualificacioEdat();
+                numCap = properesEstrenes[i].obteNumCap();
+                if (numCap == 0) {
 
-        for (int i = 0; i < mida; i++) {
+                    std::cout << i + 1 << ".- " << dataEstrena.substr(0, 10) << " [Pel.licula]: " << titol << "; " << qualificacioEdat << "; " << duracioOnumTemp << "h." << std::endl;
+                }
+                else {
 
-            dataEstrena = properesEstrenes[i].obteData();
-            titolP = properesEstrenes[i].obteTitol();
-            qualificacioEdat = properesEstrenes[i].obteQualificacioEdat();
-            duracio = properesEstrenes[i].obteDuracio();
-            std::cout << i+1 << ".- " << dataEstrena << " [Pel.licula]: " << titolP <<"; " << qualificacioEdat << "; " << duracio << "h."<< std::endl;
+                    std::cout << i + 1 << ".- " << dataEstrena.substr(0, 10) << " [Serie]: " << titol << "; " << qualificacioEdat << "; Temporada " << duracioOnumTemp << " Capitol " << numCap << "." << std::endl;
+                }
+            }
         }
     }
     catch (const std::exception& e) {

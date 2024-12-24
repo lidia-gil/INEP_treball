@@ -23,7 +23,7 @@ PassarelaContingut CercadoraContingut::cercaPerTitol(std::string titolC) {
     return contingut;
 }
 
-std::vector<PassarelaContingut> CercadoraContingut::cercaPerTipus() {
+std::vector<PassarelaContingut> CercadoraContingut::cercaPerPelicula() {
 
     std::vector<PassarelaContingut> passarelesPelis;
     ConnexioBD& con = ConnexioBD::getInstance();
@@ -31,9 +31,6 @@ std::vector<PassarelaContingut> CercadoraContingut::cercaPerTipus() {
     std::string sql = "SELECT * FROM contingut WHERE tipus = '" + tipus + "'";
     sql::ResultSet* res = con.executarConsulta(sql);
     // Verificar si hay resultados
-    if (!res) {
-        throw std::runtime_error("Consulta SQL no vàlida o no es pot obtenir ResultSet.");
-    }
 
     while (res->next()) {
         PassarelaContingut passarela;
@@ -45,10 +42,65 @@ std::vector<PassarelaContingut> CercadoraContingut::cercaPerTipus() {
         passarelesPelis.push_back(passarela); // Afegir al vector
     }
     // Si no hay registros, lanzar excepción
-    if (passarelesPelis.empty()) {
+    /*if (passarelesPelis.empty()) {
 
         throw std::runtime_error("No hi ha pel.licules.");
-    }
+    }*/
     delete res; // Liberar memoria
     return passarelesPelis;
+}
+
+/*std::vector<PassarelaContingut> CercadoraContingut::cercaPerCapitol() {
+
+    std::vector<PassarelaContingut> passarelesCapitols;
+    ConnexioBD& con = ConnexioBD::getInstance();
+    std::string tipus = "capitol";
+    std::string sql = "SELECT * FROM contingut WHERE tipus = '" + tipus + "'";
+    sql::ResultSet* res = con.executarConsulta(sql);
+    // Verificar si hay resultados
+
+    while (res->next()) {
+        PassarelaContingut passarela;
+        passarela.posaTitol(res->getString("titol"));
+        passarela.posaDescripcio(res->getString("descripcio"));
+        passarela.posaQualificacioEdat(res->getString("qualificacio"));
+        passarela.posaTipus(res->getString("tipus"));
+
+        passarelesCapitols.push_back(passarela); // Afegir al vector
+    }
+    // Si no hay registros, lanzar excepción
+    if (passarelesCapitols.empty()) {
+
+        throw std::runtime_error("No hi ha capitols.");
+    }
+    delete res; // Liberar memoria
+    return passarelesCapitols;
+}*/
+
+std::vector<PassarelaContingut> CercadoraContingut::cercaInfantil(){
+
+    std::vector<PassarelaContingut> passarelesInfantils;
+    ConnexioBD& con = ConnexioBD::getInstance();
+    std::string edat = "TP";
+    std::string tipus = "pelicula";
+
+    std::string sql = "SELECT * FROM contingut WHERE qualificacio = '" + edat + "' AND tipus = '" + tipus + "'";
+    sql::ResultSet* res = con.executarConsulta(sql);
+
+    while (res->next()) {
+        PassarelaContingut passarela;
+        passarela.posaTitol(res->getString("titol"));
+        passarela.posaDescripcio(res->getString("descripcio"));
+        passarela.posaQualificacioEdat(res->getString("qualificacio"));
+        passarela.posaTipus(res->getString("tipus"));
+
+        passarelesInfantils.push_back(passarela); // Afegir al vector
+    }
+    // Si no hay registros, lanzar excepción
+    /*if (passarelesInfantils.empty()) {
+
+        throw std::runtime_error("No s'ha trobat cap contingut infantil.");
+    }*/
+    delete res; // Liberar memoria
+    return passarelesInfantils;
 }

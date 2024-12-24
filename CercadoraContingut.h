@@ -8,6 +8,8 @@ class CercadoraContingut
         //Metode per obtenir la única instància
 	    PassarelaContingut cercaPerTitol(std::string titolC);
 
-        std::vector<PassarelaContingut> cercaPerTipus();
+        std::vector<PassarelaContingut> cercaPerPelicula();
+        //std::vector<PassarelaContingut> cercaPerCapitol();
+        std::vector<PassarelaContingut> cercaInfantil();
 };
 
