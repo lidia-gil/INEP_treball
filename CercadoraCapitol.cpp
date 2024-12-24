@@ -59,3 +59,4 @@ std::vector<PassarelaCapitol> CercadoraCapitol::cercaProximsCapitols(std::string
 
 	return passareles;
 }
+
