@@ -298,11 +298,12 @@ void consultes() {
 
     while (continua and std::cin >> entrada2) {
 
-        std::cout << "\n";
+        //std::cout << "\n";
         if (entrada2 == "1") {
 
             //std::cout << "Has escollit l'opcio " + entrada2 + ": Properes estrenes. \n\n";
             presentacio.procesarProperesEstrenes();
+            continua = false;
         }
         else if (entrada2 == "2") {
 
@@ -356,7 +357,7 @@ void menuSessioIniciada() {
         }
         else if (entrada == "3") {
 
-            std::cout << "\nHas escollit l'opcio " + entrada + ": Consultes. \n\n";
+            //std::cout << "\nHas escollit l'opcio " + entrada + ": Consultes. \n\n";
             consultes();
         }
         else if (entrada == "4") {

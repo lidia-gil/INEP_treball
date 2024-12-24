@@ -531,11 +531,24 @@ void CapaDePresentacio::procesarProperesEstrenes() {
         int numCap;
         int mida = properesEstrenes.size();
 
+        std::cout << std::endl;
         if ( mida == 0 ) {
 
             std::cout << "No hi ha properes estrenes." << std::endl;
         }
         else {
+
+            // Ordenar manualmente el vector por dataEstrena (Bubble Sort)
+            for (int i = 0; i < mida - 1; ++i) {
+                for (int j = 0; j < mida - i - 1; ++j) {
+                    if (properesEstrenes[j].obteData() > properesEstrenes[j + 1].obteData()) {
+                        // Intercambiar posiciones
+                        DTOProperesEstrenes temp = properesEstrenes[j];
+                        properesEstrenes[j] = properesEstrenes[j + 1];
+                        properesEstrenes[j + 1] = temp;
+                    }
+                }
+            }
 
             for (int i = 0; i < mida; i++) {
 
@@ -553,6 +566,7 @@ void CapaDePresentacio::procesarProperesEstrenes() {
                     std::cout << i + 1 << ".- " << dataEstrena.substr(0, 10) << " [Serie]: " << titol << "; " << qualificacioEdat << "; Temporada " << duracioOnumTemp << " Capitol " << numCap << "." << std::endl;
                 }
             }
+            std::cout << std::endl;
         }
     }
     catch (const std::exception& e) {
