@@ -679,3 +679,86 @@ void CapaDePresentacio::procesarUltimesNovetats() {
         std::cerr << "Error: " << e.what() << std::endl;
     }
 }
+
+void CapaDePresentacio::procesarPeliculesMesVistes(){
+
+    std::cout << "** Pel.licules mes visualitzades **" << std::endl;
+    std::cout << std::endl;
+    try {
+        std::string modalitatConsultada;
+
+        if (sessioIniciada) {
+
+            modalitatConsultada = ".";
+        }
+        else {
+
+            std::cout << std::endl;
+            std::cout << "Modalitats Disponibles ... " << std::endl;
+            std::cout << " > 1. Completa" << std::endl;
+            std::cout << " > 2. Cinefil" << std::endl;
+            std::cout << " > 3. Infantil" << std::endl;
+            
+            std::string eleccio;
+            std::cout << "Escull la modalitat que vols consultar: ";
+            std::cin >> eleccio;
+            if (eleccio == "1") {
+                
+                modalitatConsultada = "Completa";
+            }
+            else if (eleccio == "2") {
+
+                modalitatConsultada = "Cinefil";
+            }
+            else if (eleccio == "3") {
+
+                modalitatConsultada = "Infantil";
+            }
+            else if (eleccio != ""){    
+
+                throw std::invalid_argument("Error: La modalitat escollida no es valida.");
+            }
+            // usuari no ha inciat sessio li preguntem quina modalitat vol consultar 
+        }
+
+        TxPeliculesMesVistes tx(modalitatConsultada);
+        tx.executa();
+        std::vector<DTOPeliculesMesVistes> mesVistes;
+        mesVistes = tx.obteResultat();
+
+        int mida = mesVistes.size();
+
+        std::cout << std::endl;
+        if ( mida == 0 ) {
+
+            std::cout << "No hi ha cap pelicula disponible." << std::endl;
+        }
+        else{
+
+            std::string dataEstrena, qualificacioEdat, duracio, titol;
+            int numVisu;
+            bool vista;
+
+            for (int i = 0; i < mida; i++) {
+
+                dataEstrena = mesVistes[i].obteData();
+                qualificacioEdat = mesVistes[i].obteQualificacioEdat();
+                titol = mesVistes[i].obteTitol();
+                duracio = mesVistes[i].obteDuracioOnumTemp();
+                numVisu = mesVistes[i].obteNumVisu();
+                vista = mesVistes[i].obteVista();
+
+                if (sessioIniciada and vista){
+                    std::cout << i+1 << ".- " << titol << "; " << qualificacioEdat << "; " << duracio << "; Visualitzacions: " << numVisu << " [Vista: " << dataEstrena << "]"<< std::endl;
+                }
+                else {
+                    std::cout << i+1 << ".- " << titol << "; " << qualificacioEdat << "; " << duracio << "; Visualitzacions: " << numVisu << std::endl;
+                }
+            }
+        }
+    }
+    catch (const std::exception& e) {
+
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+}

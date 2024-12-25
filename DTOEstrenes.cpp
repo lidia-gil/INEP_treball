@@ -4,13 +4,13 @@ DTOEstrenes::DTOEstrenes(){
 
 }
 
-DTOEstrenes::DTOEstrenes(std::string dataEstrenaC, std::string titolC, std::string qualificacioEdatC, std::string duracioOnumTempC, int numCapOnumVisuC){
+DTOEstrenes::DTOEstrenes(std::string dataEstrenaC, std::string titolC, std::string qualificacioEdatC, std::string duracioOnumTempC, int numCapC){
 
     dataEstrena = dataEstrenaC;
     titol = titolC;
     qualificacioEdat = qualificacioEdatC;
     duracioOnumTemp = duracioOnumTempC;
-    numCapOnumVisu = numCapOnumVisuC;
+    numCap = numCapC;
 }
 
 std::string DTOEstrenes::obteData(){
@@ -30,7 +30,7 @@ std::string DTOEstrenes::obteDuracioOnumTemp(){
     return duracioOnumTemp;
 }
 
-int DTOEstrenes::obteNumCapOnumVisu() {
+int DTOEstrenes::obteNumCap() {
 
-    return numCapOnumVisu;
+    return numCap;
 }

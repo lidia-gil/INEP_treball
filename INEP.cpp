@@ -313,8 +313,9 @@ void consultes() {
         }
         else if (entrada2 == "3") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ": Pel.licules mes vistes. \n\n";
-            procesarPeliculesMesVistes();
+            //std::cout << "Has escollit l'opcio " + entrada2 + ": Pel.licules mes vistes. \n\n";
+            presentacio.procesarPeliculesMesVistes();
+            continua = false;
         }
         else if (entrada2 == "4") {
 

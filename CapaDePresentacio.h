@@ -12,6 +12,7 @@
 #include "CtrlVisualitzarCapitol.h"
 #include "TxProperesEstrenes.h"
 #include "TxUltimesNovetats.h"
+#include "TxPeliculesMesVistes.h"
 
 #include <chrono>
 #include <ctime>
@@ -41,5 +42,6 @@ class CapaDePresentacio {
         void procesarVisualitzarCapitol();
         void procesarProperesEstrenes();
         void procesarUltimesNovetats();
+        void procesarPeliculesMesVistes();
 };
 

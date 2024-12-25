@@ -44,6 +44,7 @@ std::vector<PassarelaVisualitzaPel> CercadoraPelicula::cercaTopPelicules() {
 
     // Si no troba cap fila, retorna un vector buit
     if (!res) {
+
         throw std::runtime_error("No s'han trobat pel·lícules més vistes.");
     }
 
@@ -78,9 +79,10 @@ std::vector<PassarelaVisualitzaPel> CercadoraPelicula::cercaTopPeliculesInfantil
     sql::ResultSet* res = con.executarConsulta(sql);
 
     // Si no troba cap fila, retorna un vector buit
-    if (!res) {
-        throw std::runtime_error("No s'han trobat pel·lícules més vistes amb qualificació TP.");
-    }
+    /*if (!res) {
+
+        throw std::runtime_error("No hi ha pel.licules amb qualificació TP.");
+    }*/
 
     // Iterem sobre el resultat i omplim el vector
     while (res->next()) {
