@@ -86,3 +86,4 @@ std::vector<DTOPeliculesMesVistes> TxPeliculesMesVistes::obteResultat() {
 
     return resultat;
 }
+///////
