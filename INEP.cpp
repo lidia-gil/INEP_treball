@@ -306,7 +306,7 @@ void consultes() {
         }
         else if (entrada2 == "2") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ": Ultimes novetats. \n\n";
+            //std::cout << "Has escollit l'opcio " + entrada2 + ": Ultimes novetats. \n\n";
             presentacio.procesarUltimesNovetats();
             continua = false;
             //procesarUltimesNovetats();

@@ -304,6 +304,7 @@ void CapaDePresentacio::procesarConsultaVisualitzacions() {
                 std::cout << " - " << dataVisualitzacioC << ": " << titolS << "; " << qualificacioEdatC << "; temporada " << numTemporada << ", capitol " << numCapitol  << "; nombre de visualitzacions: " << numVisualitzacionsC << std::endl;
             }
         }
+        std::cout << std::endl;
     }
     catch (const std::exception& e) {
 
@@ -385,6 +386,7 @@ void CapaDePresentacio::procesarVisualitzarPel() {
                     std::cout << " - " << titolP << "; " << descripcio << "; " << qualificacioEdat << "; " << duracio << " min; " << dataEstrena.substr(0, 10) << std::endl;
                 }
             }
+            std::cout << std::endl;
         }
     }
     catch (const std::exception& e) {
@@ -447,7 +449,7 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
         std::cout << "Numero de capitol a visualitzar: ";
         int capitol;
         std::cin >> capitol;
-        std::cout << "Vols continuar amb la visualitzacio (S/N):";
+        std::cout << "Vols continuar amb la visualitzacio (S/N): ";
         std::string llegueix;
         std::cin >> llegueix;
         if (llegueix == "S") {
@@ -463,7 +465,9 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
 
             CtrlCap.registrarVisualitzacio(titolS, temporadaEscollida, capitol, dataHora);
             std::cout << "Visualitzacio registrada: " << dataHora << std::endl;
+            
         }
+        std::cout << std::endl;
         
     }
     catch (const std::exception& e) {
@@ -681,8 +685,9 @@ void CapaDePresentacio::procesarUltimesNovetats() {
 }
 
 void CapaDePresentacio::procesarPeliculesMesVistes(){
-
+    std::cout << std::endl;
     std::cout << "** Pel.licules mes visualitzades **" << std::endl;
+    std::cout << std::endl;
     try {
         std::string modalitatConsultada;
 
@@ -730,6 +735,7 @@ void CapaDePresentacio::procesarPeliculesMesVistes(){
         if ( mida == 0 ) {
 
             std::cout << "No hi ha cap pelicula disponible." << std::endl;
+            std::cout << std::endl;
         }
         else{
 
@@ -753,6 +759,7 @@ void CapaDePresentacio::procesarPeliculesMesVistes(){
                     std::cout << i+1 << ".- " << titol << "; " << qualificacioEdat << "; " << duracio << "; Visualitzacions: " << numVisu << std::endl;
                 }
             }
+            std::cout << std::endl;
         }
     }
     catch (const std::exception& e) {
