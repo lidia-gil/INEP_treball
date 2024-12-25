@@ -21,63 +21,63 @@ void TxPeliculesMesVistes::executa() {
 		modalitatSub = usuari.obteModalitatSubs();
 	}
     
-
+    std::vector<PassarelaVisualitzaPel> passarelesVisualitzaPel;
+    CercadoraPelicula cercaPeli;
 
     if (modalitatSub == "Cinefil" or modalitatSub == "Completa") {
-        std::vector<PassarelaVisualitzaPel> passarelesVisualitzaPel;
-        CercadoraPelicula cercaPeli;
-        passarelesVisualitzaPel = cercaPeli.cercaTopPelicules();
-		
-        int midaVecPelicules = passarelesVisualitzaPel.size();
-		std::string titol, duracio, qualificacioEdat, data;
-        int numVisu;
 
-        CercadoraContingut cercaCon;
-        PassarelaPelicula pel;
-        PassarelaContingut cont;
+        passarelesVisualitzaPel = cercaPeli.cercaTopPelicules();
+    }
+    else {
+
+        passarelesVisualitzaPel = cercaPeli.cercaTopPeliculesInfantils();
+    }
+ 
+    int midaVecPelicules = passarelesVisualitzaPel.size();
+	std::string titol, duracio, qualificacioEdat, data;
+    int numVisu;
+
+    CercadoraContingut cercaCon;
+    PassarelaPelicula pel;
+    PassarelaContingut cont;
 
       
-        for (int i = 0; i < midaVecPelicules; i++) {
+    for (int i = 0; i < midaVecPelicules; i++) {
 
-            titol = passarelesVisualitzaPel[i].obteTitolPelicula();
+        titol = passarelesVisualitzaPel[i].obteTitolPelicula();
 
-            pel = cercaPeli.cercaPerTitol(titol);
-            duracio = pel.obteDuracio();
+        pel = cercaPeli.cercaPerTitol(titol);
+        duracio = pel.obteDuracio();
 
-            cont = cercaCon.cercaPerTitol(titol);
-            qualificacioEdat = cont.obteQualificacioEdat();
+        cont = cercaCon.cercaPerTitol(titol);
+        qualificacioEdat = cont.obteQualificacioEdat();
 
-            numVisu = passarelesVisualitzaPel[i].obteNumVisualitzacions();
+        numVisu = passarelesVisualitzaPel[i].obteNumVisualitzacions();
 
-            data = passarelesVisualitzaPel[i].obteData();
+        data = passarelesVisualitzaPel[i].obteData();
 
-            bool vista = false;
-            if ( sessioIniciada){
+        bool vista = false;
+        if ( sessioIniciada){
 
-                std::vector <PassarelaVisualitzaPel> pelVistes;
-                CercadoraVisualitzaPel cercaPelVistaPerUsuari;
-                pelVistes = cercaPelVistaPerUsuari.cercaVisualitzacions(sobrenom);
+            std::vector <PassarelaVisualitzaPel> pelVistes;
+            CercadoraVisualitzaPel cercaPelVistaPerUsuari;
+            pelVistes = cercaPelVistaPerUsuari.cercaVisualitzacions(sobrenom);
                 
-                int j=0;
-                int midaPelVistes = pelVistes.size();
-                while (not vista and j < midaPelVistes) {
+            int j=0;
+            int midaPelVistes = pelVistes.size();
+            while (not vista and j < midaPelVistes) {
 
-                    std::string titolP = pelVistes[j].obteTitolPelicula();
-                    if (titol == titolP) {
+                std::string titolP = pelVistes[j].obteTitolPelicula();
+                if (titol == titolP) {
 
-                        vista = true;
-                        data = pelVistes[j].obteData();
-                    }
-                    ++j;
+                    vista = true;
+                    data = pelVistes[j].obteData();
                 }
+                ++j;
             }
-            DTOPeliculesMesVistes dto(data, titol, qualificacioEdat, duracio, numVisu, vista);
-            resultat.push_back(dto);
         }
-    }
-    else{
-
-
+        DTOPeliculesMesVistes dto(data, titol, qualificacioEdat, duracio, numVisu, vista);
+        resultat.push_back(dto);
     }
 
 }
@@ -86,4 +86,3 @@ std::vector<DTOPeliculesMesVistes> TxPeliculesMesVistes::obteResultat() {
 
     return resultat;
 }
-///////

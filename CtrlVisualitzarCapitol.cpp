@@ -96,32 +96,34 @@ void CtrlVisualitzarCapitol::registrarVisualitzacio(std::string titolS, int numT
     cont = cercaCont.cercaPerTitol(titolS);
 
     std::string qualificacioEdat = cont.obteQualificacioEdat();
-    std::string edat;
-    int i = 0;
-    while (qualificacioEdat[i] != '+') {
+    if (qualificacioEdat != "TP"){
+        std::string edat;
+        int i = 0;
+        while (qualificacioEdat[i] != '+') {
 
-        edat += qualificacioEdat[i];
-        i++;
-    }
-
-    std::string dataNaixement = usuari.obteDataNaixement();
-
-    //Calculem l'edat de l'usuari a partir de la data de neixament i la data actual:
-    int edatUsuari = 0;
-    if (dataNaixement.substr(0, 4) <= dataHora.substr(0, 4)) { // Comparar anys
-        edatUsuari = std::stoi(dataHora.substr(0, 4)) - std::stoi(dataNaixement.substr(0, 4));
-
-        // Verificar si ja ha complert anys aquest any
-        if (dataNaixement.substr(5, 2) > dataHora.substr(5, 2) ||  // Si el mes no ha arribat
-            (dataNaixement.substr(5, 2) == dataHora.substr(5, 2) && dataNaixement.substr(8, 2) > dataHora.substr(8, 2))) { // Si el dia no ha arribat
-            edatUsuari--;
+            edat += qualificacioEdat[i];
+            i++;
         }
-    }
 
-    if (std::stoi(edat) > edatUsuari) {
+        std::string dataNaixement = usuari.obteDataNaixement();
 
-        throw std::runtime_error("L'usuari loguejat no pot veure la pelicula. Edat de l'usuari: '" + std::to_string(edatUsuari) + "' Edat necessaria: '" + edat + "'");
+        //Calculem l'edat de l'usuari a partir de la data de neixament i la data actual:
+        int edatUsuari = 0;
+        if (dataNaixement.substr(0, 4) <= dataHora.substr(0, 4)) { // Comparar anys
+            edatUsuari = std::stoi(dataHora.substr(0, 4)) - std::stoi(dataNaixement.substr(0, 4));
 
+            // Verificar si ja ha complert anys aquest any
+            if (dataNaixement.substr(5, 2) > dataHora.substr(5, 2) ||  // Si el mes no ha arribat
+                (dataNaixement.substr(5, 2) == dataHora.substr(5, 2) && dataNaixement.substr(8, 2) > dataHora.substr(8, 2))) { // Si el dia no ha arribat
+                edatUsuari--;
+            }
+        }
+
+        if (std::stoi(edat) > edatUsuari) {
+
+            throw std::runtime_error("L'usuari loguejat no pot veure la pelicula. Edat de l'usuari: '" + std::to_string(edatUsuari) + "' Edat necessaria: '" + edat + "'");
+
+        }
     }
     //-----------------------------------------------------
 
@@ -132,7 +134,7 @@ void CtrlVisualitzarCapitol::registrarVisualitzacio(std::string titolS, int numT
     std::string titolC;
     int numTemporada, numCapitol;
 
-    i = 0;
+    int i = 0;
     while ((not trobat) and (i < visualitzaCap.size())) {
         bool continua = true;
         titolC = visualitzaCap[i].obteTitolSerie();

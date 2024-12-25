@@ -68,13 +68,13 @@ std::vector<PassarelaVisualitzaPel> CercadoraPelicula::cercaTopPeliculesInfantil
     ConnexioBD& con = ConnexioBD::getInstance();
 
     // Consulta SQL per obtenir les 5 pel·lícules més visualitzades amb qualificació "TP"
-    std::string sql = "SELECT sobrenom_usuari, titol_pelicula, data, SUM(num_visualitzacions) AS num_visualitzacions "
-        "FROM visualitzacio_pelicula "
-        "JOIN pelicula ON visualitzacio_pelicula.titol_pelicula = pelicula.titol "
-        "WHERE pelicula.qualificacio_edat = 'TP' "
-        "GROUP BY titol_pelicula "
-        "ORDER BY num_visualitzacions DESC, data DESC "
-        "LIMIT 5";
+    std::string sql = "SELECT vp.sobrenom_usuari, vp.titol_pelicula, vp.data, SUM(vp.num_visualitzacions) AS num_visualitzacions "
+                      "FROM visualitzacio_pelicula vp "
+                      "JOIN contingut c ON vp.titol_pelicula = c.titol "
+                      "WHERE c.qualificacio = 'TP' "
+                      "GROUP BY vp.titol_pelicula "
+                      "ORDER BY num_visualitzacions DESC, vp.data DESC "
+                      "LIMIT 5";
 
     sql::ResultSet* res = con.executarConsulta(sql);
 

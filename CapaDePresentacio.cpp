@@ -683,7 +683,6 @@ void CapaDePresentacio::procesarUltimesNovetats() {
 void CapaDePresentacio::procesarPeliculesMesVistes(){
 
     std::cout << "** Pel.licules mes visualitzades **" << std::endl;
-    std::cout << std::endl;
     try {
         std::string modalitatConsultada;
 
@@ -692,7 +691,6 @@ void CapaDePresentacio::procesarPeliculesMesVistes(){
             modalitatConsultada = ".";
         }
         else {
-
             std::cout << std::endl;
             std::cout << "Modalitats Disponibles ... " << std::endl;
             std::cout << " > 1. Completa" << std::endl;
@@ -728,7 +726,7 @@ void CapaDePresentacio::procesarPeliculesMesVistes(){
 
         int mida = mesVistes.size();
 
-        std::cout << std::endl;
+        //std::cout << std::endl;
         if ( mida == 0 ) {
 
             std::cout << "No hi ha cap pelicula disponible." << std::endl;
