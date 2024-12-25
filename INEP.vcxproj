@@ -164,6 +164,7 @@
     <ClCompile Include="TxEsborraUsuari.cpp" />
     <ClCompile Include="TxInfoVisualitzacions.cpp" />
     <ClCompile Include="TxIniciSessio.cpp" />
+    <ClCompile Include="TxPeliculesMesVistes.cpp" />
     <ClCompile Include="TxProperesEstrenes.cpp" />
     <ClCompile Include="TxRegistreUsuari.cpp" />
     <ClCompile Include="TxTancaSessio.cpp" />
@@ -203,6 +204,7 @@
     <ClInclude Include="TxEsborraUsuari.h" />
     <ClInclude Include="TxInfoVisualitzacions.h" />
     <ClInclude Include="TxIniciSessio.h" />
+    <ClInclude Include="TxPeliculesMesVistes.h" />
     <ClInclude Include="TxProperesEstrenes.h" />
     <ClInclude Include="TxRegistreUsuari.h" />
     <ClInclude Include="TxTancaSessio.h" />
