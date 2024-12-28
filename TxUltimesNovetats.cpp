@@ -19,45 +19,44 @@ void TxUltimesNovetats::executa(){
 	}
 	if (modalitatSub == "Cinefil" or modalitatSub == "Completa") {
 
-		std::vector<PassarelaContingut> passarelesPelicules;
-		CercadoraContingut passarelaContingut;
-		passarelesPelicules = passarelaContingut.cercaPerPelicula();
-		CercadoraPelicula passarelaPelicula;
+		std::vector<PassarelaPelicula> passarelesPelicules;
+		CercadoraPelicula cercadoraPelicula;
+		passarelesPelicules = cercadoraPelicula.cercaUltimesPelicules(dataHora);
 
 		int midaVecPelicules = passarelesPelicules.size();
 		std::string titol, dataEstrena, qualificacioEdat, duracio;
+
+		CercadoraContingut cercaCont;
 
 		for (int i = 0; i < midaVecPelicules; i++) {
 
 			titol = passarelesPelicules[i].obteTitol();
 
-			PassarelaPelicula pelicula;
-			pelicula = passarelaPelicula.cercaPerTitol(titol);
-			dataEstrena = pelicula.obteDataEstrena();
+			PassarelaContingut cont;
+			cont = cercaCont.cercaPerTitol(titol);
+			qualificacioEdat = cont.obteQualificacioEdat();
 
-			if (dataEstrena < dataHora) { // s'ha estrenat
-
-				qualificacioEdat = passarelesPelicules[i].obteQualificacioEdat();
-				duracio = pelicula.obteDuracio();
-				DTOEstrenes dtoPel(dataEstrena, titol, qualificacioEdat, duracio, 0); //0 pq és una pel.licula i no té numero de capitol
-				resultat.push_back(dtoPel);
-			}
+			duracio = passarelesPelicules[i].obteDuracio();
+			dataEstrena = passarelesPelicules[i].obteDataEstrena();
+			DTOEstrenes dtoPel(dataEstrena, titol, qualificacioEdat, duracio, 0); //0 pq és una pel.licula i no té numero de capitol
+			resultat.push_back(dtoPel);
+			
 		}
 
 		//ordenem les pelis
 		// Bubble Sort per ordenar `resultat` en ordre descendent segons `dataEstrena`
-		for (size_t i = 0; i < resultat.size(); i++) {
-			for (size_t j = 0; j < resultat.size() - i - 1; j++) {
-				if (resultat[j].obteData() < resultat[j + 1].obteData()) {
-
-					std::swap(resultat[j], resultat[j + 1]);
-				}
-			}
-		}
+		//for (size_t i = 0; i < resultat.size(); i++) {
+		//	for (size_t j = 0; j < resultat.size() - i - 1; j++) {
+		//		if (resultat[j].obteData() < resultat[j + 1].obteData()) {
+		//
+		//			std::swap(resultat[j], resultat[j + 1]);
+		//		}
+		//	}
+		//}
 		// Ens quedem només amb els 5 primers elements si n'hi ha més de 5
-		if (resultat.size() > 5) {
-			resultat.resize(5);
-		}
+		//if (resultat.size() > 5) {
+		//	resultat.resize(5);
+		// }
 
 		if (modalitatSub == "Completa") {
 
