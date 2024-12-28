@@ -22,7 +22,7 @@ PassarelaContingut CercadoraContingut::cercaPerTitol(std::string titolC) {
     }
     return contingut;
 }
-
+/*
 std::vector<PassarelaContingut> CercadoraContingut::cercaPerPelicula() {
 
     std::vector<PassarelaContingut> passarelesPelis;
@@ -42,14 +42,14 @@ std::vector<PassarelaContingut> CercadoraContingut::cercaPerPelicula() {
         passarelesPelis.push_back(passarela); // Afegir al vector
     }
     // Si no hay registros, lanzar excepción
-    /*if (passarelesPelis.empty()) {
+    //if (passarelesPelis.empty()) {
 
-        throw std::runtime_error("No hi ha pel.licules.");
-    }*/
+    //    throw std::runtime_error("No hi ha pel.licules.");
+    //}
     delete res; // Liberar memoria
     return passarelesPelis;
 }
-
+*/
 /*std::vector<PassarelaContingut> CercadoraContingut::cercaPerCapitol() {
 
     std::vector<PassarelaContingut> passarelesCapitols;
@@ -76,7 +76,7 @@ std::vector<PassarelaContingut> CercadoraContingut::cercaPerPelicula() {
     delete res; // Liberar memoria
     return passarelesCapitols;
 }*/
-
+/*
 std::vector<PassarelaContingut> CercadoraContingut::cercaPeliInfantil(){
 
     std::vector<PassarelaContingut> passarelesInfantils;
@@ -97,10 +97,10 @@ std::vector<PassarelaContingut> CercadoraContingut::cercaPeliInfantil(){
         passarelesInfantils.push_back(passarela); // Afegir al vector
     }
     // Si no hay registros, lanzar excepción
-    /*if (passarelesInfantils.empty()) {
+    //if (passarelesInfantils.empty()) {
 
-        throw std::runtime_error("No s'ha trobat cap contingut infantil.");
-    }*/
+    //    throw std::runtime_error("No s'ha trobat cap contingut infantil.");
+    //}
     delete res; // Liberar memoria
     return passarelesInfantils;
-}
+}*/

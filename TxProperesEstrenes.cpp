@@ -20,7 +20,7 @@ void TxProperesEstrenes::executa() {
 
 		std::vector<PassarelaPelicula> passarelesPelicules;
 		CercadoraPelicula cercaPel;
-		passarelesPelicules = cercaPel.cercaUltimesPelicules(dataHora);
+		passarelesPelicules = cercaPel.cercaProperesPelicules(dataHora);
 		CercadoraContingut cercaCont;
 
 		int midaVecPelicules = passarelesPelicules.size();
@@ -69,22 +69,25 @@ void TxProperesEstrenes::executa() {
 	}
 	else{ //modalitatSub == "Infantil"
 
-		std::vector<PassarelaContingut> passarelesPelicules;
-		CercadoraContingut passarelaContingut;
-		passarelesPelicules = passarelaContingut.cercaPeliInfantil(); // cerca les infantils on qualificacioEdat == TP
-		CercadoraPelicula passarelaPelicula;
+		std::vector<PassarelaPelicula> passarelesPelicules;
+		CercadoraPelicula cercaPel;
+		passarelesPelicules = cercaPel.cercaProperesPelicules(dataHora);
+		CercadoraContingut cercaCont;
 
 		int midaVecPelicules = passarelesPelicules.size();
 		std::string titol, dataEstrena, qualificacioEdat, duracio;
+		
 		for (int i = 0; i < midaVecPelicules; i++ ) {
 			
 			titol = passarelesPelicules[i].obteTitol();
-			PassarelaPelicula pelicula;
-			pelicula = passarelaPelicula.cercaPerTitol(titol);
-			dataEstrena = pelicula.obteDataEstrena();
-			if (dataEstrena > dataHora) {
-				qualificacioEdat = passarelesPelicules[i].obteQualificacioEdat();
-				duracio = pelicula.obteDuracio();
+			PassarelaContingut cont;
+			cont = cercaCont.cercaPerTitol(titol);
+			qualificacioEdat = cont.obteQualificacioEdat();
+
+			if (qualificacioEdat == "TP") {
+
+				dataEstrena = passarelesPelicules[i].obteDataEstrena();
+				duracio = passarelesPelicules[i].obteDuracio();
 				DTOEstrenes dtoPel(dataEstrena, titol, qualificacioEdat, duracio, 0); //0 pq és una pel.licula i no té numero de capitol
 				resultat.push_back(dtoPel);
 			}

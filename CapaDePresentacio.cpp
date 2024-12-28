@@ -477,7 +477,7 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
 }
 
 void CapaDePresentacio::procesarProperesEstrenes() {
-
+    std::cout << std::endl;
     std::cout << "** Properes estrenes **" << std::endl;
     try {
         ////// data i hora actual
@@ -545,7 +545,7 @@ void CapaDePresentacio::procesarProperesEstrenes() {
         else {
 
             // Ordenar manualmente el vector por dataEstrena (Bubble Sort)
-            /*for (int i = 0; i < mida - 1; ++i) {
+            for (int i = 0; i < mida - 1; ++i) {
                 for (int j = 0; j < mida - i - 1; ++j) {
                     if (properesEstrenes[j].obteData() > properesEstrenes[j + 1].obteData()) {
                         // Intercambiar posiciones
@@ -554,7 +554,7 @@ void CapaDePresentacio::procesarProperesEstrenes() {
                         properesEstrenes[j + 1] = temp;
                     }
                 }
-            }*/
+            }
 
             for (int i = 0; i < mida; i++) {
 
@@ -582,7 +582,7 @@ void CapaDePresentacio::procesarProperesEstrenes() {
 }
 
 void CapaDePresentacio::procesarUltimesNovetats() {
-
+    std::cout << std::endl;
     std::cout << "** NOVETATS **" << std::endl;
     try {
 
@@ -696,7 +696,6 @@ void CapaDePresentacio::procesarPeliculesMesVistes(){
             modalitatConsultada = ".";
         }
         else {
-            std::cout << std::endl;
             std::cout << "Modalitats Disponibles ... " << std::endl;
             std::cout << " > 1. Completa" << std::endl;
             std::cout << " > 2. Cinefil" << std::endl;
@@ -738,7 +737,7 @@ void CapaDePresentacio::procesarPeliculesMesVistes(){
             std::cout << std::endl;
         }
         else{
-
+            std::cout << std::endl;
             std::string dataEstrena, qualificacioEdat, duracio, titol;
             int numVisu;
             bool vista;

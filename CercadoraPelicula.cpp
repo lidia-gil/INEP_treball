@@ -111,6 +111,28 @@ std::vector<PassarelaPelicula> CercadoraPelicula::cercaProperesPelicules(std::st
         PassarelaPelicula passarela;
         passarela.posaTitol(res->getString("titol"));
         passarela.posaDataEstrena(res->getString("data_estrena"));
+        passarela.posaDuracio(res->getString("duracio"));
+
+        passareles.push_back(passarela); // Añadir al vector
+    }
+    
+    delete res; // Liberar memoria
+
+    return passareles;
+}
+/*
+std::vector<PassarelaPelicula> CercadoraPelicula::cercaProperesPeliculesInfantils(std::string dataHora) {
+    
+    std::vector<PassarelaPelicula> passareles;
+
+    ConnexioBD& con = ConnexioBD::getInstance();
+    std::string sql = "SELECT * FROM pelicula WHERE data_estrena > '" + dataHora + " AND ' ORDER BY data_estrena ASC";
+    sql::ResultSet* res = con.executarConsulta(sql);
+    
+    while (res->next()) {
+        PassarelaPelicula passarela;
+        passarela.posaTitol(res->getString("titol"));
+        passarela.posaDataEstrena(res->getString("data_estrena"));
         
         passarela.posaDuracio(res->getString("duracio"));
 
@@ -121,7 +143,7 @@ std::vector<PassarelaPelicula> CercadoraPelicula::cercaProperesPelicules(std::st
 
     return passareles;
 }
-
+*/
 std::vector<PassarelaPelicula> CercadoraPelicula::cercaUltimesPelicules(std::string dataHora) {
 
     std::vector<PassarelaPelicula> passareles;

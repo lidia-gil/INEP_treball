@@ -14,6 +14,7 @@ class CercadoraPelicula
         std::vector<PassarelaVisualitzaPel> cercaTopPelicules();
         std::vector<PassarelaVisualitzaPel> cercaTopPeliculesInfantils();
         std::vector <PassarelaPelicula> cercaProperesPelicules(std::string dataHora);
+        std::vector <PassarelaPelicula> cercaProperesPeliculesInfantils(std::string dataHora);
         std::vector <PassarelaPelicula> cercaUltimesPelicules(std::string dataHora);
 };
 

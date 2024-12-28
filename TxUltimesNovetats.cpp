@@ -87,28 +87,34 @@ void TxUltimesNovetats::executa(){
 	}
 	else { //modalitatSub == "Infantil"
 
-		std::vector<PassarelaContingut> passarelesPelicules;
-		CercadoraContingut passarelaContingut;
-		passarelesPelicules = passarelaContingut.cercaPeliInfantil(); // cerca les infantils on qualificacioEdat == TP
-		CercadoraPelicula passarelaPelicula;
+		std::vector<PassarelaPelicula> passarelesPelicules;
+		CercadoraPelicula cercadoraPelicula;
+		passarelesPelicules = cercadoraPelicula.cercaUltimesPelicules(dataHora);
 
 		int midaVecPelicules = passarelesPelicules.size();
 		std::string titol, dataEstrena, qualificacioEdat, duracio;
-		for (int i = 0; i < midaVecPelicules; i++) {
+
+		CercadoraContingut cercaCont;
+		int contador = 0;
+
+		for (int i = 0; i < midaVecPelicules and contador < 5; i++) {
 
 			titol = passarelesPelicules[i].obteTitol();
-			PassarelaPelicula pelicula;
-			pelicula = passarelaPelicula.cercaPerTitol(titol);
-			dataEstrena = pelicula.obteDataEstrena();
-			if (dataEstrena < dataHora) { // s'ha estrenat
+			PassarelaContingut cont;
+			cont = cercaCont.cercaPerTitol(titol);
+			qualificacioEdat = cont.obteQualificacioEdat();
+		
+			if (qualificacioEdat == "TP") { // si la qualificació és per TOT els PUBLICS 
 
-				qualificacioEdat = passarelesPelicules[i].obteQualificacioEdat();
-				duracio = pelicula.obteDuracio();
+				dataEstrena = passarelesPelicules[i].obteDataEstrena();
+				duracio = passarelesPelicules[i].obteDuracio();
 				DTOEstrenes dtoPel(dataEstrena, titol, qualificacioEdat, duracio, 0); //0 pq és una pel.licula i no té numero de capitol
 				resultat.push_back(dtoPel);
+				++contador;
 			}
 		}
-
+		
+		/*
 		//ordenem les pelis
 		// Bubble Sort per ordenar `resultat` en ordre descendent segons `dataEstrena`
 		for (size_t i = 0; i < resultat.size(); i++) {
@@ -123,6 +129,7 @@ void TxUltimesNovetats::executa(){
 		if (resultat.size() > 5) {
 			resultat.resize(5);
 		}
+		*/
 
 		CercadoraCapitol cercaCapitols;
 		std::vector<PassarelaCapitol> passarelesCapitols;
