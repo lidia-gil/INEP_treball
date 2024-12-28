@@ -45,7 +45,7 @@ void TxUltimesNovetats::executa(){
 
 		//ordenem les pelis
 		// Bubble Sort per ordenar `resultat` en ordre descendent segons `dataEstrena`
-		//for (size_t i = 0; i < resultat.size(); i++) {
+		//for (size_t i = 0; i < resultat.size(); i++) { 
 		//	for (size_t j = 0; j < resultat.size() - i - 1; j++) {
 		//		if (resultat[j].obteData() < resultat[j + 1].obteData()) {
 		//
