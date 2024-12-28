@@ -8,7 +8,7 @@ std::vector<PassarelaVisualitzaCapitol> CercadoraVisualitzaCapitol::cercaVisuali
     //try {
         //ConnexioBD connexio;
         ConnexioBD& connexio = ConnexioBD::getInstance();
-        std::string sql = "SELECT * FROM visualitzacio_capitol WHERE sobrenom_usuari ='" + sobrenomU + "'";
+        std::string sql = "SELECT * FROM visualitzacio_capitol WHERE sobrenom_usuari ='" + sobrenomU + "' ORDER BY data DESC";
         sql::ResultSet* res = connexio.executarConsulta(sql);
 
         // Verificar si hay resultados

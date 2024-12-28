@@ -545,7 +545,7 @@ void CapaDePresentacio::procesarProperesEstrenes() {
         else {
 
             // Ordenar manualmente el vector por dataEstrena (Bubble Sort)
-            for (int i = 0; i < mida - 1; ++i) {
+            /*for (int i = 0; i < mida - 1; ++i) {
                 for (int j = 0; j < mida - i - 1; ++j) {
                     if (properesEstrenes[j].obteData() > properesEstrenes[j + 1].obteData()) {
                         // Intercambiar posiciones
@@ -554,7 +554,7 @@ void CapaDePresentacio::procesarProperesEstrenes() {
                         properesEstrenes[j + 1] = temp;
                     }
                 }
-            }
+            }*/
 
             for (int i = 0; i < mida; i++) {
 

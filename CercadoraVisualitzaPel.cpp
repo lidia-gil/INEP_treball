@@ -7,7 +7,7 @@ std::vector<PassarelaVisualitzaPel> CercadoraVisualitzaPel::cercaVisualitzacions
     //try {
         //ConnexioBD connexio;
         ConnexioBD& connexio = ConnexioBD::getInstance();
-        std::string sql = "SELECT * FROM visualitzacio_pelicula WHERE sobrenom_usuari ='" + sobrenomU + "'";
+        std::string sql = "SELECT * FROM visualitzacio_pelicula WHERE sobrenom_usuari ='" + sobrenomU + "' ORDER BY data DESC ";
         sql::ResultSet* res = connexio.executarConsulta(sql);
 
         // Verificar si hay resultados

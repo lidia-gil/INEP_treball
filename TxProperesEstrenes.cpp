@@ -18,10 +18,10 @@ void TxProperesEstrenes::executa() {
 	}
 	if (modalitatSub == "Cinefil" or modalitatSub == "Completa"){
 
-		std::vector<PassarelaContingut> passarelesPelicules;
-		CercadoraContingut passarelaContingut;
-		passarelesPelicules = passarelaContingut.cercaPerPelicula();
-		CercadoraPelicula passarelaPelicula;
+		std::vector<PassarelaPelicula> passarelesPelicules;
+		CercadoraPelicula cercaPel;
+		passarelesPelicules = cercaPel.cercaUltimesPelicules(dataHora);
+		CercadoraContingut cercaCont;
 
 		int midaVecPelicules = passarelesPelicules.size();
 		std::string titol, dataEstrena, qualificacioEdat, duracio;
@@ -30,16 +30,14 @@ void TxProperesEstrenes::executa() {
 
 			titol = passarelesPelicules[i].obteTitol();
 
-			PassarelaPelicula pelicula;
-			pelicula = passarelaPelicula.cercaPerTitol(titol);
-			dataEstrena = pelicula.obteDataEstrena();
+			PassarelaContingut cont;
+			cont = cercaCont.cercaPerTitol(titol);
+			qualificacioEdat = cont.obteQualificacioEdat();
 
-			if (dataEstrena > dataHora) {
-				qualificacioEdat = passarelesPelicules[i].obteQualificacioEdat();
-				duracio = pelicula.obteDuracio();
-				DTOEstrenes dtoPel(dataEstrena, titol, qualificacioEdat, duracio, 0); //0 pq és una pel.licula i no té numero de capitol
-				resultat.push_back(dtoPel);
-			}
+			duracio = passarelesPelicules[i].obteDuracio();
+			dataEstrena = passarelesPelicules[i].obteDataEstrena();
+			DTOEstrenes dtoPel(dataEstrena, titol, qualificacioEdat, duracio, 0); //0 pq és una pel.licula i no té numero de capitol
+			resultat.push_back(dtoPel);
 		}
 
 		if (modalitatSub == "Completa") {
