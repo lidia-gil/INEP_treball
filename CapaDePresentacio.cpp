@@ -13,11 +13,14 @@ CapaDePresentacio& CapaDePresentacio::getInstance() {
 void CapaDePresentacio::iniciSessio() {
     
     std::string sobrenomU, contrasenyaU;
+    std::cout << std::endl;
     std::cout << "** Inici Sessio **" << std::endl;
+    std::cout << std::endl;
     std::cout << "Sobrenom: ";
     std::cin >> sobrenomU;
     std::cout << "Contrasenya: ";
     std::cin >> contrasenyaU;
+    std::cout << std::endl;
     TxIniciSessio Tx(sobrenomU, contrasenyaU);
     try {
         Tx.executa();
@@ -32,7 +35,9 @@ void CapaDePresentacio::iniciSessio() {
 
 void CapaDePresentacio::tancarSessio() {
     std::string resposta;
-    std::cout << "** Tancar Sessio **" << std::endl;
+    std::cout << std::endl;
+    std::cout << "** Tancar Sessio **" << std::endl; 
+    std::cout << std::endl;
     std::cout << "Vols tancar la sessio (S/N): ";
     std::cin >> resposta; 
 
@@ -40,14 +45,20 @@ void CapaDePresentacio::tancarSessio() {
         TxTancaSessio tx;
         tx.executa();
         sessioIniciada = false;
+        std::cout << std::endl;
         std::cout << "Sessio tancada correctament!" << std::endl << std::endl;
+    }
+    else {
+
+        std::cout << std::endl;
     }
 }
 
 void CapaDePresentacio::procesarRegistreUsuari() {
-    
-    std::cout << "** Registra usuari **" << std::endl;
 
+    std::cout << std::endl;
+    std::cout << "** Registra usuari **" << std::endl;
+    std::cout << std::endl;
     std::string sobrenomU, nomU, contrasenyaU, correuU, dataNaixementU, modalitatU;
     std::cout << "Nom complet: ";
     std::cin >> nomU;
@@ -82,16 +93,42 @@ void CapaDePresentacio::procesarRegistreUsuari() {
     else {
         continua = false;
         std::cout << "Error: La modalitat escollida no es valida." << std::endl;
+        std::cout << std::endl;
     }
 
     if (continua){
+
+        std::cout << std::endl;
         try {
             TxRegistreUsuari tx(nomU, sobrenomU, contrasenyaU, correuU, dataNaixementU, modalitatU);
             tx.executa();
-            std::cout << "Usuari registrat correctament!, per accedir al teu compte inicia sessio." << std::endl << std::endl;
+            std::cout << "Usuari registrat correctament!, per accedir al teu compte inicia sessio." << std::endl;
+            std::cout << std::endl;
         }
-        catch (const std::exception& e) {
-            std::cout << "Error: "  << e.what() << std::endl << std::endl;
+        catch (const sql::SQLException& e) {
+            // Personalizar el mensaje según el error SQL
+
+            std::string errorMsg = e.what();
+            if (errorMsg.find("Duplicate entry") != std::string::npos) {
+
+                if (errorMsg.find("PRIMARY") != std::string::npos) {
+
+                    std::cout << "Error: El sobrenom ja esta agafat. Si us plau, tria un altre." << std::endl;
+                }
+                else if (errorMsg.find("UNIQUE") != std::string::npos) {
+
+                    std::cout << "Error: El correu electronic ja esta registrat. Si us plau, prova amb un altre." << std::endl;
+                }
+                else {
+                    // Mostrar el error original si no se puede personalizar
+                    std::cout << "Error: " << errorMsg << std::endl;
+                }
+            }
+            else {
+                // Mostrar el error original si no se puede personalizar
+                std::cout << "Error: " << errorMsg << std::endl;
+            }
+            std::cout << std::endl;
         }
     }
 }
@@ -99,6 +136,7 @@ void CapaDePresentacio::procesarRegistreUsuari() {
 void CapaDePresentacio::procesarConsultaUsuari() {
     
     std::cout << "** Consulta Usuari **" << std::endl;
+    std::cout << std::endl;
     //CapaDeDomini& domini = CapaDeDomini::getInstance();
     try {
 
@@ -112,7 +150,6 @@ void CapaDePresentacio::procesarConsultaUsuari() {
         TxInfoVisualitzacions::Resultat res;
         res = TxInfoVis.obteResultat();
 
-
         std::cout << "Nom complet: " << usu.obteNom() << std::endl;
         std::cout << "Sobrenom: " << usu.obteSobrenom() << std::endl;
         std::cout << "Correu electronic: " << usu.obteCorreu() << std::endl;
@@ -120,22 +157,29 @@ void CapaDePresentacio::procesarConsultaUsuari() {
         dataNeix = dataNeix.substr(0, 10);  // Obtener solo los primeros 10 caracteres (YYYY-MM-DD)
         std::cout << "Data naixement (AAAA-MM-DD): " << dataNeix << std::endl;
         std::cout << "Modalitat subscripcio: " << usu.obteModalitatSubscripcio() << std::endl;
-        std::cout  << std::endl;
+        std::cout << std::endl;
+
         if (res.nP == 1){
+
             std::cout << res.nP << " pel.licula visualitzada" << std::endl;
         }
         else {
+
             std::cout << res.nP << " pel.licules visualitzades" << std::endl;
         }
 
         if (res.nS == 1){
+
             std::cout << res.nS << " capitol visualitzat" << std::endl;
         }
         else {
+
             std::cout << res.nS << " capitols visualitzats" << std::endl;
         }
+        std::cout << std::endl;
     }
     catch (const std::exception& e) {
+
         std::cout << "Error: " << e.what() << std::endl;
     }
 }
@@ -143,6 +187,7 @@ void CapaDePresentacio::procesarConsultaUsuari() {
 void CapaDePresentacio::procesarModificarUsuari() {
 
     std::cout << "** Modifica Usuari **" << std::endl;
+    std::cout << std::endl;
 
     try {
         CtrlModificaUsuari ctrlModifica;
@@ -186,135 +231,96 @@ void CapaDePresentacio::procesarModificarUsuari() {
 
         bool continua = true;
         if (eleccio == "1") {
+
             modalitatU = "Completa";
         }
         else if (eleccio == "2") {
+
             modalitatU = "Cinefil";
         }
         else if (eleccio == "3") {
+
             modalitatU = "Infantil";
         }
         else if (eleccio != ""){
 
-            throw std::invalid_argument("Error: La modalitat escollida no es valida.");
+            continua = false;
+            std::cout << "Error: La modalitat escollida no es valida." << std::endl;
+            std::cout << std::endl;
         }
-        ctrlModifica.modificaUsuari(nomU, contrasenyaU, correuU, dataNaixementU, modalitatU);
 
-        std::cout << std::endl;
-        std::cout << "** Dades Usuari Modificades **" << std::endl;
+        if (continua) {
 
-        PassarelaUsuari usuari;
-        PetitFlix& petitF = PetitFlix::getInstance();
-        usuari = petitF.obteUsuari();
+            ctrlModifica.modificaUsuari(nomU, contrasenyaU, correuU, dataNaixementU, modalitatU);
 
-        std::cout << "Nom complet: " << usuari.obteNom() << std::endl;
-        std::cout << "Sobrenom: " << usuari.obteSobrenom() << std::endl;
-        std::cout << "Correu electronic: " << usuari.obteCorreu() << std::endl;
-        dataNeix = usuari.obteDataNaixement();
-        dataNeix = dataNeix.substr(0, 10);  // Obtener solo los primeros 10 caracteres (YYYY-MM-DD)
-        std::cout << "Data naixement (AAAA-MM-DD): " << dataNeix << std::endl;
-        std::cout << "Modalitat subscripcio: " << usuari.obteModalitatSubs() << std::endl;
-        std::cout << std::endl;
+            std::cout << std::endl;
+            std::cout << "** Dades Usuari Modificades **" << std::endl;
 
+            PassarelaUsuari usuari;
+            PetitFlix& petitF = PetitFlix::getInstance();
+            usuari = petitF.obteUsuari();
+
+            std::cout << "Nom complet: " << usuari.obteNom() << std::endl;
+            std::cout << "Sobrenom: " << usuari.obteSobrenom() << std::endl;
+            std::cout << "Correu electronic: " << usuari.obteCorreu() << std::endl;
+            dataNeix = usuari.obteDataNaixement();
+            dataNeix = dataNeix.substr(0, 10);  // Obtener solo los primeros 10 caracteres (YYYY-MM-DD)
+            std::cout << "Data naixement (AAAA-MM-DD): " << dataNeix << std::endl;
+            std::cout << "Modalitat subscripcio: " << usuari.obteModalitatSubs() << std::endl;
+            std::cout << std::endl;
+        }
     }
-    catch (const std::invalid_argument& e) {
+    catch (const sql::SQLException& e) {
+        // Personalizar el mensaje según el error SQL
 
-        std::cout << e.what() << std::endl;
-    }
-    catch (const std::exception& e) {
-        std::cout << "Error: " << e.what() << std::endl;
+        std::string errorMsg = e.what();
+        if (errorMsg.find("Duplicate entry") != std::string::npos) {
+
+            if (errorMsg.find("UNIQUE") != std::string::npos) {
+
+                std::cout << "Error: El correu electronic ja esta registrat. Si us plau, prova amb un altre." << std::endl;
+            }
+            else {
+                // Mostrar el error original si no se puede personalizar
+                std::cout << "Error: " << errorMsg << std::endl;
+            }
+        }
+        else {
+            // Mostrar el error original si no se puede personalizar
+            std::cout << "Error: " << errorMsg << std::endl;
+        }
+        std::cout << std::endl;
     }
 }
 
 void CapaDePresentacio::procesarEsborraUsuari() {
 
     std::cout << "** Esborra Usuari **" << std::endl;
+    std::cout << std::endl;
     std::cout << "Per confirmar l'esborrat s'ha d'entrar la contrasenya: ";
     std::string contrasenya;
     std::cin >> contrasenya;
+    std::cout << std::endl;
 
     try {
         TxEsborraUsuari TxEsborra (contrasenya);
         TxEsborra.executa();
-        std::cout << "L'usuari s'ha esborrat correctament." << std::endl << std::endl;
+        std::cout << "L'usuari s'ha esborrat correctament." << std::endl;
+        std::cout << std::endl;
         sessioIniciada = false;
     }
     catch (const std::exception& e) {
 
         sessioIniciada = true;
         std::cerr << "Error: " << e.what() << std::endl;
-    }
-}
-
-void CapaDePresentacio::procesarConsultaVisualitzacions() {
-
-    std::cout << "** Consulta Visualitzacions **" << std::endl;
-    try {
         std::cout << std::endl;
-        std::cout << "** Visualitzacions Pel.licules **" << std::endl;
-        std::cout << "*********************************" << std::endl;
-        
-        TxConsultaVisualitzacions txConsulta;
-        txConsulta.executa();
-        
-        TxConsultaVisualitzacions::Resultat res;
-        res = txConsulta.obteResultat();
-
-        int midaVecPel = res.vec_Pel.size();
-        
-        std::string titolP, dataVisualitzacioP, descripcioP, qualificacioEdatP;
-        int numVisualitzacionsP;
-        if (midaVecPel == 0){
-            std::cout << "No s'ha visualitzat cap pelicula." <<std::endl;
-        }
-        else {
-            for (int i = 0; i < midaVecPel; i++) {
-
-            dataVisualitzacioP = res.vec_Pel[i].obteDataVisualitzacio();
-            titolP = res.vec_Pel[i].obteTitol();
-            descripcioP = res.vec_Pel[i].obteDescripcio();
-            qualificacioEdatP = res.vec_Pel[i].obteQualificacioEdat();
-            numVisualitzacionsP = res.vec_Pel[i].obteVisualitzacions();
-            
-            std::cout << " - " << dataVisualitzacioP << ": " << titolP << "; " << descripcioP << "; " << qualificacioEdatP << "; nombre de visualitzacions: " << numVisualitzacionsP << std::endl;
-            }
-        }
-
-        std::cout << std::endl;
-        std::cout << "** Visualitzacions Series **" << std::endl;
-        std::cout << "****************************" << std::endl;
-
-        int midaVecCap = res.vec_Cap.size();
-
-        std::string titolS, dataVisualitzacioC, qualificacioEdatC;
-        int numTemporada, numCapitol, numVisualitzacionsC;
-        if (midaVecCap == 0){
-            std::cout << "No s'ha visualitzat cap capitol." <<std::endl;
-        }
-        else {
-            for (int i = 0; i < midaVecCap; i++) {
-
-                dataVisualitzacioC = res.vec_Cap[i].obteDataVisualitzacio();
-                titolS = res.vec_Cap[i].obteTitol();
-                numTemporada = res.vec_Cap[i].obteNumTemporada();
-                numCapitol = res.vec_Cap[i].obteNumCapitol();
-                qualificacioEdatC = res.vec_Cap[i].obteQualificacioEdat();
-                numVisualitzacionsC = res.vec_Cap[i].obteVisualitzacions();
-
-                std::cout << " - " << dataVisualitzacioC << ": " << titolS << "; " << qualificacioEdatC << "; temporada " << numTemporada << ", capitol " << numCapitol  << "; nombre de visualitzacions: " << numVisualitzacionsC << std::endl;
-            }
-        }
-        std::cout << std::endl;
-    }
-    catch (const std::exception& e) {
-
-        std::cerr << "Error: " << e.what() << std::endl;
     }
 }
 
 void CapaDePresentacio::procesarVisualitzarPel() {
 
     std::cout << "** Visualitzar Pel.licula **" << std::endl;
+    std::cout << std::endl;
     try {
         std::string titol;
         std::cout << "Nom pel.licula: ";
@@ -352,7 +358,7 @@ void CapaDePresentacio::procesarVisualitzarPel() {
         std::cout << "Vols continuar amb la visualitzacio (S/N): ";
         std::string resposta;
         std::cin >> resposta;
-        std::cout << std::endl << std::endl;
+        std::cout << std::endl;
         if (resposta == "S") {
 
             //---------------------------------------------------
@@ -391,7 +397,9 @@ void CapaDePresentacio::procesarVisualitzarPel() {
     }
     catch (const std::exception& e) {
 
+        //std::cout << std::endl;
         std::cerr << "Error: " << e.what() << std::endl;
+        std::cout << std::endl;
     }
 }
 
@@ -469,6 +477,72 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
         }
         std::cout << std::endl;
         
+    }
+    catch (const std::exception& e) {
+
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+}
+
+void CapaDePresentacio::procesarConsultaVisualitzacions() {
+
+    std::cout << "** Consulta Visualitzacions **" << std::endl;
+    try {
+        std::cout << std::endl;
+        std::cout << "** Visualitzacions Pel.licules **" << std::endl;
+        std::cout << "*********************************" << std::endl;
+
+        TxConsultaVisualitzacions txConsulta;
+        txConsulta.executa();
+
+        TxConsultaVisualitzacions::Resultat res;
+        res = txConsulta.obteResultat();
+
+        int midaVecPel = res.vec_Pel.size();
+
+        std::string titolP, dataVisualitzacioP, descripcioP, qualificacioEdatP;
+        int numVisualitzacionsP;
+        if (midaVecPel == 0) {
+            std::cout << "No s'ha visualitzat cap pelicula." << std::endl;
+        }
+        else {
+            for (int i = 0; i < midaVecPel; i++) {
+
+                dataVisualitzacioP = res.vec_Pel[i].obteDataVisualitzacio();
+                titolP = res.vec_Pel[i].obteTitol();
+                descripcioP = res.vec_Pel[i].obteDescripcio();
+                qualificacioEdatP = res.vec_Pel[i].obteQualificacioEdat();
+                numVisualitzacionsP = res.vec_Pel[i].obteVisualitzacions();
+
+                std::cout << " - " << dataVisualitzacioP << ": " << titolP << "; " << descripcioP << "; " << qualificacioEdatP << "; nombre de visualitzacions: " << numVisualitzacionsP << std::endl;
+            }
+        }
+
+        std::cout << std::endl;
+        std::cout << "** Visualitzacions Series **" << std::endl;
+        std::cout << "****************************" << std::endl;
+
+        int midaVecCap = res.vec_Cap.size();
+
+        std::string titolS, dataVisualitzacioC, qualificacioEdatC;
+        int numTemporada, numCapitol, numVisualitzacionsC;
+        if (midaVecCap == 0) {
+            std::cout << "No s'ha visualitzat cap capitol." << std::endl;
+        }
+        else {
+            for (int i = 0; i < midaVecCap; i++) {
+
+                dataVisualitzacioC = res.vec_Cap[i].obteDataVisualitzacio();
+                titolS = res.vec_Cap[i].obteTitol();
+                numTemporada = res.vec_Cap[i].obteNumTemporada();
+                numCapitol = res.vec_Cap[i].obteNumCapitol();
+                qualificacioEdatC = res.vec_Cap[i].obteQualificacioEdat();
+                numVisualitzacionsC = res.vec_Cap[i].obteVisualitzacions();
+
+                std::cout << " - " << dataVisualitzacioC << ": " << titolS << "; " << qualificacioEdatC << "; temporada " << numTemporada << ", capitol " << numCapitol << "; nombre de visualitzacions: " << numVisualitzacionsC << std::endl;
+            }
+        }
+        std::cout << std::endl;
     }
     catch (const std::exception& e) {
 

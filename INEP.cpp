@@ -74,87 +74,7 @@ void subMenuConsultes() {
 
 
 //subfuncions gestio usu
-/*void procesarRegistreUsuari() {
-    std::cout << "Escriu el nou usuari aixi: sobrenom nom correu_electronic" << std::endl;
-    std::string sobrenomNou, nomNou, correuNou;
-    std::cin >> sobrenomNou >> nomNou >> correuNou;
 
-    try {
-        ConnexioBD connexio;
-        std::string sql = "INSERT INTO usuari (sobrenom, nom, correu_electronic) VALUES('" + sobrenomNou + "', '" + nomNou + "', '" + correuNou + "')";
-        connexio.executarComanda(sql);
-        std::cout << "S'ha registrat l'usuari correctament." << std::endl << std::endl;
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}*/
-/*void procesarConsultaUsuari() {
-    std::cout << "Escriu el sobrenom d'un usuari" << std::endl;
-    std::string sobrenom_usuari;
-    std::cin >> sobrenom_usuari;
-
-    try {
-        ConnexioBD connexio;
-        std::string sql = "SELECT * FROM usuari WHERE sobrenom='" + sobrenom_usuari + "'";
-        sql::ResultSet* res = connexio.executarConsulta(sql);
-
-        while (res->next()) {
-            std::cout << "Sobrenom: " << res->getString("sobrenom") << std::endl;
-            std::cout << "Nom: " << res->getString("nom") << std::endl;
-            std::cout << "Correu: " << res->getString("correu_electronic") << std::endl << std::endl;
-        }
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}*/
-/*void procesarModificaUsuari() {
-    std::cout << "Escriu el nou usuari aixi: sobrenom nom_nou correu_electronic_nou" << std::endl;
-    std::string sobrenom_usuari, nomNou, correuNou;
-    std::cin >> sobrenom_usuari >> nomNou >> correuNou;
-
-    try {
-        ConnexioBD connexio;
-        std::string sql = "UPDATE usuari SET nom = '" + nomNou + "', correu_electronic = '" + correuNou + "' WHERE sobrenom = '" + sobrenom_usuari + "'";
-        connexio.executarComanda(sql);
-        std::cout << "S'ha modificat l'usuari correctament." << std::endl << std::endl;
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}*/
-/*void procesarEsborraUsuari() {
-    std::cout << "Escriu el sobrenom d'un usuari" << std::endl;
-    std::string sobrenom_usuari;
-    std::cin >> sobrenom_usuari;
-
-    try {
-        ConnexioBD connexio;
-        std::string sql = "DELETE FROM usuari WHERE sobrenom = '" + sobrenom_usuari + "'";
-        connexio.executarComanda(sql);
-        std::cout << "S'ha eliminat l'usuari amb el sobrenom especificat." << std::endl << std::endl;
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}*/
-/*void procesarConsultaUsuaris() {
-    try {
-        ConnexioBD connexio;
-        std::string sql = "SELECT * FROM usuari";
-        sql::ResultSet* res = connexio.executarConsulta(sql);
-
-        while (res->next()) {
-            std::cout << "Sobrenom: " << res->getString("sobrenom") << std::endl;
-            std::cout << "Nom: " << res->getString("nom") << std::endl;
-            std::cout << "Correu: " << res->getString("correu_electronic") << std::endl << std::endl;
-        }
-    }
-    catch (sql::SQLException& e) {
-        std::cerr << "SQL Error: " << e.what() << std::endl;
-    }
-}*/
 
 //menu gestio usuari
 void menuGestioUsuari() {
@@ -201,32 +121,7 @@ void menuGestioUsuari() {
     }
 }
 
-//subfuncions visualitzar
-/*subfuncions visualitzar 
-void procesarGestioPelicules() {
 
-    std::string nom_peli;
-    std::cout << "Escriu el nom de la pel.licula que busques: ";
-    std::cin >> nom_peli;
-    if (nom_peli == " ") {
-        std::cout << "No s,ha trobat la pel.licula que busques. \n\n";
-    }
-    else {
-        std::cout << "La pel.licula " + nom_peli + " s,ha trobat. \n\n";
-    }
-}*/
-/*void procesarGestioSeries() {
-
-    std::string nom_serie;
-    std::cout << "Escriu el nom de la serie que busques: ";
-    std::cin >> nom_serie;
-    if (nom_serie == " ") {
-        std::cout << "No s,ha trobat la serie que busques. \n\n";
-    }
-    else {
-        std::cout << "La serie " + nom_serie + " s,ha trobat. \n\n";
-    }
-}*/
 
 //menu visualitzar
 void menuVisualitzar() {
@@ -273,19 +168,6 @@ void menuVisualitzar() {
     }
 }
 
-//subfuncions consultes
-/*void procesarProperesEstrenes() {
-
-    std::cout << " prox estrenes ...\n \n";
-}*/
-/*void procesarUltimesNovetats() {
-
-    std::cout << "Mostrant les ultimes novetats. \n\n ... \n\n";
-}*/
-void procesarPeliculesMesVistes() {
-
-    std::cout << "Mostrant les pelicules més vistes. \n\n ... \n\n";
-}
 
 //consultes
 void consultes() {
@@ -363,7 +245,7 @@ void menuSessioIniciada() {
         }
         else if (entrada == "4") {
 
-            std::cout << "\nHas escollit l'opcio " + entrada + ": Tancar sessio. \n\n";
+            //std::cout << "\nHas escollit l'opcio " + entrada + ": Tancar sessio. \n\n";
             presentacio.tancarSessio(); 
             if (not presentacio.sessioIniciada) {
                 
@@ -389,6 +271,29 @@ void menuSessioIniciada() {
 
 int main()
 {
+
+    std::string name, user, password, host, port;
+    std::cout << "Dades necessaries per generar la connexio amb la base de dades: " << std::endl;
+    std::cout << "dbname= ";
+    std::cin >> name;
+    std::cout << "user= ";
+    std::cin >> user;
+    std::cout << "password= ";
+    std::cin >> password;
+    std::cout << "hostaddr= ";
+    std::cin >> host;
+    std::cout << "port= ";
+    std::cin >> port;
+    std::cout << std::endl;
+
+    name = user = "inep02";
+    password = "rai2Laavaey6ph";
+    host = "ubiwan.epsevg.upc.edu";
+    port = "3306";
+    
+    ConnexioBD& connexio = ConnexioBD::getInstance();
+    connexio.inicialitzar_atributs(name, user, password, host, port);
+
     menuPrincipalUsuariSenseIniciSessio();
     bool continua_programa = true;
     std::string entrada;

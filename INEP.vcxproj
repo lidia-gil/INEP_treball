@@ -139,6 +139,7 @@
     <ClCompile Include="CercadoraUsuari.cpp" />
     <ClCompile Include="CercadoraVisualitzaCapitol.cpp" />
     <ClCompile Include="CercadoraVisualitzaPel.cpp" />
+    <ClCompile Include="Connexio.cpp" />
     <ClCompile Include="ConnexioBD.cpp" />
     <ClCompile Include="CtrlModificaUsuari.cpp" />
     <ClCompile Include="CtrlVisualitzarCapitol.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="CercadoraUsuari.h" />
     <ClInclude Include="CercadoraVisualitzaCapitol.h" />
     <ClInclude Include="CercadoraVisualitzaPel.h" />
+    <ClInclude Include="Connexio.h" />
     <ClInclude Include="ConnexioBD.h" />
     <ClInclude Include="CtrlModificaUsuari.h" />
     <ClInclude Include="CtrlVisualitzarCapitol.h" />

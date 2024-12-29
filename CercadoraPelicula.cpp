@@ -12,7 +12,7 @@ PassarelaPelicula CercadoraPelicula::cercaPerTitol(std::string titolP){
     // Si no troba cap fila, activa excepciÃ³
     if (!res->next()) {
         //throw exception("Usuari no existeix");  // no ens funciona aquesta operació 
-        throw std::runtime_error("La pelicula consultada no existeix");
+        throw std::runtime_error("La pelicula consultada no existeix.");
     }
     else {
         pelicula.posaTitol(res->getString("titol"));

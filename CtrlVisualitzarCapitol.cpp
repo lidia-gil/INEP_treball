@@ -97,6 +97,16 @@ void CtrlVisualitzarCapitol::registrarVisualitzacio(std::string titolS, int numT
 
     std::string qualificacioEdat = cont.obteQualificacioEdat();
     if (qualificacioEdat != "TP"){
+
+        std::string modalitatSub = usuari.obteModalitatSubs();
+		if (modalitatSub == "Infantil"){
+
+            throw std::runtime_error("L'usuari loguejat no pot veure el capitol, degut a que la seva modalitat de subscripcio es infantil.");
+        }
+        else if  (modalitatSub == "Cinefil"){
+
+            throw std::runtime_error("L'usuari loguejat no pot veure el capitol, degut a que la seva modalitat de subscripcio es cinefil, i per tant no pot veure series.");
+        }
         std::string edat;
         int i = 0;
         while (qualificacioEdat[i] != '+') {
@@ -121,7 +131,7 @@ void CtrlVisualitzarCapitol::registrarVisualitzacio(std::string titolS, int numT
 
         if (std::stoi(edat) > edatUsuari) {
 
-            throw std::runtime_error("L'usuari loguejat no pot veure la pelicula. Edat de l'usuari: '" + std::to_string(edatUsuari) + "' Edat necessaria: '" + edat + "'");
+            throw std::runtime_error("L'usuari loguejat no pot veure el capitol. Edat de l'usuari: '" + std::to_string(edatUsuari) + "' Edat necessaria: '" + edat + "'");
 
         }
     }

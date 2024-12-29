@@ -56,9 +56,16 @@ void CtrlVisualitzarPel::registrarVisualitzacions(std::string titolP, std::strin
 
 	std::string qualificacioEdat = cont.obteQualificacioEdat();
 	if (qualificacioEdat != "TP"){
+
+		std::string modalitatSub = usuari.obteModalitatSubs();
+		if (modalitatSub == "Infantil"){
+
+			throw std::runtime_error("L'usuari loguejat no pot veure la pelicula, degut a que la seva modalitat de subscripcio es infantil.");
+		}
 		std::string edat;
 		int i=0;
 		while (qualificacioEdat[i] != '+'){
+
 			edat+=qualificacioEdat[i]; 
 			i++;
 		}
@@ -79,9 +86,10 @@ void CtrlVisualitzarPel::registrarVisualitzacions(std::string titolP, std::strin
 		
 		if ( std::stoi(edat) > edatUsuari){
 			
-			throw std::runtime_error("L'usuari loguejat no pot veure la pelicula. Edat de l'usuari: '" +  std::to_string(edatUsuari) + "' Edat necessaria: '" + edat + "'");
+			throw std::runtime_error("L'usuari loguejat no pot veure la pelicula. Edat de l'usuari: '" +  std::to_string(edatUsuari) + "' Edat necessaria: '" + edat + "'.");
 
 		}
+			
 	}
 	//-----------------------------------------------------
 	
