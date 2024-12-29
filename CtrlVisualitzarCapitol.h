@@ -7,9 +7,8 @@
 #include "PassarelaUsuari.h"
 #include "PetitFlix.h"
 #include "CercadoraVisualitzaCapitol.h"
-
+#include "CercadoraCapitol.h"
 #include "DTOCapitol.h"
-
 #include "PassarelaContingut.h"
 #include "CercadoraContingut.h"
 class CtrlVisualitzarCapitol

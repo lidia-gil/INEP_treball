@@ -13,7 +13,7 @@ PassarelaTemporada CercadoraTemporada::cercaPerTitol(std::string titolS) {
     //Verificar si hay resultados
     if (!res->next()) {
 
-        throw std::runtime_error("La serie no s'ha trobat o no te cap temporada disponible");
+        throw std::runtime_error("La serie no s'ha trobat o no te cap temporada disponible.");
     }
    
     int numTempMax = 0;

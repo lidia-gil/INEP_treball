@@ -17,7 +17,7 @@ DTOContingutPelicula CtrlVisualitzarPel::consultaInfoPeli(std::string titolP, st
 	//-------------------------------------------
 	if (dataEstrena > dataHora){
 		
-		throw std::runtime_error("La pelicula encara no s'ha estrenat. S'estrenara el '" + dataEstrena.substr(0, 10) + "'");
+		throw std::runtime_error("La pelicula encara no s'ha estrenat. S'estrenara el '" + dataEstrena.substr(0, 10) + "'.");
 	}
 	//-------------------------------------------
 	duracio = pelicula.obteDuracio();

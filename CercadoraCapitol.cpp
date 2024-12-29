@@ -2,6 +2,30 @@
 
 CercadoraCapitol::CercadoraCapitol(){ }
 
+
+PassarelaCapitol CercadoraCapitol::cercaCapitol(std::string titolS, int numTemp, int numCap){
+
+    PassarelaCapitol capitol;
+    ConnexioBD& con = ConnexioBD::getInstance();
+    std::string sql = " SELECT * FROM pelicula WHERE titol_serie = '" + titolS + "' AND numero_temporada = '" + std::to_string(numTemp) + "' AND numero = '" + std::to_string(numCap) + "''";
+    sql::ResultSet* res = con.executarConsulta(sql);
+    // Si no troba cap fila, activa excepciÃ³
+    if (!res->next()) {
+        //throw exception("Usuari no existeix");  // no ens funciona aquesta operació 
+        throw std::runtime_error("El capitol consultat no existeix.");
+    }
+    else {
+
+        capitol.posaTitolSerie(res->getString("titol_serie"));
+        capitol.posaNumTemporada(res->getInt("numero_temporada"));
+        capitol.posaNumCapitol(res->getInt("numero"));
+        capitol.posaTitolCapitol(res->getString("titol"));
+        capitol.posaDataEstrena(res->getString("data_estrena"));
+        delete res;
+    }
+    return capitol;
+}
+
 std::vector<PassarelaCapitol> CercadoraCapitol::cercaPerTitoliTemporada(std::string titolS, int numTemp) {
 
 	std::vector<PassarelaCapitol> passareles;

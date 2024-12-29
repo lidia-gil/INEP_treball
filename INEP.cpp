@@ -132,7 +132,6 @@ void menuVisualitzar() {
     CapaDePresentacio& presentacio = CapaDePresentacio::getInstance();
     while (continua and std::cin >> entrada2) {
 
-        std::cout << "\n";
         if (entrada2 == "1") {
 
             //std::cout << "Has escollit l'opcio " + entrada2 + ": Visualitzar pel.licula. \n\n";

@@ -91,6 +91,17 @@ void CtrlVisualitzarCapitol::registrarVisualitzacio(std::string titolS, int numT
     // comparació data Naixement del Usuari amb la qualificació d'edat de la pel.licula 
     //----------------------------------------------------
 
+    CercadoraCapitol cercaCapitol;
+    PassarelaCapitol cap;
+    cap = cercaCapitol.cercaCapitol(titolS,numTemp,numCap);
+    std::string dataEstrena;
+    dataEstrena = cap.obteData();
+    if (dataEstrena > dataHora){
+
+        throw std::runtime_error("El capitol encara no s'ha estrenat. S'estrenara el '" + dataEstrena.substr(0, 10) + "'.");
+    }
+
+
     PassarelaContingut cont;
     CercadoraContingut cercaCont;
     cont = cercaCont.cercaPerTitol(titolS);
@@ -105,7 +116,7 @@ void CtrlVisualitzarCapitol::registrarVisualitzacio(std::string titolS, int numT
         }
         else if  (modalitatSub == "Cinefil"){
 
-            throw std::runtime_error("L'usuari loguejat no pot veure el capitol, degut a que la seva modalitat de subscripcio es cinefil, i per tant no pot veure series.");
+            throw std::runtime_error("No pots veure el capitol, la teva modalitat de subscripcio es cinefil i per tant no pots veure series.");
         }
         std::string edat;
         int i = 0;
@@ -132,9 +143,9 @@ void CtrlVisualitzarCapitol::registrarVisualitzacio(std::string titolS, int numT
         if (std::stoi(edat) > edatUsuari) {
 
             throw std::runtime_error("L'usuari loguejat no pot veure el capitol. Edat de l'usuari: '" + std::to_string(edatUsuari) + "' Edat necessaria: '" + edat + "'");
-
         }
     }
+
     //-----------------------------------------------------
 
 
@@ -160,11 +171,11 @@ void CtrlVisualitzarCapitol::registrarVisualitzacio(std::string titolS, int numT
         if (continua and (numCapitol == numCap)) {
             trobat = true;
         }
-
          ++i;
     }
     i--;
     if (trobat) {
+
         int visualitzacions = visualitzaCap[i].obteNumVisualitzacions();
         visualitzacions +=1;
         visualitzaCap[i].posaNumVisualitzacions(visualitzacions);

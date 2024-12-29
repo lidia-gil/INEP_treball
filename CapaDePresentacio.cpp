@@ -368,6 +368,7 @@ void CapaDePresentacio::procesarVisualitzarPel() {
             //------------------------------------------------------------
 
             std::cout << "Visualitzacio registrada: " << dataHora << std::endl;
+            std::cout << std::endl;
 
             std::vector< DTOContingutPelicula> vecDTOContingutPeli;
             vecDTOContingutPeli = ctrlVisualitza.pelisRelacionades(titol);
@@ -405,11 +406,14 @@ void CapaDePresentacio::procesarVisualitzarPel() {
 
 void CapaDePresentacio::procesarVisualitzarCapitol() {
 
+    std::cout << std::endl;
     std::cout << "** Visualitzar Capitol **" << std::endl;
+    std::cout << std::endl;
     try {
         std::string titolS;
         std::cout << "Nom de la serie: ";
         std::cin >> titolS;
+        std::cout << std::endl;
 
         CtrlVisualitzarCapitol CtrlCap;
         int numTemps;
@@ -419,6 +423,10 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
             std::cout << "La serie te " << std::to_string(numTemps) << " temporades." << std::endl;
             std::cout << "Escull una temporada: ";
             std::cin >> temporadaEscollida;
+            if (temporadaEscollida > numTemps or temporadaEscollida < 0){
+
+                throw std::runtime_error("El numero de temporada escollit no es valid.");
+            }
             std::cout << std::endl;
         }
         std::vector<DTOCapitol> capitols;//CANVIAR
@@ -457,9 +465,15 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
         std::cout << "Numero de capitol a visualitzar: ";
         int capitol;
         std::cin >> capitol;
+        if (capitol > midaCapitols or capitol < 0 ){
+
+            throw std::runtime_error("El numero de capitol escollit no es valid.");
+        }
         std::cout << "Vols continuar amb la visualitzacio (S/N): ";
         std::string llegueix;
         std::cin >> llegueix;
+        std::cout << std::endl;
+
         if (llegueix == "S") {
 
             ////// data i hora actual
@@ -481,6 +495,7 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
     catch (const std::exception& e) {
 
         std::cerr << "Error: " << e.what() << std::endl;
+        std::cout << std::endl;
     }
 }
 
