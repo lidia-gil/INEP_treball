@@ -4,6 +4,7 @@
 class PassarelaCapitol
 {
     private:
+
         std::string titolSerie;
         int numTemporada;
         int numCapitol;
@@ -11,6 +12,7 @@ class PassarelaCapitol
         std::string dataEstrena;
         //qualificacio???????????????
     public:
+
         PassarelaCapitol();
         //constructora
         PassarelaCapitol(std::string titolS, int numTemp, int numeroCap, std::string titolCap, std::string data);

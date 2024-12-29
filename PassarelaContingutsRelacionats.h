@@ -4,9 +4,11 @@
 class PassarelaContingutsRelacionats
 {
 	private:
+
         std::string titolContingutX;
         std::string titolContingutY;
     public:
+
         PassarelaContingutsRelacionats();
         PassarelaContingutsRelacionats(std::string titolContingutA, std::string titolContingutB);
 

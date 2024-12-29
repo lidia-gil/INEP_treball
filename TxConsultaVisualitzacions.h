@@ -21,9 +21,7 @@ class TxConsultaVisualitzacions
 	public:
 
 		TxConsultaVisualitzacions();
-
 		void executa();
-
         TxConsultaVisualitzacions::Resultat obteResultat();
 };
 

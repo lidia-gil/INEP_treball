@@ -7,7 +7,7 @@ PassarelaCapitol CercadoraCapitol::cercaCapitol(std::string titolS, int numTemp,
 
     PassarelaCapitol capitol;
     ConnexioBD& con = ConnexioBD::getInstance();
-    std::string sql = " SELECT * FROM pelicula WHERE titol_serie = '" + titolS + "' AND numero_temporada = '" + std::to_string(numTemp) + "' AND numero = '" + std::to_string(numCap) + "''";
+    std::string sql = "SELECT * FROM capitol WHERE titol_serie = '" + titolS + "' AND numero_temporada = " + std::to_string(numTemp) + " AND numero = " + std::to_string(numCap);
     sql::ResultSet* res = con.executarConsulta(sql);
     // Si no troba cap fila, activa excepció
     if (!res->next()) {

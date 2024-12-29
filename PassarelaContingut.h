@@ -5,11 +5,13 @@
 class PassarelaContingut
 {
     private:
+
         std::string titol;
         std::string descripcio;
         std::string qualificacio_edat; // o int pq és 7+ ?
         std::string tipus;
     public:
+
         PassarelaContingut();
         //constructora
         PassarelaContingut(std::string titolC, std::string descripcioC, std::string qualificacio_edatC, std::string tipusC);

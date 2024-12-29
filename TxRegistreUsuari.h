@@ -4,6 +4,7 @@
 class TxRegistreUsuari
 {
 	private:
+
         std::string nomU;
         std::string sobrenomU;
         std::string contrasenyaU;
@@ -12,8 +13,8 @@ class TxRegistreUsuari
         std::string modalitatSubscripcio;
         
     public:
+
         TxRegistreUsuari(std::string nomU, std::string sobrenomU, std::string contrasenyaU, std::string coreuElectronicU, std::string data_naixementU, std::string modalitatSubscripcio);
-        
         //falta 
         //void insereix();
         void executa();

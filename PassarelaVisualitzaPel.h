@@ -5,11 +5,13 @@
 class PassarelaVisualitzaPel
 {
     private:
+
         std::string sobrenom;
         std::string titolPelicula;
         std::string data;
         int numVisualitzacions;
     public:
+
         PassarelaVisualitzaPel();
         //constructora
         PassarelaVisualitzaPel(std::string sobrenomU, std::string titolPeliculaV, std::string dataV, int numVisualitzacionsU);

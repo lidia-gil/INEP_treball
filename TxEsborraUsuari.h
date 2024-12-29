@@ -11,7 +11,6 @@ class TxEsborraUsuari
 	public:
 
 		TxEsborraUsuari(std::string contraU);
-
 		void executa();
 };
 

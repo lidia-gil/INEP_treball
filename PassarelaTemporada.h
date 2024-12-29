@@ -4,9 +4,11 @@
 class PassarelaTemporada
 {
     private:
+
         std::string titol;
         int numTemporada;
     public:
+
         PassarelaTemporada();
         //constructora
         PassarelaTemporada(std::string titolS, int numTemp);

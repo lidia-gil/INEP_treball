@@ -14,6 +14,7 @@
 class TxProperesEstrenes
 {
 	private:
+
 		std::string dataHora;
 		std::string modalitatSub;
 		std::vector<DTOEstrenes> resultat;

@@ -2,6 +2,11 @@
 
 DTOEstrenes::DTOEstrenes(){
 
+    dataEstrena = "";
+    titol = "";
+    qualificacioEdat = "";
+    duracioOnumTemp = "";
+    numCap = 0;
 }
 
 DTOEstrenes::DTOEstrenes(std::string dataEstrenaC, std::string titolC, std::string qualificacioEdatC, std::string duracioOnumTempC, int numCapC){

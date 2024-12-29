@@ -4,12 +4,14 @@
 class DTOUsuari
 {
 	private:
+
 		std::string sobrenom = "";
 		std::string nom = "";
 		std::string correu = "";
 		std::string dataNeix = "";
 		std::string modalitatSubscripcio = "";
 	public:
+
 		DTOUsuari();
 		//DTOUsuari(PassarelaUsuari usu);
 		DTOUsuari(std::string nomU, std::string sobrenomU, std::string correuElectronicU, std::string dataNaixementU, std::string modalitatSubU);

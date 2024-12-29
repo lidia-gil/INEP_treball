@@ -4,13 +4,14 @@
 class DTOContingutPelicula
 {
 	private:
+
         std::string titol;
         std::string descripcio;
         std::string qualificacio;
         std::string duracio;
         std::string dataEstrena;
 	public:
-        
+ 
         DTOContingutPelicula();
         DTOContingutPelicula(std::string titolP, std::string descripcioP, std::string qualificacioP, std::string dataEstrenaP, std::string duracioP);
         std::string obteTitol();

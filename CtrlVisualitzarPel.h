@@ -19,10 +19,7 @@ class CtrlVisualitzarPel
 	public: 
 
 		CtrlVisualitzarPel();
-
         DTOContingutPelicula consultaInfoPeli(std::string titolP, std::string dataHora);
-
 		void registrarVisualitzacions(std::string titolP, std::string dataHora);
-		
 		std::vector<DTOContingutPelicula> pelisRelacionades(std::string titolP);
 };

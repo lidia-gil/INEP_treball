@@ -425,6 +425,7 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
             std::cin >> temporadaEscollida;
             if (temporadaEscollida > numTemps or temporadaEscollida < 0){
 
+                std::cout << std::endl;
                 throw std::runtime_error("El numero de temporada escollit no es valid.");
             }
             std::cout << std::endl;
@@ -467,6 +468,7 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
         std::cin >> capitol;
         if (capitol > midaCapitols or capitol < 0 ){
 
+            std::cout << std::endl;
             throw std::runtime_error("El numero de capitol escollit no es valid.");
         }
         std::cout << "Vols continuar amb la visualitzacio (S/N): ";
@@ -501,6 +503,7 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
 
 void CapaDePresentacio::procesarConsultaVisualitzacions() {
 
+    std::cout << std::endl;
     std::cout << "** Consulta Visualitzacions **" << std::endl;
     try {
         std::cout << std::endl;
@@ -566,6 +569,7 @@ void CapaDePresentacio::procesarConsultaVisualitzacions() {
 }
 
 void CapaDePresentacio::procesarProperesEstrenes() {
+
     std::cout << std::endl;
     std::cout << "** Properes estrenes **" << std::endl;
     try {
@@ -809,6 +813,7 @@ void CapaDePresentacio::procesarPeliculesMesVistes(){
 
                 throw std::invalid_argument("Error: La modalitat escollida no es valida.");
             }
+            std::cout << std::endl;
             // usuari no ha inciat sessio li preguntem quina modalitat vol consultar 
         }
 
@@ -826,7 +831,7 @@ void CapaDePresentacio::procesarPeliculesMesVistes(){
             std::cout << std::endl;
         }
         else{
-            std::cout << std::endl;
+            
             std::string dataEstrena, qualificacioEdat, duracio, titol;
             int numVisu;
             bool vista;

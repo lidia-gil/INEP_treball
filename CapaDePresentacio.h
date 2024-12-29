@@ -26,6 +26,7 @@ class CapaDePresentacio {
         
         CapaDePresentacio();
     public:
+
         bool sessioIniciada = true;
         //Metode per obtenir la única instància
         static CapaDePresentacio& getInstance();

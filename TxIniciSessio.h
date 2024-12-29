@@ -6,10 +6,10 @@ class TxIniciSessio
 {
     private:	
 		// creadora 
-		
 		std::string sobrenomU;
         std::string contrasenyaU;
 	public: 
+
         TxIniciSessio (std::string sU, std::string cU);
 		void executa();
 };

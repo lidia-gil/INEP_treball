@@ -3,6 +3,7 @@
 class DTOContingutMesVisualitzacioCap
 {
 	private:
+
 		std::string dataVisualitzacio = "";
 		std::string titol = "";
 		int numTemporada = 0;
@@ -10,6 +11,7 @@ class DTOContingutMesVisualitzacioCap
 		std::string qualificacioEdat = "";
 		int visualitzacions = 0;
 	public:
+
 		DTOContingutMesVisualitzacioCap();
 		//DTOUsuari(PassarelaUsuari usu);
 		DTOContingutMesVisualitzacioCap(std::string dataVisualitzacioU, std::string titolC, int num_TemporadaC, int num_CapitolC, std::string qualificacio_edatC, int visualitzacionsU);

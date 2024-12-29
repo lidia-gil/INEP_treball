@@ -18,11 +18,8 @@ class CtrlVisualitzarCapitol
 	public: 
 
 		CtrlVisualitzarCapitol();
-
         int consultaNumeroTemporades(std::string titolS);
-
         std::vector<DTOCapitol> consultaCapitols (std::string titolS, int numTemp);
-
 		void registrarVisualitzacio(std::string titolS, int numTemp, int numCap, std::string dataHora);
 };
 

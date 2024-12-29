@@ -5,6 +5,7 @@
 class PassarelaVisualitzaCapitol
 {
     private:
+
         std::string sobrenom;
         std::string titolSerie;
         int numVisualitzacions;
@@ -12,6 +13,7 @@ class PassarelaVisualitzaCapitol
         int numCapitol;
         std::string data;
     public:
+
         PassarelaVisualitzaCapitol();
         //constructora
         PassarelaVisualitzaCapitol(std::string sobrenomU, std::string titolSerieV, int numVisualitzacionsU, int numTemporadaV, int numCapitolV, std::string dataV);

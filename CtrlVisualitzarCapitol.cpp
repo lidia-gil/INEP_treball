@@ -71,8 +71,6 @@ std::vector<DTOCapitol> CtrlVisualitzarCapitol::consultaCapitols(std::string tit
         DTOCapitol dtoCap(numCap, titolC, dataEstrena, dataVisualitzacio); // sino s'ha visualitzat dataVisualitzacio retornara ""
         result.push_back(dtoCap);
     }
-
-    //PER A CADA UN, MIRAR SI S'HA VISUALITZAT. + FER DTO
     return result;
 }
 

@@ -11,6 +11,7 @@ class TxInfoVisualitzacions
             int nS;
         };
     private:
+
         Resultat result;
     public:
         

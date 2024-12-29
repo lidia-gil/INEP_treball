@@ -1,6 +1,5 @@
 #include "CercadoraContingut.h"
 
-
 PassarelaContingut CercadoraContingut::cercaPerTitol(std::string titolC) {
 
     PassarelaContingut contingut;
@@ -8,7 +7,7 @@ PassarelaContingut CercadoraContingut::cercaPerTitol(std::string titolC) {
     ConnexioBD& con = ConnexioBD::getInstance();
     std::string sql = "SELECT * FROM contingut WHERE titol = '" + titolC + "'";
     sql::ResultSet* res = con.executarConsulta(sql);
-    // Si no troba cap fila, activa excepciÃ³
+    // Si no troba cap fila, activa excepcio
     if (!res->next()) {
         //throw exception("Usuari no existeix");  // no ens funciona aquesta operació 
         throw std::runtime_error("El contingut consultat no existeix");

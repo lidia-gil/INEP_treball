@@ -63,7 +63,7 @@ void TxPeliculesMesVistes::executa() {
             CercadoraVisualitzaPel cercaPelVistaPerUsuari;
             pelVistes = cercaPelVistaPerUsuari.cercaVisualitzacions(sobrenom);
                 
-            int j=0;
+            int j = 0;
             int midaPelVistes = pelVistes.size();
             while (not vista and j < midaPelVistes) {
 

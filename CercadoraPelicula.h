@@ -9,6 +9,7 @@ class CercadoraPelicula
     private:
 
     public:
+
         CercadoraPelicula();
         PassarelaPelicula cercaPerTitol (std::string titolP);
         std::vector<PassarelaVisualitzaPel> cercaTopPelicules();

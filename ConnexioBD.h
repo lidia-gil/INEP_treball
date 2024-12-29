@@ -11,6 +11,7 @@
 class ConnexioBD
 {
     private:
+
         sql::mysql::MySQL_Driver* driver;
         sql::Connection* con;
 

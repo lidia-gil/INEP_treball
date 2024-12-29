@@ -3,6 +3,7 @@
 class DTOPeliculesMesVistes
 {
     private:
+
         std::string dataEstrena;
         std::string titol;
         std::string qualificacioEdat;
@@ -11,6 +12,7 @@ class DTOPeliculesMesVistes
         bool vista;
 
     public:
+
         DTOPeliculesMesVistes();
         DTOPeliculesMesVistes(std::string dataEstrenaC, std::string titolC, std::string qualificacioEdatC, std::string duracioC, int numVisuC, bool vista);
 

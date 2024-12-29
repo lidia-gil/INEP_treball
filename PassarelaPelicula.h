@@ -5,10 +5,12 @@
 class PassarelaPelicula
 {
     private:
+
         std::string titol;
         std::string dataEstrena;
         std::string duracio; 
     public:
+
         PassarelaPelicula();
         //constructora
         PassarelaPelicula(std::string titolP, std::string dataEstrenaP, std::string duracioP);

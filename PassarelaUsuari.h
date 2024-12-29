@@ -5,6 +5,7 @@
 class PassarelaUsuari
 {
 private: 
+
 	std::string sobrenom;
 	std::string nom;
 	std::string contrasenya;
@@ -13,6 +14,7 @@ private:
 	std::string modalitatSubs;
 
 public:
+
 	PassarelaUsuari();
 	//constructora
 	PassarelaUsuari(std::string nomU, std::string sobrenomU, std::string correuElectronicU, std::string contrasenyaU, std::string dataNaixement, std::string modalitatU);
@@ -35,10 +37,8 @@ public:
 
 	//insereix 
 	void insereix();
-		
 	//modifica 
 	void modifica();
-
 	//esborra
 	void esborra();
 };

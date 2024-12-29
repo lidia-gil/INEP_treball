@@ -6,10 +6,8 @@
 #include <mysql_driver.h>
 #include <iostream>
 #include <string>
-
 #include "CapaDePresentacio.h"
 
-// Modifiquem les funcions existents per utilitzar la classe ConnexioBD
 
 //menu principal Usuari Sense Inici de Sessió
 void menuPrincipalUsuariSenseIniciSessio() {
@@ -23,7 +21,6 @@ void menuPrincipalUsuariSenseIniciSessio() {
     std::cout << "4. Sortir \n\n";
     std::cout << "Escull una opcio: ";
 }
-
 //menu principal Usuari Amb Inici de Sessió
 void menuPrincipalUsuariAmbIniciSessio() {
 
@@ -73,9 +70,6 @@ void subMenuConsultes() {
 }
 
 
-//subfuncions gestio usu
-
-
 //menu gestio usuari
 void menuGestioUsuari() {
 
@@ -86,7 +80,6 @@ void menuGestioUsuari() {
 
     while (continua and std::cin >> entrada2) {
 
-        std::cout << "\n";
         if (entrada2 == "1") {
 
             //std::cout << "Has escollit l'opcio " + entrada2 + ": Consulta usuari. \n\n";
@@ -108,7 +101,7 @@ void menuGestioUsuari() {
         }
         else if (entrada2 == "4") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ": Tornar. \n\n";
+            std::cout << "\nHas escollit l'opcio " + entrada2 + ": Tornar. \n\n";
             continua = false;
         }
         else {
@@ -120,8 +113,6 @@ void menuGestioUsuari() {
         }
     }
 }
-
-
 
 //menu visualitzar
 void menuVisualitzar() {
@@ -154,7 +145,7 @@ void menuVisualitzar() {
         }
         else if (entrada2 == "4") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ": Tornar. \n\n";
+            std::cout << "\nHas escollit l'opcio " + entrada2 + ": Tornar. \n\n";
             continua = false;
         }
         else {
@@ -200,7 +191,7 @@ void consultes() {
         }
         else if (entrada2 == "4") {
 
-            std::cout << "Has escollit l'opcio " + entrada2 + ": Tornar. \n\n";
+            std::cout << "\nHas escollit l'opcio " + entrada2 + ": Tornar. \n\n";
             continua = false;
         }
         else {
@@ -239,7 +230,7 @@ void menuSessioIniciada() {
         }
         else if (entrada == "3") {
 
-            //std::cout << "\nHas escollit l'opcio " + entrada + ": Consultes. \n\n";
+            std::cout << "\nHas escollit l'opcio " + entrada + ": Consultes. \n\n";
             consultes();
         }
         else if (entrada == "4") {
