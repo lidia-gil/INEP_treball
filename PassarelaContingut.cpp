@@ -2,7 +2,7 @@
 
    
 PassarelaContingut::PassarelaContingut(){}
-//constructora
+
 PassarelaContingut::PassarelaContingut(std::string titolC, std::string descripcioC, std::string qualificacio_edatC, std::string tipusC) {
 
 	titol = titolC;
@@ -28,6 +28,7 @@ std::string PassarelaContingut::obteTipus() {
 	return tipus;
 }
 
+
 void PassarelaContingut::posaTitol(std::string titolC) {
 
 	titol = titolC;
@@ -45,10 +46,10 @@ void PassarelaContingut::posaTipus(std::string tipusC) {
 	tipus = tipusC;
 }
 
+
 void PassarelaContingut::insereix() {
 
 	ConnexioBD& con = ConnexioBD::getInstance();
-	//ConnexioBD con;
 
 	std::string query = "INSERT INTO contingut (titol, descripcio, qualificacio, tipus) VALUES('" + titol + "', '" + descripcio + "', '" + qualificacio_edat +  "' , '" + tipus + "')";
 	con.executarComanda(query);
@@ -56,7 +57,6 @@ void PassarelaContingut::insereix() {
 void PassarelaContingut::modifica() {
 
 	ConnexioBD& con = ConnexioBD::getInstance();
-	//ConnexioBD con;
 
     std::string query = "UPDATE contingut SET descripcio = '" + descripcio + "', qualificacio = '" + qualificacio_edat + "', tipus = '" + tipus + "' WHERE titol = '" + titol + "'";
     con.executarComanda(query);
@@ -64,7 +64,6 @@ void PassarelaContingut::modifica() {
 void PassarelaContingut::esborra() {
 
 	ConnexioBD& con = ConnexioBD::getInstance();
-	//ConnexioBD con;
 
 	std::string query = "DELETE FROM contingut WHERE titol = '" + titol + "'";
 	con.executarComanda(query);

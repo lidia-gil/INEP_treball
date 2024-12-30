@@ -158,7 +158,6 @@ void menuVisualitzar() {
     }
 }
 
-
 //consultes
 void consultes() {
 

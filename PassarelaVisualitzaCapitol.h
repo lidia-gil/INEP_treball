@@ -15,7 +15,6 @@ class PassarelaVisualitzaCapitol
     public:
 
         PassarelaVisualitzaCapitol();
-        //constructora
         PassarelaVisualitzaCapitol(std::string sobrenomU, std::string titolSerieV, int numVisualitzacionsU, int numTemporadaV, int numCapitolV, std::string dataV);
 
         std::string obteSobrenom();

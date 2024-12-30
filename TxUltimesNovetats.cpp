@@ -7,6 +7,7 @@ TxUltimesNovetats::TxUltimesNovetats(std::string modalitatEscollida, std::string
     modalitatSub = modalitatEscollida;
     dataHora = dataHoraActual;
 }
+
 void TxUltimesNovetats::executa(){
 
     if (modalitatSub == "."){ //obtenim la modalitat de subscripcio de l'usuari que ha iniciat sessió
@@ -42,21 +43,6 @@ void TxUltimesNovetats::executa(){
 			resultat.push_back(dtoPel);
 			
 		}
-
-		//ordenem les pelis
-		// Bubble Sort per ordenar `resultat` en ordre descendent segons `dataEstrena`
-		//for (size_t i = 0; i < resultat.size(); i++) { 
-		//	for (size_t j = 0; j < resultat.size() - i - 1; j++) {
-		//		if (resultat[j].obteData() < resultat[j + 1].obteData()) {
-		//
-		//			std::swap(resultat[j], resultat[j + 1]);
-		//		}
-		//	}
-		//}
-		// Ens quedem només amb els 5 primers elements si n'hi ha més de 5
-		//if (resultat.size() > 5) {
-		//	resultat.resize(5);
-		// }
 
 		if (modalitatSub == "Completa") {
 
@@ -113,23 +99,6 @@ void TxUltimesNovetats::executa(){
 				++contador;
 			}
 		}
-		
-		/*
-		//ordenem les pelis
-		// Bubble Sort per ordenar `resultat` en ordre descendent segons `dataEstrena`
-		for (size_t i = 0; i < resultat.size(); i++) {
-			for (size_t j = 0; j < resultat.size() - i - 1; j++) {
-				if (resultat[j].obteData() < resultat[j + 1].obteData()) {
-
-					std::swap(resultat[j], resultat[j + 1]);
-				}
-			}
-		}
-		// Ens quedem només amb els 5 primers elements si n'hi ha més de 5
-		if (resultat.size() > 5) {
-			resultat.resize(5);
-		}
-		*/
 
 		CercadoraCapitol cercaCapitols;
 		std::vector<PassarelaCapitol> passarelesCapitols;

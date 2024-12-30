@@ -10,12 +10,11 @@ PassarelaTemporada CercadoraTemporada::cercaPerTitol(std::string titolS) {
     sql::ResultSet* res = con.executarConsulta(sql);
 
     PassarelaTemporada passarela;
-    //Verificar si hay resultados
+    // Si no troba cap fila, activa excepcio
     if (!res->next()) {
 
         throw std::runtime_error("La serie no s'ha trobat o no te cap temporada disponible.");
     }
-   
     int numTempMax = 0;
 
     while (res->next()) {

@@ -25,7 +25,9 @@ class ConnexioBD
         std::string _port;
     public:
        
+        // Mètode per obtenir l'única instància
         static ConnexioBD& getInstance();
+
         // Destructor: tanca la connexió
         ~ConnexioBD();
 

@@ -12,6 +12,7 @@ class CtrlModificaUsuari
     public:
 
         CtrlModificaUsuari();
+        
         DTOUsuari consultarUsuari();
         void modificaUsuari(std::string nomU, std::string contraU, std::string correuU, std::string neixU, std::string modalitatU);
 };

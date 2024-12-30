@@ -1,8 +1,6 @@
 #include "TxConsultaUsuari.h"
 
-TxConsultaUsuari::TxConsultaUsuari(){
-
-}
+TxConsultaUsuari::TxConsultaUsuari(){ }
 
 void TxConsultaUsuari::executa(){
 
@@ -19,7 +17,6 @@ void TxConsultaUsuari::executa(){
     dataNeixU = usuari.obteDataNaixement();
     std::string modalitatU;
     modalitatU = usuari.obteModalitatSubs();
-
 
     DTOUsuari dto(nomU, sobrenomU, correuU, dataNeixU, modalitatU);
     resultat = dto;

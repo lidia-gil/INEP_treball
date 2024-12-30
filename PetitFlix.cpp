@@ -2,6 +2,7 @@
 
 
 PetitFlix::PetitFlix() { }
+
 PetitFlix& PetitFlix::getInstance() {
 
 	static PetitFlix instance;
@@ -10,7 +11,7 @@ PetitFlix& PetitFlix::getInstance() {
 
 PassarelaUsuari PetitFlix::obteUsuari() {
 
-	return usuari;	// retornem usuari que és un atribut privat
+	return usuari;
 }
 
 void PetitFlix::iniciaSessio(PassarelaUsuari pUsuari) {
@@ -20,7 +21,7 @@ void PetitFlix::iniciaSessio(PassarelaUsuari pUsuari) {
 
 void PetitFlix::actualitzaUsuari(PassarelaUsuari pUsuari) {
 
-	usuari = pUsuari;
+	usuari = pUsuari; // actualitzem l'usuari al Petit Flix. Mateixa funcionalitat que iniciarSessio, pero l'hem refet per questions d'estetica.
 }
 
 void PetitFlix::tancaSessio() {

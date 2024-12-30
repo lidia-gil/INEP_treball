@@ -35,7 +35,6 @@ std::string DTOPeliculesMesVistes::obteDuracioOnumTemp(){
 
     return duracio;
 }
-
 int DTOPeliculesMesVistes::obteNumVisu() {
 
     return numVisu;

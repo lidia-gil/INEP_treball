@@ -7,6 +7,7 @@ class CercadoraTemporada
     public:
 
         CercadoraTemporada();
+        
         PassarelaTemporada cercaPerTitol(std::string titolS);
 };
 

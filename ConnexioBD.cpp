@@ -18,7 +18,6 @@ void ConnexioBD::inicialitzar_atributs(std::string dbname, std::string user, std
     driver = sql::mysql::get_mysql_driver_instance();
     con = driver->connect(_hostaddr + ":" + _port, _user, _password);
     con->setSchema(_dbname);
-    //dbname=helloINEP user=postgres password=inep hostaddr=127.0.0.1 port=5433
 }
 
 ConnexioBD& ConnexioBD::getInstance() {

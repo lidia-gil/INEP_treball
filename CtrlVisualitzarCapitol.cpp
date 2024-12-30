@@ -1,9 +1,7 @@
 #include "CtrlVisualitzarCapitol.h"
 
 
-CtrlVisualitzarCapitol::CtrlVisualitzarCapitol(){
-            
-}
+CtrlVisualitzarCapitol::CtrlVisualitzarCapitol(){ }
 
 int CtrlVisualitzarCapitol::consultaNumeroTemporades(std::string titolS){
 
@@ -86,9 +84,6 @@ void CtrlVisualitzarCapitol::registrarVisualitzacio(std::string titolS, int numT
     std::string sobrenomU;
     sobrenomU = usuari.obteSobrenom();
 
-    // comparació data Naixement del Usuari amb la qualificació d'edat de la pel.licula 
-    //----------------------------------------------------
-
     CercadoraCapitol cercaCapitol;
     PassarelaCapitol cap;
     cap = cercaCapitol.cercaCapitol(titolS,numTemp,numCap);
@@ -98,7 +93,6 @@ void CtrlVisualitzarCapitol::registrarVisualitzacio(std::string titolS, int numT
 
         throw std::runtime_error("El capitol encara no s'ha estrenat. S'estrenara el '" + dataEstrena.substr(0, 10) + "'.");
     }
-
 
     PassarelaContingut cont;
     CercadoraContingut cercaCont;
@@ -143,9 +137,6 @@ void CtrlVisualitzarCapitol::registrarVisualitzacio(std::string titolS, int numT
             throw std::runtime_error("L'usuari loguejat no pot veure el capitol. Edat de l'usuari: '" + std::to_string(edatUsuari) + "' Edat necessaria: '" + edat + "'");
         }
     }
-
-    //-----------------------------------------------------
-
 
     visualitzaCap = cercaCap.cercaVisualitzacions(sobrenomU);
 

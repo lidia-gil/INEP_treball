@@ -8,7 +8,6 @@
 #include "CercadoraContingut.h"
 class TxConsultaVisualitzacions
 {
-
     public:
         struct Resultat {
 

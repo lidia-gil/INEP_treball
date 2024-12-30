@@ -48,9 +48,10 @@ void CtrlModificaUsuari::modificaUsuari(std::string nomU, std::string contraU, s
     }
 
     if (modificat) {
+
         usuari.modifica();
 
         PetitFlix& petitF = PetitFlix::getInstance();
-        petitF.actualitzaUsuari(usuari);    // actualitzem l'usuari al Petit Flix. Mateixa funcionalitat que iniciarSessio, pero l'hem refet per questions d'estetica.
+        petitF.actualitzaUsuari(usuari);   
     }
 }

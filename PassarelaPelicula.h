@@ -12,7 +12,6 @@ class PassarelaPelicula
     public:
 
         PassarelaPelicula();
-        //constructora
         PassarelaPelicula(std::string titolP, std::string dataEstrenaP, std::string duracioP);
 
         std::string obteTitol();

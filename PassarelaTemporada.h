@@ -10,7 +10,6 @@ class PassarelaTemporada
     public:
 
         PassarelaTemporada();
-        //constructora
         PassarelaTemporada(std::string titolS, int numTemp);
 
         std::string obteTitolSerie();

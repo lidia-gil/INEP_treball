@@ -20,6 +20,7 @@ PassarelaVisualitzaCapitol::PassarelaVisualitzaCapitol(std::string sobrenomU, st
     data = dataV;
 }
 
+
 std::string PassarelaVisualitzaCapitol::obteSobrenom() {
 
     return sobrenom;
@@ -45,7 +46,6 @@ std::string PassarelaVisualitzaCapitol::obteData() {
 
     return data;
 }
-
 
 
 void PassarelaVisualitzaCapitol::posaSobrenom(std::string sobrenomU) {
@@ -79,7 +79,7 @@ void PassarelaVisualitzaCapitol::posaData(std::string dataV) {
 void PassarelaVisualitzaCapitol::insereix() {
 
     ConnexioBD& con = ConnexioBD::getInstance();
-    //ConnexioBD con;
+
     std::ostringstream numTemp, numCap, numVisu;
     numTemp << numTemporada;
     numCap << numCapitol;
@@ -88,34 +88,28 @@ void PassarelaVisualitzaCapitol::insereix() {
     std::string query = "INSERT INTO visualitzacio_capitol (sobrenom_usuari, titol_serie, num_temporada, num_capitol, data, num_visualitzacions) VALUES('" + sobrenom + "', '" + titolSerie + "', '" + numTemp.str() + "', '" + numCap.str() + "', '" + data + "', '" + numVisu.str() + "')";
     con.executarComanda(query);
 }
-
 void PassarelaVisualitzaCapitol::modifica() {
 
     ConnexioBD& con = ConnexioBD::getInstance();
-    //ConnexioBD con;
 
     std::ostringstream numTemp, numCap, numVisu;
     numTemp << numTemporada;
     numCap << numCapitol;
     numVisu << numVisualitzacions;
 
-std::string query = "UPDATE visualitzacio_capitol SET data = '" + data + "', num_visualitzacions = '" + numVisu.str() +
+    std::string query = "UPDATE visualitzacio_capitol SET data = '" + data + "', num_visualitzacions = '" + numVisu.str() +
     "' WHERE sobrenom_usuari = '" + sobrenom + "' AND titol_serie = '" + titolSerie + "' AND num_temporada = '" + numTemp.str() +
     "' AND num_capitol = '" + numCap.str() + "'";
-
-
-
     con.executarComanda(query);
 }
-
-
 void PassarelaVisualitzaCapitol::esborra() {
 
     ConnexioBD& con = ConnexioBD::getInstance();
-    //ConnexioBD con;
+
     std::ostringstream numTemp, numCap, numVisu;
     numTemp << numTemporada;
     numCap << numCapitol;
+
     con.executarComanda("DELETE FROM visualitzacio_capitol WHERE sobrenom_usuari = '" + sobrenom + "' AND titol_capitol = '" + titolSerie + "' AND num_capitol = '" + numCap.str() + "' AND num_temporada = '" + numTemp.str() + "'");
 
 }

@@ -12,8 +12,8 @@ class DTOCapitol
 	public:
 
 		DTOCapitol();
-		//DTOUsuari(PassarelaUsuari usu);
 		DTOCapitol(int numCapitolC, std::string titolC, std::string dataPublicacioC, std::string dataVisualitzacioU);
+		
 		int obteNumCapitol();
 		std::string obteTitol();
 		std::string obteDataPublicacio();

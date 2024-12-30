@@ -34,7 +34,6 @@ std::string DTOEstrenes::obteDuracioOnumTemp(){
 
     return duracioOnumTemp;
 }
-
 int DTOEstrenes::obteNumCap() {
 
     return numCap;

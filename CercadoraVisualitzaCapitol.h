@@ -7,6 +7,8 @@ class CercadoraVisualitzaCapitol
 
 	public:
 
+		CercadoraVisualitzaCapitol();
+		
 		std::vector <PassarelaVisualitzaCapitol> cercaVisualitzacions(std::string sobrenomU);
 };
 

@@ -1,6 +1,5 @@
 #include "CapaDePresentacio.h"
 
-
 // Constructor privat
 CapaDePresentacio::CapaDePresentacio() {}
 

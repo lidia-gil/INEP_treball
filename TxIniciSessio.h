@@ -5,7 +5,7 @@
 class TxIniciSessio
 {
     private:	
-		// creadora 
+		
 		std::string sobrenomU;
         std::string contrasenyaU;
 	public: 

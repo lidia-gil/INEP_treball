@@ -1,8 +1,6 @@
 #include "TxTancaSessio.h"
 
-TxTancaSessio::TxTancaSessio() { 
-
-}
+TxTancaSessio::TxTancaSessio() { }
 
 
 void TxTancaSessio::executa() {

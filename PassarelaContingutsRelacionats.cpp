@@ -10,6 +10,7 @@ PassarelaContingutsRelacionats::PassarelaContingutsRelacionats(std::string titol
     titolContingutY = titolContingutB;
 }
 
+
 std::string PassarelaContingutsRelacionats::obteTitolContingutX(){
 
     return titolContingutX;
@@ -28,10 +29,10 @@ void PassarelaContingutsRelacionats::posaTitolContingutY(std::string titolContin
     titolContingutY = titolContingutB;
 }
 
+
 void PassarelaContingutsRelacionats::insereix(){
 
     ConnexioBD& con = ConnexioBD::getInstance();
-    //ConnexioBD con;
 
     std::string query = "INSERT INTO relacionat (titol_x, titol_y) VALUES('" + titolContingutX +  "' , '" + titolContingutY + "')";
     con.executarComanda(query);
@@ -39,7 +40,6 @@ void PassarelaContingutsRelacionats::insereix(){
 void PassarelaContingutsRelacionats::esborra(){
 
     ConnexioBD& con = ConnexioBD::getInstance();
-    //ConnexioBD con;
 
     std::string query = "DELETE FROM relacionat WHERE titol_x = '" + titolContingutX + "' AND titol_y = '" + titolContingutY + "'";
     con.executarComanda(query);

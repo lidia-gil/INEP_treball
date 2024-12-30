@@ -13,17 +13,16 @@
 #include "TxProperesEstrenes.h"
 #include "TxUltimesNovetats.h"
 #include "TxPeliculesMesVistes.h"
-
 #include <chrono>
 #include <ctime>
 #include <iomanip>
 #include <sstream>
 
 // classe singleton
-
 class CapaDePresentacio {
     private:
         
+        //Constructora en privat pq és singleton
         CapaDePresentacio();
     public:
 
@@ -31,16 +30,16 @@ class CapaDePresentacio {
         //Metode per obtenir la única instància
         static CapaDePresentacio& getInstance();
 
-        // aquí tots els métodes que
+        // aquí tots els métodes que ens demanen
         void iniciSessio();
         void tancarSessio();
         void procesarRegistreUsuari();
         void procesarConsultaUsuari();
         void procesarEsborraUsuari();
         void procesarModificarUsuari();
-        void procesarConsultaVisualitzacions();
         void procesarVisualitzarPel();
         void procesarVisualitzarCapitol();
+        void procesarConsultaVisualitzacions();
         void procesarProperesEstrenes();
         void procesarUltimesNovetats();
         void procesarPeliculesMesVistes();

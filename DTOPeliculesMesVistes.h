@@ -15,7 +15,7 @@ class DTOPeliculesMesVistes
 
         DTOPeliculesMesVistes();
         DTOPeliculesMesVistes(std::string dataEstrenaC, std::string titolC, std::string qualificacioEdatC, std::string duracioC, int numVisuC, bool vista);
-
+        
         std::string obteData();
         std::string obteTitol();
         std::string obteQualificacioEdat();

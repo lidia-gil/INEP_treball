@@ -3,6 +3,7 @@
 DTOContingutPelicula::DTOContingutPelicula(){ }
 
 DTOContingutPelicula::DTOContingutPelicula(std::string titolP, std::string descripcioP, std::string qualificacioP, std::string dataEstrenaP, std::string duracioP){
+    
     titol = titolP;
     descripcio = descripcioP;
     qualificacio = qualificacioP;

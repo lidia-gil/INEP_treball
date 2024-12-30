@@ -4,7 +4,6 @@ class PetitFlix
 {
 	private:	
 
-		// creadora 
 		PetitFlix();
 		PassarelaUsuari usuari;
 	public: 
@@ -14,6 +13,5 @@ class PetitFlix
 		void iniciaSessio(PassarelaUsuari);
 		void actualitzaUsuari(PassarelaUsuari);
 		void tancaSessio();
-
 };
 

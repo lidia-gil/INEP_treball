@@ -7,6 +7,8 @@ class CercadoraVisualitzaPel
 
 	public:
 
+		CercadoraVisualitzaPel();
+		
 		std::vector <PassarelaVisualitzaPel> cercaVisualitzacions(std::string sobrenomU);
 };
 

@@ -13,7 +13,6 @@ class PassarelaVisualitzaPel
     public:
 
         PassarelaVisualitzaPel();
-        //constructora
         PassarelaVisualitzaPel(std::string sobrenomU, std::string titolPeliculaV, std::string dataV, int numVisualitzacionsU);
 
         std::string obteSobrenom ();

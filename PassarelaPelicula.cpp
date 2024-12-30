@@ -1,13 +1,14 @@
 #include "PassarelaPelicula.h"
 
 PassarelaPelicula::PassarelaPelicula(){ }
-//constructora
+
 PassarelaPelicula::PassarelaPelicula(std::string titolP, std::string dataEstrenaP, std::string duracioP){
 
     titol = titolP;
     dataEstrena = dataEstrenaP;
     duracio = duracioP;
 }
+
 
 std::string PassarelaPelicula::obteTitol() {
 
@@ -21,6 +22,7 @@ std::string PassarelaPelicula::obteDuracio() {
 
     return duracio;
 }
+
 
 void PassarelaPelicula::posaTitol(std::string titolP) {
 
@@ -39,7 +41,6 @@ void PassarelaPelicula::posaDuracio(std::string duracioP) {
 void PassarelaPelicula::insereix(){
     
     ConnexioBD& con = ConnexioBD::getInstance();
-    //ConnexioBD con;
 
 	std::string query = "INSERT INTO pelicula (titol, data_estrena, duracio) VALUES('" + titol + "', '" + dataEstrena +  "' , '" + duracio + "')";
 	con.executarComanda(query);
@@ -47,7 +48,6 @@ void PassarelaPelicula::insereix(){
 void PassarelaPelicula::modifica(){
 
     ConnexioBD& con = ConnexioBD::getInstance();
-    //ConnexioBD con;
 
     std::string query = "UPDATE pelicula SET data_estrena = '" + dataEstrena + "', duracio = '" + duracio + "' WHERE titol = '" + titol + "'";
     con.executarComanda(query);
@@ -55,7 +55,6 @@ void PassarelaPelicula::modifica(){
 void PassarelaPelicula::esborra() {
 
     ConnexioBD& con = ConnexioBD::getInstance();
-    //ConnexioBD con;
 
 	std::string query = "DELETE FROM pelicula WHERE titol = '" + titol + "'";
 	con.executarComanda(query);

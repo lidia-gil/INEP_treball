@@ -14,6 +14,7 @@ class DTOContingutPelicula
  
         DTOContingutPelicula();
         DTOContingutPelicula(std::string titolP, std::string descripcioP, std::string qualificacioP, std::string dataEstrenaP, std::string duracioP);
+        
         std::string obteTitol();
         std::string obteDescripcio();
         std::string obteQualificacioEdat();

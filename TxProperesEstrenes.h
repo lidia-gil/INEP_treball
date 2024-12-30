@@ -10,7 +10,6 @@
 #include "PassarelaCapitol.h"
 #include "PetitFlix.h"
 #include "PassarelaUsuari.h"
-
 class TxProperesEstrenes
 {
 	private:
@@ -23,6 +22,5 @@ class TxProperesEstrenes
 		TxProperesEstrenes(std::string modalitatEscollida, std::string dataHoraActual);
 		void executa();
 		std::vector<DTOEstrenes> obteResultat();
-		//PassarelaUsuari obteUsuari();
 };
 

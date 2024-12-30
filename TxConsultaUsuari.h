@@ -2,7 +2,6 @@
 #include "PassarelaUsuari.h"
 #include "PetitFlix.h"
 #include "DTOUsuari.h"
-
 class TxConsultaUsuari
 {
 	private:

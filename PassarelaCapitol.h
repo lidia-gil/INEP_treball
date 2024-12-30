@@ -10,11 +10,9 @@ class PassarelaCapitol
         int numCapitol;
         std::string titol;
         std::string dataEstrena;
-        //qualificacio???????????????
     public:
 
         PassarelaCapitol();
-        //constructora
         PassarelaCapitol(std::string titolS, int numTemp, int numeroCap, std::string titolCap, std::string data);
 
         std::string obteTitolSerie();

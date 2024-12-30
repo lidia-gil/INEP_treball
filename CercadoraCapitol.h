@@ -8,6 +8,7 @@ class CercadoraCapitol
     public:
 
         CercadoraCapitol();
+        
         PassarelaCapitol cercaCapitol(std::string titolS, int numTemp, int numCap);
         std::vector<PassarelaCapitol> cercaPerTitoliTemporada(std::string titolS, int numTemp);
         std::vector<PassarelaCapitol> cercaProximsCapitols(std::string datraHora);
