@@ -1,7 +1,7 @@
 #include "CapaDePresentacio.h"
 
 // Constructor privat
-CapaDePresentacio::CapaDePresentacio() {}
+CapaDePresentacio::CapaDePresentacio() { }
 
 CapaDePresentacio& CapaDePresentacio::getInstance() {
 
@@ -22,17 +22,20 @@ void CapaDePresentacio::iniciSessio() {
     std::cout << std::endl;
     TxIniciSessio Tx(sobrenomU, contrasenyaU);
     try {
+        
         Tx.executa();
         std::cout << "Sessio iniciada correctament!" << std::endl << std::endl;
         sessioIniciada = true;
     }
     catch (const std::exception& e) {
+
         sessioIniciada = false;
         std::cout << "Error: Hi ha hagut un error amb el sobrenom o la contrasenya." << std::endl  << std::endl; // NO e.what(), ja que el missatge no ha de dir que ha fallat per seguretat
     }
 }
 
 void CapaDePresentacio::tancarSessio() {
+
     std::string resposta;
     std::cout << std::endl;
     std::cout << "** Tancar Sessio **" << std::endl; 
@@ -41,6 +44,7 @@ void CapaDePresentacio::tancarSessio() {
     std::cin >> resposta; 
 
     if (resposta == "S"){
+
         TxTancaSessio tx;
         tx.executa();
         sessioIniciada = false;
@@ -90,6 +94,7 @@ void CapaDePresentacio::procesarRegistreUsuari() {
         modalitatU = "Infantil";
     }
     else {
+
         continua = false;
         std::cout << "Error: La modalitat escollida no es valida." << std::endl;
         std::cout << std::endl;
@@ -99,13 +104,13 @@ void CapaDePresentacio::procesarRegistreUsuari() {
 
         std::cout << std::endl;
         try {
+            
             TxRegistreUsuari tx(nomU, sobrenomU, contrasenyaU, correuU, dataNaixementU, modalitatU);
             tx.executa();
             std::cout << "Usuari registrat correctament!, per accedir al teu compte inicia sessio." << std::endl;
             std::cout << std::endl;
         }
         catch (const sql::SQLException& e) {
-            // Personalizar el mensaje según el error SQL
 
             std::string errorMsg = e.what();
             if (errorMsg.find("Duplicate entry") != std::string::npos) {
@@ -119,24 +124,25 @@ void CapaDePresentacio::procesarRegistreUsuari() {
                     std::cout << "Error: El correu electronic ja esta registrat. Si us plau, prova amb un altre." << std::endl;
                 }
                 else {
-                    // Mostrar el error original si no se puede personalizar
+                  
                     std::cout << "Error: " << errorMsg << std::endl;
                 }
             }
             else {
-                // Mostrar el error original si no se puede personalizar
+
+                // Mostrar el error original si no es pot personalitzar
                 std::cout << "Error: " << errorMsg << std::endl;
             }
             std::cout << std::endl;
         }
     }
 }
-
+ 
 void CapaDePresentacio::procesarConsultaUsuari() {
     
+    std::cout << std::endl;
     std::cout << "** Consulta Usuari **" << std::endl;
     std::cout << std::endl;
-    //CapaDeDomini& domini = CapaDeDomini::getInstance();
     try {
 
         TxConsultaUsuari tx;
@@ -185,10 +191,12 @@ void CapaDePresentacio::procesarConsultaUsuari() {
 
 void CapaDePresentacio::procesarModificarUsuari() {
 
+    std::cout << std::endl;
     std::cout << "** Modifica Usuari **" << std::endl;
     std::cout << std::endl;
 
     try {
+
         CtrlModificaUsuari ctrlModifica;
         DTOUsuari usu;
         usu = ctrlModifica.consultarUsuari();
@@ -197,13 +205,12 @@ void CapaDePresentacio::procesarModificarUsuari() {
         std::cout << "Sobrenom: " << usu.obteSobrenom() << std::endl;
         std::cout << "Correu electronic: " << usu.obteCorreu() << std::endl;
         std::string dataNeix = usu.obteDataNeix();
-        dataNeix = dataNeix.substr(0, 10);  // Obtener solo los primeros 10 caracteres (YYYY-MM-DD)
+        dataNeix = dataNeix.substr(0, 10);   // Obtenim només els primers 10 caracteres (YYYY-MM-DD)
         std::cout << "Data naixement (AAAA-MM-DD): " << dataNeix << std::endl;
         std::cout << "Modalitat subscripcio: " << usu.obteModalitatSubscripcio() << std::endl;
         std::cout << std::endl;
 
-        // ** Limpieza del buffer **
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // netejem el buffer
         
         std::cout << std::endl;
 
@@ -211,13 +218,13 @@ void CapaDePresentacio::procesarModificarUsuari() {
         std::cout << "Polsar enter als camps que NO es volen modificar i omplir la informacio que SI es vol modificar ..." << std::endl;
     
         std::cout << "Nom complet: ";
-        std::getline(std::cin, nomU);  // Cambiar a getline
+        std::getline(std::cin, nomU);  // canvi a getline
         std::cout << "Contrasenya: ";
-        std::getline(std::cin, contrasenyaU);  // Cambiar a getline
+        std::getline(std::cin, contrasenyaU);  // canvi a getline
         std::cout << "Correu electronic: ";
-        std::getline(std::cin, correuU);  // Cambiar a getline
+        std::getline(std::cin, correuU);  // canvi a getline
         std::cout << "Data naixement (YYYY-MM-DD): ";
-        std::getline(std::cin, dataNaixementU);  // Cambiar a getline
+        std::getline(std::cin, dataNaixementU);  // canvi a getline
 
         std::cout << "Modalitats de subscripcio disponibles " << std::endl;
         std::cout << " > 1. Completa" << std::endl;
@@ -226,7 +233,7 @@ void CapaDePresentacio::procesarModificarUsuari() {
 
         std::string eleccio;
         std::cout << "Escriu el numero de la modalitat a canviar: ";
-        std::getline(std::cin, eleccio);  // Cambiar a getline
+        std::getline(std::cin, eleccio);  // canvi a getline
 
         bool continua = true;
         if (eleccio == "1") {
@@ -263,14 +270,13 @@ void CapaDePresentacio::procesarModificarUsuari() {
             std::cout << "Sobrenom: " << usuari.obteSobrenom() << std::endl;
             std::cout << "Correu electronic: " << usuari.obteCorreu() << std::endl;
             dataNeix = usuari.obteDataNaixement();
-            dataNeix = dataNeix.substr(0, 10);  // Obtener solo los primeros 10 caracteres (YYYY-MM-DD)
+            dataNeix = dataNeix.substr(0, 10);  // Obtenim només els primers 10 caracteres (YYYY-MM-DD)
             std::cout << "Data naixement (AAAA-MM-DD): " << dataNeix << std::endl;
             std::cout << "Modalitat subscripcio: " << usuari.obteModalitatSubs() << std::endl;
             std::cout << std::endl;
         }
     }
     catch (const sql::SQLException& e) {
-        // Personalizar el mensaje según el error SQL
 
         std::string errorMsg = e.what();
         if (errorMsg.find("Duplicate entry") != std::string::npos) {
@@ -280,12 +286,13 @@ void CapaDePresentacio::procesarModificarUsuari() {
                 std::cout << "Error: El correu electronic ja esta registrat. Si us plau, prova amb un altre." << std::endl;
             }
             else {
-                // Mostrar el error original si no se puede personalizar
+               
                 std::cout << "Error: " << errorMsg << std::endl;
             }
         }
         else {
-            // Mostrar el error original si no se puede personalizar
+            
+            // Mostrem l'error original si no s'ha de personalitzar
             std::cout << "Error: " << errorMsg << std::endl;
         }
         std::cout << std::endl;
@@ -294,6 +301,7 @@ void CapaDePresentacio::procesarModificarUsuari() {
 
 void CapaDePresentacio::procesarEsborraUsuari() {
 
+    std::cout << std::endl;
     std::cout << "** Esborra Usuari **" << std::endl;
     std::cout << std::endl;
     std::cout << "Per confirmar l'esborrat s'ha d'entrar la contrasenya: ";
@@ -302,6 +310,7 @@ void CapaDePresentacio::procesarEsborraUsuari() {
     std::cout << std::endl;
 
     try {
+
         TxEsborraUsuari TxEsborra (contrasenya);
         TxEsborra.executa();
         std::cout << "L'usuari s'ha esborrat correctament." << std::endl;
@@ -318,18 +327,19 @@ void CapaDePresentacio::procesarEsborraUsuari() {
 
 void CapaDePresentacio::procesarVisualitzarPel() {
 
+    std::cout << std::endl;
     std::cout << "** Visualitzar Pel.licula **" << std::endl;
     std::cout << std::endl;
     try {
+        
         std::string titol;
         std::cout << "Nom pel.licula: ";
         std::cin >> titol;
 
-        ////// data i hora actual
+        // data i hora actual
         auto ara = std::chrono::system_clock::now();
         std::time_t tempsActual = std::chrono::system_clock::to_time_t(ara);
         std::tm tempsFinal = *std::localtime(&tempsActual);
-        // Formatear directamente en un std::ostringstream
         std::ostringstream stream;
         stream << std::put_time(&tempsFinal, "%Y-%m-%d %H:%M:%S");
         std::string dataHora = stream.str();
@@ -352,7 +362,7 @@ void CapaDePresentacio::procesarVisualitzarPel() {
         std::cout << "Nom pel.licula: " << titol << std::endl;
         std::cout << "Descripcio: " << descripcio << std::endl;
         std::cout << "Qualificacio edat: " << qualificacioEdat << std::endl;
-        std::cout << "Data estrena: " << dataEstrena.substr(0, 10) << std::endl; // Obtenir només els 10 primers chars (YYYY-MM-DD)
+        std::cout << "Data estrena: " << dataEstrena.substr(0, 10) << std::endl; // Obtenim només els 10 primers chars (YYYY-MM-DD)
         std::cout << "Duracio: " << duracio << std::endl;
         std::cout << "Vols continuar amb la visualitzacio (S/N): ";
         std::string resposta;
@@ -360,11 +370,7 @@ void CapaDePresentacio::procesarVisualitzarPel() {
         std::cout << std::endl;
         if (resposta == "S") {
 
-            //---------------------------------------------------
-
             ctrlVisualitza.registrarVisualitzacions(titol, dataHora);
-
-            //------------------------------------------------------------
 
             std::cout << "Visualitzacio registrada: " << dataHora << std::endl;
             std::cout << std::endl;
@@ -380,6 +386,7 @@ void CapaDePresentacio::procesarVisualitzarPel() {
                 std::cout << "No hi ha pel.licules relacionades." << std::endl;
             }
             else {
+
                 std::cout << "Pel.licules relacionades: " << std::endl;
                 for (int i = 0; i < midaVecDto; i++) {
 
@@ -397,7 +404,6 @@ void CapaDePresentacio::procesarVisualitzarPel() {
     }
     catch (const std::exception& e) {
 
-        //std::cout << std::endl;
         std::cerr << "Error: " << e.what() << std::endl;
         std::cout << std::endl;
     }
@@ -409,6 +415,7 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
     std::cout << "** Visualitzar Capitol **" << std::endl;
     std::cout << std::endl;
     try {
+
         std::string titolS;
         std::cout << "Nom de la serie: ";
         std::cin >> titolS;
@@ -419,6 +426,7 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
         numTemps = CtrlCap.consultaNumeroTemporades(titolS);
         int temporadaEscollida = 1;
         if (numTemps > 1) {
+            
             std::cout << "La serie te " << std::to_string(numTemps) << " temporades." << std::endl;
             std::cout << "Escull una temporada: ";
             std::cin >> temporadaEscollida;
@@ -429,7 +437,7 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
             }
             std::cout << std::endl;
         }
-        std::vector<DTOCapitol> capitols;//CANVIAR
+        std::vector<DTOCapitol> capitols;
         capitols = CtrlCap.consultaCapitols(titolS, temporadaEscollida);
         
         int midaCapitols = capitols.size();
@@ -477,7 +485,7 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
 
         if (llegueix == "S") {
 
-            ////// data i hora actual
+            // data i hora actual
             auto ara = std::chrono::system_clock::now();
             std::time_t tempsActual = std::chrono::system_clock::to_time_t(ara);
             std::tm tempsFinal = *std::localtime(&tempsActual);
@@ -485,13 +493,11 @@ void CapaDePresentacio::procesarVisualitzarCapitol() {
             stream << std::put_time(&tempsFinal, "%Y-%m-%d %H:%M:%S");
             std::string dataHora = stream.str();
 
-
             CtrlCap.registrarVisualitzacio(titolS, temporadaEscollida, capitol, dataHora);
             std::cout << "Visualitzacio registrada: " << dataHora << std::endl;
             
         }
         std::cout << std::endl;
-        
     }
     catch (const std::exception& e) {
 
@@ -505,6 +511,7 @@ void CapaDePresentacio::procesarConsultaVisualitzacions() {
     std::cout << std::endl;
     std::cout << "** Consulta Visualitzacions **" << std::endl;
     try {
+
         std::cout << std::endl;
         std::cout << "** Visualitzacions Pel.licules **" << std::endl;
         std::cout << "*********************************" << std::endl;
@@ -520,9 +527,11 @@ void CapaDePresentacio::procesarConsultaVisualitzacions() {
         std::string titolP, dataVisualitzacioP, descripcioP, qualificacioEdatP;
         int numVisualitzacionsP;
         if (midaVecPel == 0) {
+
             std::cout << "No s'ha visualitzat cap pelicula." << std::endl;
         }
         else {
+
             for (int i = 0; i < midaVecPel; i++) {
 
                 dataVisualitzacioP = res.vec_Pel[i].obteDataVisualitzacio();
@@ -544,9 +553,11 @@ void CapaDePresentacio::procesarConsultaVisualitzacions() {
         std::string titolS, dataVisualitzacioC, qualificacioEdatC;
         int numTemporada, numCapitol, numVisualitzacionsC;
         if (midaVecCap == 0) {
+
             std::cout << "No s'ha visualitzat cap capitol." << std::endl;
         }
         else {
+
             for (int i = 0; i < midaVecCap; i++) {
 
                 dataVisualitzacioC = res.vec_Cap[i].obteDataVisualitzacio();
@@ -572,7 +583,8 @@ void CapaDePresentacio::procesarProperesEstrenes() {
     std::cout << std::endl;
     std::cout << "** Properes estrenes **" << std::endl;
     try {
-        ////// data i hora actual
+
+        // data i hora actual
         auto ara = std::chrono::system_clock::now();
         std::time_t tempsActual = std::chrono::system_clock::to_time_t(ara);
         std::tm tempsFinal = *std::localtime(&tempsActual);
@@ -582,14 +594,13 @@ void CapaDePresentacio::procesarProperesEstrenes() {
 
         std::string modalitatConsultada;
 
-        if (sessioIniciada) {   // aixo que ho faci el tx
-            // aprofitar el DTO
+        if (sessioIniciada) {   
+
             modalitatConsultada = ".";
                 // usuari ha registrat sessio la modalitat sub és la de l'usuari
-                //-cinefil -> només pelis
-                //-completa -> tot
-                //-infantil -> tot però limitat per rang d'edat
-
+                // -cinefil -> només pelis
+                // -completa -> tot
+                // -infantil -> tot però limitat per rang d'edat
         }
         else {
 
@@ -636,11 +647,14 @@ void CapaDePresentacio::procesarProperesEstrenes() {
         }
         else {
 
-            // Ordenar manualmente el vector por dataEstrena (Bubble Sort)
+            // Ordenar manualmente el vector per dataEstrena (Bubble Sort)
             for (int i = 0; i < mida - 1; ++i) {
+
                 for (int j = 0; j < mida - i - 1; ++j) {
+                    
                     if (properesEstrenes[j].obteData() > properesEstrenes[j + 1].obteData()) {
-                        // Intercambiar posiciones
+
+                        // Intercambiar posicions
                         DTOEstrenes temp = properesEstrenes[j];
                         properesEstrenes[j] = properesEstrenes[j + 1];
                         properesEstrenes[j + 1] = temp;
@@ -674,6 +688,7 @@ void CapaDePresentacio::procesarProperesEstrenes() {
 }
 
 void CapaDePresentacio::procesarUltimesNovetats() {
+
     std::cout << std::endl;
     std::cout << "** NOVETATS **" << std::endl;
     try {
@@ -691,6 +706,10 @@ void CapaDePresentacio::procesarUltimesNovetats() {
         if (sessioIniciada) {
 
             modalitatConsultada = ".";
+            // usuari ha registrat sessio la modalitat sub és la de l'usuari
+            // -cinefil -> només pelis
+            // -completa -> tot
+            // -infantil -> tot però limitat per rang d'edat
         }
         else {
 
@@ -736,6 +755,7 @@ void CapaDePresentacio::procesarUltimesNovetats() {
             std::cout << "No hi ha cap contingut estrenat." << std::endl;
         }
         else {
+
             bool primeraSerie = true;
             bool primeraPelicula = true;
             int j = 1;
@@ -747,6 +767,7 @@ void CapaDePresentacio::procesarUltimesNovetats() {
                 qualificacioEdat = ultimesNovetats[i].obteQualificacioEdat();
                 numCap = ultimesNovetats[i].obteNumCap();
                 if (numCap == 0) {
+
                     if (primeraPelicula){
                         
                         primeraPelicula = false;
@@ -756,6 +777,7 @@ void CapaDePresentacio::procesarUltimesNovetats() {
                     std::cout << i + 1 << ".- " << dataEstrena.substr(0, 10) << ": "<< titol << "; " << qualificacioEdat << "; " << duracioOnumTemp << "h." << std::endl;
                 }
                 else {
+
                     if (primeraSerie){
 
                         primeraSerie = false;
@@ -777,17 +799,24 @@ void CapaDePresentacio::procesarUltimesNovetats() {
 }
 
 void CapaDePresentacio::procesarPeliculesMesVistes(){
+
     std::cout << std::endl;
     std::cout << "** Pel.licules mes visualitzades **" << std::endl;
     std::cout << std::endl;
     try {
+
         std::string modalitatConsultada;
 
         if (sessioIniciada) {
 
             modalitatConsultada = ".";
+            // usuari ha registrat sessio la modalitat sub és la de l'usuari
+            // -cinefil -> només pelis
+            // -completa -> tot
+            // -infantil -> tot però limitat per rang d'edat
         }
         else {
+
             std::cout << "Modalitats Disponibles ... " << std::endl;
             std::cout << " > 1. Completa" << std::endl;
             std::cout << " > 2. Cinefil" << std::endl;
@@ -823,7 +852,6 @@ void CapaDePresentacio::procesarPeliculesMesVistes(){
 
         int mida = mesVistes.size();
 
-        //std::cout << std::endl;
         if ( mida == 0 ) {
 
             std::cout << "No hi ha cap pelicula disponible." << std::endl;
@@ -845,9 +873,11 @@ void CapaDePresentacio::procesarPeliculesMesVistes(){
                 vista = mesVistes[i].obteVista();
 
                 if (sessioIniciada and vista){
+
                     std::cout << i+1 << ".- " << titol << "; " << qualificacioEdat << "; " << duracio << "; Visualitzacions: " << numVisu << " [Vista: " << dataEstrena << "]"<< std::endl;
                 }
                 else {
+                    
                     std::cout << i+1 << ".- " << titol << "; " << qualificacioEdat << "; " << duracio << "; Visualitzacions: " << numVisu << std::endl;
                 }
             }
