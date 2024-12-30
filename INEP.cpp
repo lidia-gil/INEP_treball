@@ -305,11 +305,6 @@ int main()
     std::cout << "port= ";
     std::cin >> port;
     std::cout << std::endl;
-
-    name = user = "inep02";
-    password = "rai2Laavaey6ph";
-    host = "ubiwan.epsevg.upc.edu";
-    port = "3306";
     
     ConnexioBD& connexio = ConnexioBD::getInstance();
     connexio.inicialitzar_atributs(name, user, password, host, port);

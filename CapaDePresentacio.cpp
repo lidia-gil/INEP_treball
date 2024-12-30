@@ -857,7 +857,7 @@ void CapaDePresentacio::procesarPeliculesMesVistes(){
             std::cout << "No hi ha cap pelicula disponible." << std::endl;
             std::cout << std::endl;
         }
-        else{
+        else {
             
             std::string dataEstrena, qualificacioEdat, duracio, titol;
             int numVisu;
